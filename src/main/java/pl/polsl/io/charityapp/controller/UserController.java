@@ -12,6 +12,7 @@ import pl.polsl.io.charityapp.service.UserService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
