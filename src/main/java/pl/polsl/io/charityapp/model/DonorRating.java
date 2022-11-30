@@ -1,7 +1,12 @@
 package pl.polsl.io.charityapp.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Entity
+@Table(name = "donor_rating")
+@Data
 public class DonorRating {
 
     @Id
@@ -21,6 +26,7 @@ public class DonorRating {
     @JoinColumn(name = "charity_action_id")
     private CharityAction charityActionId;
 
-
+    @Column(name = "rating")
+    private boolean rating;
 
 }
