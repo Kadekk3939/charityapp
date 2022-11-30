@@ -20,6 +20,10 @@ public class ApplicationToCharityAction implements java.io.Serializable{
     @ManyToOne
     @JoinColumn(name="charity_action_id")
     private CharityAction charityActionId;
+
+    @ManyToOne
+    @JoinColumn(name = "document_id")
+    private Document documentId;
 }
 
 
