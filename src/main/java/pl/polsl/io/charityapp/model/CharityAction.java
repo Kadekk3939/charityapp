@@ -3,9 +3,10 @@ package pl.polsl.io.charityapp.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "charity_action")
+@Table(name = "charity_actions")
 @Data
 public class CharityAction {
     @Id
@@ -18,4 +19,10 @@ public class CharityAction {
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "goal")
+    private Float goal;
+
+    @Column(name = "end_time")
+    private LocalDateTime endTime;
 }

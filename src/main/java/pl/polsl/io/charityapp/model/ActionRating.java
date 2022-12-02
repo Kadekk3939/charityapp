@@ -3,9 +3,8 @@ package pl.polsl.io.charityapp.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "action_rating")
+@Table(name = "action_ratings")
 public class ActionRating {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -21,4 +20,8 @@ public class ActionRating {
 
     @Column(name = "rating")
     private Integer rating;
+
+    @Column(name = "comment")
+    //null
+    private String comment;
 }

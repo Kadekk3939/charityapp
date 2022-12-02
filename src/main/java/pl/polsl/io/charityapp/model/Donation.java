@@ -3,10 +3,9 @@ package pl.polsl.io.charityapp.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Currency;
 
 @Entity
-@Table(name = "donation")
+@Table(name = "donations")
 @Data
 public class Donation {
     @Id
@@ -25,8 +24,10 @@ public class Donation {
     @Column(name = "amount")
     private Float amount;
 
-    @Column(name = "payment_confirmation")
-    private boolean paymentConfirmation;
+    @Column(name = "payment_confirmed")
+    private Boolean paymentConfirmed;
 
+    @Column(name = "anonymous")
+    private Boolean anonymous;
 
 }
