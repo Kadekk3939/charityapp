@@ -7,7 +7,6 @@ import pl.polsl.io.charityapp.model.User;
 import pl.polsl.io.charityapp.repository.UserRepository;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class UserService {

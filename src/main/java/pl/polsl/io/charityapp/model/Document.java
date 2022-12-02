@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "document")
+@Table(name = "documents")
 @Data
 public class Document {
     @Id
@@ -15,6 +15,8 @@ public class Document {
 
     @Column(name = "file_name")
     private String fileName;
+
+    //bytestream strategy.lazy ?
 
     @ManyToOne
     @JoinColumn(name = "application_id")
