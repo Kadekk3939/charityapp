@@ -32,6 +32,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "nip")
+    private String nip;
+
     @ManyToOne
     @JoinColumn(name = "role_id")
     private UserRole roleId;

@@ -1,11 +1,9 @@
 package pl.polsl.io.charityapp.model;
 
-        import lombok.Data;
-
         import javax.persistence.*;
 
 @Entity
-@Table(name = "application_to_charity_action")
+@Table(name = "applications_to_charity_action")
 public class ApplicationToCharityAction implements java.io.Serializable{
 
     @Id
@@ -21,9 +19,12 @@ public class ApplicationToCharityAction implements java.io.Serializable{
     @JoinColumn(name="charity_action_id")
     private CharityAction charityActionId;
 
-    @ManyToOne
-    @JoinColumn(name = "document_id")
-    private Document documentId;
+    @Column(name = "reason")
+    private String reason;
+
+//    @ManyToOne
+//    @JoinColumn(name = "document_id")
+//    private Document documentId;
 }
 
 

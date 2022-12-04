@@ -3,11 +3,11 @@ package pl.polsl.io.charityapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.polsl.io.charityapp.model.User;
 import pl.polsl.io.charityapp.repository.UserRepository;
 import pl.polsl.io.charityapp.service.UserService;
+
 
 import java.util.List;
 
@@ -53,4 +53,5 @@ public class UserController {
         userService.deleteUserById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 }
