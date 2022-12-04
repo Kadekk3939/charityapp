@@ -5,21 +5,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { UserService } from './user.service';
 import { StartingPage } from './starting-page.component';
-import { Router, RouterModule } from '@angular/router';
+import { LoginPage } from './login-page.component';
+
+import { AppRoutingModule } from './app-routing.module'; // CLI imports AppRoutingModule
 
 @NgModule({
   declarations: [
     AppComponent,
-    StartingPage
+    StartingPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot([
-      {path: '',component:StartingPage}
-    ])
+    AppRoutingModule, // CLI adds AppRoutingModule to the AppModule's imports array
+    HttpClientModule
   ],
-  providers: [UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
