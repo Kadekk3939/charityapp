@@ -1,11 +1,36 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; // CLI imports router
 import { LoginPage } from './login-page.component';
+import { RegisterPage } from './register-page.component';
 import { StartingPage } from './starting-page.component';
 
 const routes: Routes =[
     { path: '', component: StartingPage },
-    { path: 'login', component: LoginPage },
+    {path: 'login', component: LoginPage, children: [
+        {
+          path: 'register',
+          component: RegisterPage,
+        },
+        {
+          path: 'home',
+          component: StartingPage,
+        },
+      ],
+    },
+
+    {path: 'register', component: RegisterPage, children: [
+        {
+          path: 'login',
+          component: LoginPage,
+        },
+        {
+          path: 'home',
+          redirectTo: '',
+          component: StartingPage,
+        },
+      ],
+    },
+    
   ]; // sets up routes constant where you define your routes
 
 // configures NgModule imports and exports

@@ -8,12 +8,14 @@ import { StartingPage } from './starting-page.component';
 import { LoginPage } from './login-page.component';
 
 import { AppRoutingModule } from './app-routing.module'; // CLI imports AppRoutingModule
+import { RegisterPage } from './register-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartingPage,
-    LoginPage
+    LoginPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,

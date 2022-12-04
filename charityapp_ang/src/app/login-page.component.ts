@@ -1,4 +1,5 @@
 import { Component ,OnInit, OnDestroy} from "@angular/core";
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'login-page',
@@ -10,6 +11,7 @@ export class LoginPage implements OnInit,OnDestroy{
 
     title = 'Login Page';
 
+    constructor(private _location: Location){}
     /**
      * OnInit is run when page is initilised
      */
@@ -22,6 +24,9 @@ export class LoginPage implements OnInit,OnDestroy{
      */
     ngOnDestroy(): void {
         
+    }
+    back(){
+        this._location.back();
     }
 
 }
