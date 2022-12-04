@@ -4,14 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { UserService } from './user.service';
+import { StartingPage } from './starting-page.component';
+import { Router, RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StartingPage
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      {path: '',component:StartingPage}
+    ])
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
