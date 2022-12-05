@@ -12,12 +12,14 @@ export class UserService{
 
     constructor(private http: HttpClient){}
 
-    public getUsers():Observable<User[]>{
-        return this.http.get<User[]>(`${this.apiServerUr1}/user/all`);
-    }
+    
 
     public addUser(user:User):Observable<User>{
         return this.http.post<User>(`${this.apiServerUr1}/user/add`,user);
+    }
+
+    public getUsers():Observable<User[]>{
+        return this.http.get<User[]>(`${this.apiServerUr1}/user/all`);
     }
 
     public updateUser(user:User):Observable<User>{
