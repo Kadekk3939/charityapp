@@ -1,4 +1,8 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component ,OnInit, OnDestroy} from "@angular/core";
+import { NgForm } from "@angular/forms";
+import { User } from "./user";
+import { UserService } from "./user.service";
 
 @Component({
     selector: 'register-page',
@@ -10,6 +14,8 @@ export class RegisterPage implements OnInit,OnDestroy{
 
     title = 'Register Page';
 
+    public user: User | undefined;
+    constructor(private userService:UserService){}
     /**
      * OnInit is run when page is initilised
      */
@@ -22,6 +28,17 @@ export class RegisterPage implements OnInit,OnDestroy{
      */
     ngOnDestroy(): void {
         
+    }
+
+    public onRegisterUser(registerForm:NgForm):void{
+        this.userService.addUser(registerForm.value).subscribe(
+            (response: User)=>{
+                console.log(response);
+            },
+            (error: HttpErrorResponse)=> {
+                alert(error.message);
+            }
+        );
     }
 
 }

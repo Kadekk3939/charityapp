@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { User } from './user';
+import { UserRole } from './user-role';
 import { UserService } from './user.service';
 
 @Component({
@@ -15,17 +16,7 @@ export class AppComponent implements OnInit{
   constructor(private userService:UserService){}
 
   ngOnInit(): void {
-      this.getUsers();
+      
   }
 
-  public getUsers():void{
-    this.userService.getUsers().subscribe(
-      (response:User[])=>{
-        this.users = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
 }
