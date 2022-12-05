@@ -29,7 +29,7 @@ public class User {
     private String password;
 
     @NotBlank(message = "Email must not be blank")
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     //Commented until working
