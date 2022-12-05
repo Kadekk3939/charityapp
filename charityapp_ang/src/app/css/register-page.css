@@ -64,7 +64,8 @@ main {
     font-size: 0.9rem;
     letter-spacing: 2px;
 }
-.submit_class {
+
+.register_button {
     border-style: none;
     border-radius: 5px;
     background-color: #FFE6D4;
@@ -78,6 +79,8 @@ main {
     box-shadow: 2px 2px 5px rgb(0,0,0,0.2);
     cursor: pointer;
 }
+
+
 footer {
     height: 10vh;
     background-color: black;

@@ -1,7 +1,12 @@
+import { UserRole } from "./user-role";
+
 export interface User{
     id:number;
-    name: string;
+    first_name: string;
+    last_name: string;
+    login: string;
+    password: string;
     email: string;
-    val: number;
-    a: string;
+    // nip: string;
+    // role_id:UserRole;
 }
