@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { loginForm } from './login-form';
 
 @Injectable({
     providedIn: 'root'
@@ -28,5 +29,10 @@ export class UserService{
 
     public delateteUser(id:number):Observable<void>{
         return this.http.delete<void>(`${this.apiServerUr1}/user/delete/${id}`);
+    }
+
+    public loginUser(login:loginForm):void{
+        this.http.delete<void>(`${this.apiServerUr1}/login`);
+        return;
     }
 }

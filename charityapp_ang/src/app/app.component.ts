@@ -11,7 +11,6 @@ import { UserService } from './user.service';
 })
 export class AppComponent implements OnInit{
   title = 'charityapp_ang';
-  public users: User[] | undefined;
 
   constructor(private userService:UserService){}
 

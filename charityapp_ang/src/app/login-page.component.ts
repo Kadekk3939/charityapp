@@ -1,5 +1,9 @@
 import { Component ,OnInit, OnDestroy} from "@angular/core";
 import {Location} from '@angular/common';
+import { NgForm } from "@angular/forms";
+import { UserService } from "./user.service";
+import { Router } from "@angular/router";
+import { AppService } from "./app.services";
 
 @Component({
     selector: 'login-page',
@@ -10,8 +14,9 @@ import {Location} from '@angular/common';
 export class LoginPage implements OnInit,OnDestroy{
 
     title = 'Login Page';
+    credentials = {login: '', password: ''};
 
-    constructor(private _location: Location){}
+    constructor(private _location: Location,private userService:UserService,private router: Router,private app: AppService){}
     /**
      * OnInit is run when page is initilised
      */
@@ -28,5 +33,12 @@ export class LoginPage implements OnInit,OnDestroy{
     back(){
         this._location.back();
     }
+
+    login() {
+    this.app.authenticate(this.credentials, () => {
+        this.router.navigateByUrl('/');
+    });
+    return false
+}
 
 }

@@ -10,6 +10,7 @@ import { LoginPage } from './login-page.component';
 
 import { AppRoutingModule } from './app-routing.module'; // CLI imports AppRoutingModule
 import { RegisterPage } from './register-page.component';
+import { AppService } from './app.services';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { RegisterPage } from './register-page.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
