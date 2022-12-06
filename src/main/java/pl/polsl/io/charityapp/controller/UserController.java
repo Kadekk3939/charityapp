@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.polsl.io.charityapp.model.User;
 import pl.polsl.io.charityapp.repository.UserRepository;
 import pl.polsl.io.charityapp.service.UserService;
+import pl.polsl.io.charityapp.utility.CurrentUserData;
 
 
 import java.util.List;
@@ -52,6 +53,14 @@ public class UserController {
     public ResponseEntity<?> deleteUser(@PathVariable("id") Integer id){
         userService.deleteUserById(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping("/welcome")
+    public String welcome() {
+        return String.format("Welcome %s\r\n with id:%d!\r\nYou are the %s.",
+                CurrentUserData.getCurrentUserLogin(),
+                CurrentUserData.getCurrentUserId(),
+                CurrentUserData.getCurrentUserRole());
     }
 
 }

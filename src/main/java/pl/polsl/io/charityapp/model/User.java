@@ -1,14 +1,20 @@
 package pl.polsl.io.charityapp.model;
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 @Data
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -39,4 +45,38 @@ public class User {
 //    @ManyToOne
 //    @JoinColumn(name = "role_id")
 //    private UserRole roleId;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        List<GrantedAuthority> role = new ArrayList<>();
+//        role.add(new SimpleGrantedAuthority(roleId.getRole()));
+//        return role;
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 }

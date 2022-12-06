@@ -9,5 +9,7 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Integer> {
     Optional<User> findById(Integer id);
     List<User> findByFirstNameOrderById(String firstName);
+
+    Optional<User> findUserByLogin(String login);
     List<User> findAll();
 }

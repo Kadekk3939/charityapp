@@ -40,24 +40,23 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .logout()
             .deleteCookies("JSESSIONID")
             .invalidateHttpSession(true)
-            .logoutSuccessUrl("/welcome")
-            .and()
-            .authorizeRequests()
-            .antMatchers("/welcome").permitAll()
-//                .antMatchers("/forum/**")
-//                    .hasAnyAuthority(roles.getAuthoritiesOnLevel(4).toArray(new String[0]))
-//                .antMatchers("/users")
-//                    .hasAnyAuthority(roles.getAuthoritiesOnLevel(3).toArray(new String[0]))
-////                .antMatchers( "/create", "/update/*", "/password/*")
-////                    .hasAnyAuthority(roles.getAuthoritiesOnLevel(2).toArray(new String[0]))
-//                .antMatchers( "/delete/*")
-//                    .hasAnyAuthority(roles.getAuthoritiesOnLevel(1).toArray(new String[0]))
-        .anyRequest().authenticated();
-
+            .logoutSuccessUrl("/welcome");
+//            .and()
+//            .authorizeRequests()
+//            .antMatchers("/welcome").permitAll()
+////                .antMatchers("/forum/**")
+////                    .hasAnyAuthority(roles.getAuthoritiesOnLevel(4).toArray(new String[0]))
+////                .antMatchers("/users")
+////                    .hasAnyAuthority(roles.getAuthoritiesOnLevel(3).toArray(new String[0]))
+//////                .antMatchers( "/create", "/update/*", "/password/*")
+//////                    .hasAnyAuthority(roles.getAuthoritiesOnLevel(2).toArray(new String[0]))
+////                .antMatchers( "/delete/*")
+////                    .hasAnyAuthority(roles.getAuthoritiesOnLevel(1).toArray(new String[0]))
+//        .anyRequest().authenticated();
     }
 
-    @Autowired
-    public void configureGlobal(final AuthenticationManagerBuilder auth) {
-        auth.authenticationProvider(authProvider());
-    }
+//    @Autowired
+//    public void configureGlobal(final AuthenticationManagerBuilder auth) {
+//        auth.authenticationProvider(authProvider());
+//    }
 }
