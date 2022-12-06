@@ -57,10 +57,11 @@ public class UserController {
 
     @RequestMapping("/welcome")
     public String welcome() {
-        return String.format("Welcome %s\r\n with id:%d!\r\nYou are the %s.",
-                CurrentUserData.getCurrentUserLogin(),
-                CurrentUserData.getCurrentUserId(),
-                CurrentUserData.getCurrentUserRole());
+        return String.format("Welcome %s\r\n with id:%d!\r\nYou are no one.",
+                CurrentUserData.getCurrentUserLogin()
+                ,CurrentUserData.getCurrentUserId()
+//                ,CurrentUserData.getCurrentUserRole()
+        );
     }
 
 }

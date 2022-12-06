@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -29,18 +28,35 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         authProvider.setPasswordEncoder(encoder.passwordEncoder());
         return authProvider;
     }
+
+
+
+    /*
+    Example user:
+    {
+    "firstName":"ad",
+    "lastName":"min",
+    "login":"admin",
+    "password":"admin",
+    "email":"ad@m.in"
+    }
+
+    http://localhost:8080/login
+
+    http://localhost:8080/logout
+     */
     @Override
     public void configure(final HttpSecurity http)
             throws Exception {
         http
             .httpBasic().and().csrf().disable()
             .formLogin()
-        .defaultSuccessUrl("/welcome", true)
+        .defaultSuccessUrl("/user/welcome", true)
             .and()
         .logout()
             .deleteCookies("JSESSIONID")
             .invalidateHttpSession(true)
-            .logoutSuccessUrl("/welcome");
+            .logoutSuccessUrl("/login");
 //            .and()
 //            .authorizeRequests()
 //            .antMatchers("/welcome").permitAll()
@@ -54,9 +70,4 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 ////                    .hasAnyAuthority(roles.getAuthoritiesOnLevel(1).toArray(new String[0]))
 //        .anyRequest().authenticated();
     }
-
-//    @Autowired
-//    public void configureGlobal(final AuthenticationManagerBuilder auth) {
-//        auth.authenticationProvider(authProvider());
-//    }
 }
