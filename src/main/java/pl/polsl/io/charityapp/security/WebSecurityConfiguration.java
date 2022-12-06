@@ -15,7 +15,6 @@ import javax.annotation.Resource;
 
 @Configuration
 @EnableWebSecurity
-//@CrossOrigin(origins = "http://localhost:4200")
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Resource
     private UserDetailsService userDetailsService;
