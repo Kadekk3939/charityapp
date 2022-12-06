@@ -12,6 +12,12 @@ public class CurrentUserData {
         return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
+    public static boolean isAnyoneLogged() {
+        Object principal = getPrincipal();
+        return principal instanceof User;
+    }
+
+
     public static User getCurrentUser() {
         Object principal = getPrincipal();
 

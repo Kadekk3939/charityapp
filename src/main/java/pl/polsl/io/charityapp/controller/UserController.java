@@ -55,13 +55,4 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping("/welcome")
-    public String welcome() {
-        return String.format("Welcome %s\r\n with id:%d!\r\nYou are no one.",
-                CurrentUserData.getCurrentUserLogin()
-                ,CurrentUserData.getCurrentUserId()
-//                ,CurrentUserData.getCurrentUserRole()
-        );
-    }
-
 }

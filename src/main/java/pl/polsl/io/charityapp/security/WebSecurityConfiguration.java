@@ -52,7 +52,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
             .httpBasic().and().csrf().disable()
             .formLogin()
-        .defaultSuccessUrl("/user/welcome", true)
+        .defaultSuccessUrl("/welcome", true)
             .and()
         .logout()
             .deleteCookies("JSESSIONID")
