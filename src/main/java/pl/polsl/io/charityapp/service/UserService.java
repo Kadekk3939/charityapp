@@ -43,8 +43,18 @@ public class UserService implements UserDetailsService {
     }
 
     public User findUserById(Integer id){
-        return userRepository.findById(id)
+        return userRepository.findUserById(id)
                 .orElseThrow(()->new UserNotFoundException("User by id "+ id + " not found"));
+    }
+
+    public User findUserByLogin(String login){
+        return userRepository.findUserByLogin(login)
+                .orElseThrow(()->new UserNotFoundException("User by login "+ login + " not found"));
+    }
+
+    public User findUserByEmail(String email){
+        return userRepository.findUserByEmail(email)
+                .orElseThrow(()->new UserNotFoundException("User by email "+ email + " not found"));
     }
 
 

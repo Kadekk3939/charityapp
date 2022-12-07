@@ -32,9 +32,21 @@ public class UserController {
         return new ResponseEntity<>(listOfUsers, HttpStatus.OK);
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/find/id/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") Integer id){
         User user = userService.findUserById(id);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @GetMapping("/find/login/{login}")
+    public ResponseEntity<User> getUserById(@PathVariable("login") String login){
+        User user = userService.findUserByLogin(login);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @GetMapping("/find/email/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email){
+        User user = userService.findUserByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
