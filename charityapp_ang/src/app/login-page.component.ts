@@ -39,6 +39,9 @@ export class LoginPage implements OnInit,OnDestroy{
         console.log(this.credentials.login);
         this.router.navigateByUrl('/');
     });
+    if(!this.app.authenticated){
+        alert("Wrong login or password");
+    }
     return false
 }
 
