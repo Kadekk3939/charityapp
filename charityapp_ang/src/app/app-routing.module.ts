@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router'; // CLI imports router
 import { LoginPage } from './login-page.component';
 import { RegisterPage } from './register-page.component';
 import { StartingPage } from './starting-page.component';
+import { UserPage } from './user-page.component';
 
 const routes: Routes =[
     { path: '', component: StartingPage },
@@ -15,6 +16,10 @@ const routes: Routes =[
           path: 'home',
           component: StartingPage,
         },
+        {
+          path: 'user',
+          component: UserPage,
+        }
       ],
     },
 
@@ -28,6 +33,10 @@ const routes: Routes =[
           redirectTo: '',
           component: StartingPage,
         },
+        {
+          path: 'user',
+          component:UserPage,
+        }
       ],
     },
     

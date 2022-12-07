@@ -36,6 +36,7 @@ export class LoginPage implements OnInit,OnDestroy{
 
     login() {
     this.app.authenticate(this.credentials, () => {
+        console.log(this.credentials.login);
         this.router.navigateByUrl('/');
     });
     return false
