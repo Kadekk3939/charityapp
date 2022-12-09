@@ -30,7 +30,7 @@
 <br>
 <div class="container" id="main-container">
   <div class="row">
-    <div *ngFor= "let chAction of charityActions" class="col-md-6 col-xl-3">
+    <div *ngFor= "let chAction of charityActions" class="col-md-6 col-xl-3 p-1">
       <div class="card m-b-30">
         <div class="card-body row">
 <!--          wyswietlanie zdj-->
@@ -43,8 +43,8 @@
           </div>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><i class="fa fa-phone float-right"></i>Goal: {{chAction?.goal}}</li>
-          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Ends on: {{chAction?.endTime}}</li>
+          <li class="list-group-item"><i class="fa fa-battery-full float-right"></i>Goal: {{chAction?.goal}}</li>
+          <li class="list-group-item"><i class="fa fa-calendar float-right"></i>Ends on: {{chAction?.endTime}}</li>
         </ul>
 <!--        przyciski-->
 <!--        <div class="card-body">-->
