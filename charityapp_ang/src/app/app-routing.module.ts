@@ -4,13 +4,15 @@ import { CharityActionComponent } from './charity-action/charity-action.componen
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { StartingPageComponent } from './starting-page/starting-page.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {path: 'welcome', component: StartingPageComponent},
   {path: '',redirectTo:'/welcome' ,pathMatch:'full'},
   {path: 'login', component: LoginComponent},
   {path: 'register', component:RegisterComponent},
-  {path: 'charityAction', component: CharityActionComponent}
+  {path: 'charityAction', component: CharityActionComponent},
+  {path: 'user',component:UserComponent}
 
 ];
 

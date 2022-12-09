@@ -7,17 +7,23 @@ import { environment } from 'src/environments/environment';
 export class AppService {
 
   authenticated = false;
-
+  public headers:HttpHeaders;
+  public login:string;
   constructor(private http: HttpClient) {
   }
 
-  authenticate(credentials: { login?: string; password: any}, callback: { (): void; (): any; }) {
+  public getAuthenticated():boolean{
+    return this.authenticated;
+  }
+  
 
-        const headers = new HttpHeaders(credentials ? {
+  authenticate(credentials: { login: string; password: any}, callback: { (): void; (): any; }) {
+        this.login = credentials.login;
+        this.headers = new HttpHeaders(credentials ? {
             authorization : 'Basic ' + btoa(credentials.login + ':' + credentials.password)
         } : {});
 
-        this.http.get(`${environment.apiBaseUrl}/user/find/login/${credentials.login}`, {headers: headers}).subscribe(response => {
+        this.http.get(`${environment.apiBaseUrl}/user/find/login/${credentials.login}`, {headers: this.headers}).subscribe(response => {
             if (response) {
                 this.authenticated = true;
             } else {
@@ -27,5 +33,6 @@ export class AppService {
         });
 
     }
+    
 
 }
