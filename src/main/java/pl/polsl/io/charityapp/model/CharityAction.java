@@ -3,6 +3,7 @@ package pl.polsl.io.charityapp.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,5 +25,5 @@ public class CharityAction {
     private Float goal;
 
     @Column(name = "end_time")
-    private LocalDateTime endTime;
+    private Date endTime;
 }
