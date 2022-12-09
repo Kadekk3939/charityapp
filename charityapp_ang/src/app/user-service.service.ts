@@ -8,30 +8,30 @@ import { Observable } from 'rxjs';
 })
 export class UserServiceService {
 
-  private dbUrl: string;
+  static dbUrl: string;
 
   constructor(private http: HttpClient) {
-    this.dbUrl = 'http://localhost:8080';
+    UserServiceService.dbUrl = 'http://localhost:8080';
   }
 
   public addUser(user:User):Observable<User>{
-      return this.http.post<User>(`${this.dbUrl}/user/add`,user);
+      return this.http.post<User>(`${UserServiceService.dbUrl}/user/add`,user);
   }
 
   public getUsers():Observable<User[]>{
-      return this.http.get<User[]>(`${this.dbUrl}/user/all`);
+      return this.http.get<User[]>(`${UserServiceService.dbUrl}/user/all`);
   }
 
   public updateUser(user:User):Observable<User>{
-      return this.http.put<User>(`${this.dbUrl}/user/update`,user);
+      return this.http.put<User>(`${UserServiceService.dbUrl}/user/update`,user);
   }
 
   public delateteUser(id:number):Observable<void>{
-      return this.http.delete<void>(`${this.dbUrl}/user/delete/${id}`);
+      return this.http.delete<void>(`${UserServiceService.dbUrl}/user/delete/${id}`);
   }
 
   public getUserByLogin(login:string):Observable<User>{
-      return this.http.get<User>(`${this.dbUrl}//find/login/${login}`);
+      return this.http.get<User>(`${UserServiceService.dbUrl}/find/login/${login}`);
   }
 
 }

@@ -10,6 +10,7 @@ import { UserComponent } from './user/user.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CharityActionComponent } from './charity-action/charity-action.component';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { CharityActionComponent } from './charity-action/charity-action.componen
     FormsModule,
     HttpClientModule  
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
