@@ -11,13 +11,15 @@ import { LoginPage } from './login-page.component';
 import { AppRoutingModule } from './app-routing.module'; // CLI imports AppRoutingModule
 import { RegisterPage } from './register-page.component';
 import { AppService } from './app.services';
+import { CharityActionComponent } from './charity-action-component/charity-action.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartingPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    CharityActionComponent
   ],
   imports: [
     BrowserModule,

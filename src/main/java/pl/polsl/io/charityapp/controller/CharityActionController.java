@@ -22,6 +22,7 @@ public class CharityActionController {
         this.charityActionRepository = charityActionRepository;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/all")
     public ResponseEntity<List<CharityAction>> getAllCharityActions(){
         List<CharityAction> listOfCharityActions = charityActionService.getAllActions();

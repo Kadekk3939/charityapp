@@ -4,6 +4,7 @@ import { LoginPage } from './login-page.component';
 import { RegisterPage } from './register-page.component';
 import { StartingPage } from './starting-page.component';
 import { UserPage } from './user-page.component';
+import {CharityActionComponent} from "./charity-action-component/charity-action.component";
 
 const routes: Routes =[
     { path: '', component: StartingPage },
@@ -39,7 +40,8 @@ const routes: Routes =[
         }
       ],
     },
-    
+
+    {path: 'charityAction', component: CharityActionComponent}
   ]; // sets up routes constant where you define your routes
 
 // configures NgModule imports and exports
