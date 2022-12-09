@@ -13,10 +13,10 @@ export class CharityActionService {
   constructor(private http: HttpClient) { }
 
   public getCharityActions(): Observable<CharityAction[]>{
-    return this.http.get<CharityAction[]>('http://localhost:8080/action/all');
+    return this.http.get<CharityAction[]>(`${this.apiServerUrl}/action/all`);
   }
 
   public addCharityAction(charityAction: CharityAction): Observable<CharityAction>{
-    return this.http.post<CharityAction>('${this.apiServerUrl}/action/add', charityAction);
+    return this.http.post<CharityAction>(`${this.apiServerUrl}/action/add`, charityAction);
   }
 }
