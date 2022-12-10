@@ -1,5 +1,28 @@
-<p>{{user.firstName}}</p>
-<p>{{user.lastName}}</p>
-<p>{{user.login}}</p>
-<p>{{user.password}}</p>
-<p>{{user.email}}</p>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0"height="36" />
+            Charity organisation
+        </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link"onclick="return back()" ></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/charityAction" routerLinkActive="active" ariaCurrentWhenActive="page">Open charity actions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"onclick="return logout()">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <header>
+        <h1>Welcome {{user.login}}</h1>
+    </header>
