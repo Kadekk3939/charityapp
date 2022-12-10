@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
 
@@ -9,7 +9,7 @@ import { AppService } from '../app.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent{
   credentials = {login: '', password: ''};
   authenticatied:boolean = false
   constructor(private app: AppService, private http: HttpClient, private router: Router) {

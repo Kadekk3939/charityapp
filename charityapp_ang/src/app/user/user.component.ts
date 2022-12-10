@@ -13,15 +13,22 @@ import { UserServiceService } from '../user-service.service';
 export class UserComponent implements OnInit {
 
   headers:HttpHeaders;
-  login:string;
+  login:string = '';
   public user:User;
 
-  constructor (private app: AppService,private http: HttpClient,private userService:UserServiceService){}
+  constructor (private app: AppService,private http: HttpClient,private userService:UserServiceService){
+    if(this.login == ''){
+      this.app.refresh();
+    }
+  }
   
   ngOnInit(): void {
+
+    
     this.headers = this.app.headers;
     this.login = this.app.login;
-
+    console.log(localStorage.getItem('login'));
+    
     this.getUser();
 
   }
