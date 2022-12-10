@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AppService } from '../app.service';
 import { User } from '../user';
@@ -16,7 +17,7 @@ export class UserComponent implements OnInit {
   login:string = '';
   public user:User;
 
-  constructor (private app: AppService,private http: HttpClient,private userService:UserServiceService){
+  constructor (private app: AppService,private http: HttpClient,private userService:UserServiceService,private router:Router){
     if(this.login == ''){
       this.app.refresh();
     }
@@ -31,6 +32,11 @@ export class UserComponent implements OnInit {
     
     this.getUser();
 
+  }
+
+  public logout():void{
+    localStorage.clear();
+    this.router.navigateByUrl('/');
   }
 
   public getUser():void{
