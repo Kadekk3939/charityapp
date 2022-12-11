@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
+import {MatRadioModule} from '@angular/material/radio'; 
 
 
 @Component({
@@ -12,6 +13,9 @@ import { AppService } from '../app.service';
 export class LoginComponent{
   credentials = {login: '', password: ''};
   authenticatied:boolean = false
+  role: string;
+  roles: string[] = ['Donor', 'Benefactor'];
+
   constructor(private app: AppService, private http: HttpClient, private router: Router) {
   }
 

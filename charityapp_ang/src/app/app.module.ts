@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CharityActionComponent } from './charity-action/charity-action.component';
 import { AppService } from './app.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,16 @@ import { AppService } from './app.service';
     LoginComponent,
     RegisterComponent,
     UserComponent,
-    CharityActionComponent
+    CharityActionComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule  
+    HttpClientModule,
+    BrowserAnimationsModule  ,
+    MatRadioModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

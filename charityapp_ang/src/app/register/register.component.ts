@@ -12,6 +12,9 @@ export class RegisterComponent {
 
   constructor(private userService: UserServiceService,private router: Router){};
 
+  chosenRole: string;
+  roles: string[] = ['Donor', 'Benefactor'];
+
   public onRegisterUser(registerForm:NgForm){
     this.userService.addUser(registerForm.value).subscribe({
       next: (res) => {
