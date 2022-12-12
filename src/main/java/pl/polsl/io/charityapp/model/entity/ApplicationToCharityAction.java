@@ -1,4 +1,4 @@
-package pl.polsl.io.charityapp.model;
+package pl.polsl.io.charityapp.model.entity;
 
         import javax.persistence.*;
 

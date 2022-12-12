@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.polsl.io.charityapp.model.User;
+import pl.polsl.io.charityapp.model.entity.User;
 import pl.polsl.io.charityapp.repository.UserRepository;
 import pl.polsl.io.charityapp.service.UserService;
-import pl.polsl.io.charityapp.utility.CurrentUserData;
 
 
 import java.util.List;

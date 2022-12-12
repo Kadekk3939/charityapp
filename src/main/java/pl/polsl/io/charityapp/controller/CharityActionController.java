@@ -3,8 +3,7 @@ package pl.polsl.io.charityapp.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.polsl.io.charityapp.model.CharityAction;
-import pl.polsl.io.charityapp.model.User;
+import pl.polsl.io.charityapp.model.entity.CharityAction;
 import pl.polsl.io.charityapp.repository.CharityActionRepository;
 import pl.polsl.io.charityapp.service.CharityActionService;
 

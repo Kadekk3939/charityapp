@@ -1,11 +1,9 @@
 package pl.polsl.io.charityapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.polsl.io.charityapp.model.CharityAction;
+import pl.polsl.io.charityapp.model.entity.CharityAction;
 import pl.polsl.io.charityapp.repository.CharityActionRepository;
-import pl.polsl.io.charityapp.repository.UserRepository;
 
 import java.util.List;
 

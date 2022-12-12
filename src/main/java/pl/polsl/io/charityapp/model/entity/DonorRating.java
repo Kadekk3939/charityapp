@@ -1,13 +1,14 @@
-package pl.polsl.io.charityapp.model;
+package pl.polsl.io.charityapp.model.entity;
 
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "donations")
+@Table(name = "donor_ratings")
 @Data
-public class Donation {
+public class DonorRating {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -18,16 +19,14 @@ public class Donation {
     private User donorId;
 
     @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private User employeeId;
+
+    @ManyToOne
     @JoinColumn(name = "charity_action_id")
     private CharityAction charityActionId;
 
-    @Column(name = "amount")
-    private Float amount;
-
-    @Column(name = "payment_confirmed")
-    private Boolean paymentConfirmed;
-
-    @Column(name = "anonymous")
-    private Boolean anonymous;
+    @Column(name = "rating")
+    private boolean rating;
 
 }

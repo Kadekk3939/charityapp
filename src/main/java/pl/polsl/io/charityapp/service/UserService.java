@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.polsl.io.charityapp.exceptions.UserNotFoundException;
-import pl.polsl.io.charityapp.model.User;
+import pl.polsl.io.charityapp.model.entity.User;
 import pl.polsl.io.charityapp.repository.UserRepository;
 
 import java.util.List;
