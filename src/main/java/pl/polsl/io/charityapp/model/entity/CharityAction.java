@@ -1,10 +1,9 @@
-package pl.polsl.io.charityapp.model;
+package pl.polsl.io.charityapp.model.entity;
 
 import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "charity_actions")

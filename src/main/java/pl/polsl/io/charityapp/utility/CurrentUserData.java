@@ -3,7 +3,7 @@ package pl.polsl.io.charityapp.utility;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
-import pl.polsl.io.charityapp.model.User;
+import pl.polsl.io.charityapp.model.entity.User;
 
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
