@@ -3,5 +3,5 @@ export interface CharityAction {
   name: string,
   description: string,
   goal: number,
-  endTime: string
+  endDate: string
 }

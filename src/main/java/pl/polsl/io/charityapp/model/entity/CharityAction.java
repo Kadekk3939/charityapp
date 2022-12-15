@@ -14,7 +14,7 @@ public class CharityAction {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @Column(name = "description")
@@ -24,5 +24,5 @@ public class CharityAction {
     private Float goal;
 
     @Column(name = "end_time")
-    private Date endTime;
+    private Date endDate;
 }
