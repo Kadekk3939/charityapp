@@ -33,4 +33,6 @@ public class CharityActionController {
         CharityAction newCharityAction = charityActionService.addAction(charityAction);
         return new ResponseEntity<>(newCharityAction, HttpStatus.CREATED);
     }
+    // ocena aplikacji beneficjenta
+//    @PutMapping("/{userName}/{actionName}/{result}")
 }

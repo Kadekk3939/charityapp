@@ -1,10 +1,15 @@
 package pl.polsl.io.charityapp.model.entity;
 
-        import javax.persistence.*;
+import lombok.Data;
+import pl.polsl.io.charityapp.utility.ApplicationStatus;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Data
 @Table(name = "applications_to_charity_action")
-public class ApplicationToCharityAction implements java.io.Serializable{
+public class ApplicationToCharityAction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,9 +27,12 @@ public class ApplicationToCharityAction implements java.io.Serializable{
     @Column(name = "reason")
     private String reason;
 
+    @Column(name = "status")
+    private ApplicationStatus status;
+
 //    @ManyToOne
 //    @JoinColumn(name = "document_id")
-//    private Document documentId;
+//    private List<Document> documents;
 }
 
 
