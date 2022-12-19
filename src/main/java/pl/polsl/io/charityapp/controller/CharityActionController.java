@@ -14,11 +14,9 @@ import java.util.List;
 @RequestMapping("/action")
 public class CharityActionController {
     private final CharityActionService charityActionService;
-    private final CharityActionRepository charityActionRepository;
 
-    public CharityActionController(CharityActionService charityActionService, CharityActionRepository charityActionRepository) {
+    public CharityActionController(CharityActionService charityActionService) {
         this.charityActionService = charityActionService;
-        this.charityActionRepository = charityActionRepository;
     }
 
     @CrossOrigin(origins = "http://localhost:4200")

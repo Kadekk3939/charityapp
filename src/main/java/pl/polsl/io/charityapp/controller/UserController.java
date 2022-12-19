@@ -17,9 +17,6 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-    @Autowired
-    private UserRepository repo;
-
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -31,14 +28,14 @@ public class UserController {
         return new ResponseEntity<>(listOfUsers, HttpStatus.OK);
     }
 
-    @GetMapping("/find/id/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") Integer id){
-        User user = userService.findUserById(id);
+    @GetMapping("/find/id/{userId}")
+    public ResponseEntity<User> getUserByUserId(@PathVariable("userId") Long userId){
+        User user = userService.findUserByUserId(userId);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @GetMapping("/find/login/{login}")
-    public ResponseEntity<User> getUserById(@PathVariable("login") String login){
+    public ResponseEntity<User> getUserByLogin(@PathVariable("login") String login){
         User user = userService.findUserByLogin(login);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
@@ -55,15 +52,21 @@ public class UserController {
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
+//    @PostMapping("/dto/add")
+//    public ResponseEntity<StatusMessage> addUser(@RequestBody UserWriteModel user){
+//        User newUser = userService.addUser(user);
+//        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+//    }
+
     @PutMapping("/update")
     public ResponseEntity<User> updateUser(@RequestBody User user){
         User updatedUser = userService.updateUser(user);
         return new ResponseEntity<>(updatedUser, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable("id") Integer id){
-        userService.deleteUserById(id);
+    @DeleteMapping("/delete/{userId}")
+    public ResponseEntity<?> deleteUser(@PathVariable("userId") Long userId){
+        userService.deleteUserByUserId(userId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

@@ -11,8 +11,8 @@ import java.sql.Date;
 public class CharityAction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "action_id")
+    private Long actionId;
 
     @Column(name = "name", unique = true)
     private String name;

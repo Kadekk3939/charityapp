@@ -11,8 +11,8 @@ public class DonorRating {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "donor_rating_id")
+    private Long donorRatingId;
 
     @ManyToOne
     @JoinColumn(name = "donor_id")

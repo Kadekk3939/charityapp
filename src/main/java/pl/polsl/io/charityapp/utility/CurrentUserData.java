@@ -27,11 +27,11 @@ public class CurrentUserData {
         return null;
     }
 
-    public static Integer getCurrentUserId() {
+    public static Long getCurrentUserId() {
         Object principal = getPrincipal();
 
         if (principal instanceof User) {
-            return ((User)principal).getId();
+            return ((User)principal).getUserId();
         }
         return null;
     }

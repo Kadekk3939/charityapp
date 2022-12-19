@@ -38,13 +38,13 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
-    public void deleteUserById(Integer id){
-        userRepository.deleteById(id);
+    public void deleteUserByUserId(Long userId){
+        userRepository.deleteById(userId);
     }
 
-    public User findUserById(Integer id){
-        return userRepository.findUserById(id)
-                .orElseThrow(()->new UserNotFoundException("User by id "+ id + " not found"));
+    public User findUserByUserId(Long userId){
+        return userRepository.findUserByUserId(userId)
+                .orElseThrow(()->new UserNotFoundException("User by id "+ userId + " not found"));
     }
 
     public User findUserByLogin(String login){

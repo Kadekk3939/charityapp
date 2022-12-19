@@ -2,11 +2,15 @@ package pl.polsl.io.charityapp.model.entity;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -14,8 +18,8 @@ import java.util.Collection;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "user_id")
+    private Long userId;
 
     @Column(name = "first_name")
     private String firstName;
@@ -35,20 +39,19 @@ public class User implements UserDetails {
     @Column(name = "email", unique = true)
     private String email;
 
-    //Commented until working
-//    @Column(name = "nip")
-//    private String nip;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "role_id")
-//    private UserRole roleId;
+    @Column(name = "nip")
+    private String nip;
+
+    @ManyToOne
+    @JoinColumn(name = "roleId")
+    @NotNull(message = "Role must be provided")
+    private UserRole userRole;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-//        List<GrantedAuthority> role = new ArrayList<>();
-//        role.add(new SimpleGrantedAuthority(roleId.getRole()));
-//        return role;
-        return null;
+        List<GrantedAuthority> role = new ArrayList<>();
+        role.add(new SimpleGrantedAuthority(userRole.getRoleName()));
+        return role;
     }
 
     @Override

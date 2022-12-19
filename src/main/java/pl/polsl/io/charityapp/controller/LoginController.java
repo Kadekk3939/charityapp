@@ -12,11 +12,9 @@ import pl.polsl.io.charityapp.utility.CurrentUserData;
 @RequestMapping("/")
 public class LoginController {
     private final UserService userService;
-    private final UserRepository userRepository;
 
-    public LoginController(UserService userService, UserRepository userRepository) {
+    public LoginController(UserService userService) {
         this.userService = userService;
-        this.userRepository = userRepository;
     }
 
     @RequestMapping("/welcome")

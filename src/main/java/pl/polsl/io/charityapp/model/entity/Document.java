@@ -10,8 +10,8 @@ import javax.persistence.*;
 public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "document_id")
+    private Long documentId;
 
     @Column(name = "file_name")
     private String fileName;
@@ -22,7 +22,7 @@ public class Document {
     @JoinColumn(name = "application_id")
     private ApplicationToCharityAction applicationToCharityActionId;
 
-    public void OpenFile(){
+    public void openFile(){
 
     }
 }

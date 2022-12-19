@@ -1,5 +1,7 @@
 package pl.polsl.io.charityapp.model.entity;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,8 +9,8 @@ import javax.persistence.*;
 public class ActionRating {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "action_rating_id")
+    private Long actionRatingId;
 
     @ManyToOne
     @JoinColumn(name = "benefactor_id")
@@ -22,6 +24,5 @@ public class ActionRating {
     private Integer rating;
 
     @Column(name = "comment")
-    //null
     private String comment;
 }

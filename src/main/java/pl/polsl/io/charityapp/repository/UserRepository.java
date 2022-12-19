@@ -6,8 +6,8 @@ import pl.polsl.io.charityapp.model.entity.User;
 import java.util.List;
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Integer> {
-    Optional<User> findUserById(Integer id);
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findUserByUserId(Long userId);
 
     Optional<User> findUserByLogin(String login);
 

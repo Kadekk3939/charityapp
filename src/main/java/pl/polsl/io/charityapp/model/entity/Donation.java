@@ -10,8 +10,8 @@ import javax.persistence.*;
 public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "donation_id")
+    private Long donationId;
 
     @ManyToOne
     @JoinColumn(name = "donor_id")

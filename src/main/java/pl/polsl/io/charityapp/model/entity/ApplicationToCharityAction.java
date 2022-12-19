@@ -13,8 +13,8 @@ public class ApplicationToCharityAction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "application_id")
+    private Long applicationId;
 
     @ManyToOne
     @JoinColumn(name="benefactor_id")
@@ -27,12 +27,12 @@ public class ApplicationToCharityAction {
     @Column(name = "reason")
     private String reason;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private ApplicationStatus status;
 
-//    @ManyToOne
-//    @JoinColumn(name = "document_id")
-//    private List<Document> documents;
+    @OneToMany
+    private List<Document> documents;
 }
 
 
