@@ -39,9 +39,6 @@ public class User implements UserDetails {
     @Column(name = "email", unique = true)
     private String email;
 
-    @Column(name = "nip")
-    private String nip;
-
     @ManyToOne
     @JoinColumn(name = "roleId")
     @NotNull(message = "Role must be provided")

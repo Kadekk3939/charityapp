@@ -22,6 +22,4 @@ public class UserWriteModel  {
     @NotBlank(message = "Role must not be blank")
     private String role;
 
-    private String nip;
-
 }
