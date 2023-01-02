@@ -13,6 +13,7 @@ import { CharityActionComponent } from './charity-action/charity-action.componen
 import { AppService } from './app.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
+import {CharityActionService} from "./charity-action/charity-action.service";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,10 @@ import { MatRadioModule } from '@angular/material/radio';
     BrowserAnimationsModule  ,
     MatRadioModule
   ],
-  providers: [AppService],
+  providers: [
+    //AppService,
+    CharityActionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
