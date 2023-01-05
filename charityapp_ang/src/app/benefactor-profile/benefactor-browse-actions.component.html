@@ -28,9 +28,55 @@
 <div class="container">
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
-      <h1 class="fw-light">Browse actions</h1><br>
-      <p class="lead">todo display actions </p>
-      <hr>
+      <div class="container" id="main-container">
+        <div class="row">
+          <div *ngFor= "let chAction of charityActions" class="col-md-6 col-xl-3 p-1">
+            <div class="card m-b-30">
+              <div class="card-body row" style="margin-left: 5px">
+                <div class="col card-title align-self-center mb-0">
+                  <b><h5 style="text-align: center">{{chAction?.name}}</h5></b>
+                  <p class="m-0">{{chAction?.description}}</p>
+                </div>
+              </div>
+              <ul class="list-group list-group-flush" style="margin-left: 5px">
+                <li class="list-group-item"><i class="fa fa-battery-full float-right"></i>Goal: {{chAction?.goal}}</li>
+                <li class="list-group-item"><i class="fa fa-calendar float-right"></i>Ends on: {{chAction?.endDate}}</li>
+              </ul>
+              <a (click)="onOpenModal('apply')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Apply">Apply</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Apply Modal -->
+<div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="applyModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="applyModalLabel">Apply </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #applyForm="ngForm" (ngSubmit)="onApply(applyForm)">
+          <div class="form-group">
+            <label for="reason">Reason</label>
+            <input type="text" ngModel="" name="reason" class="form-control" id="reason" placeholder="Enter reason of application">
+          </div>
+          <div class="form-group">
+            <label for="document">Document</label>
+            <input type="email" ngModel="" name="document" class="form-control" id="document" placeholder="Enter document">
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="apply-form" data-dismiss="modal" class="btn btn-secondary">Close</button>
+            <button (click)="onOpenModal('apply')" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
