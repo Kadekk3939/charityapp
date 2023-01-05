@@ -14,6 +14,9 @@ import { AppService } from './app.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
 import {CharityActionService} from "./charity-action/charity-action.service";
+import { BenefactorProfileComponent } from './benefactor-profile/benefactor-profile.component';
+import { BenefactorApplicationListComponent } from './benefactor-profile/benefactor-application-list.component';
+import { BenefactorBrowseActionsComponent } from './benefactor-profile/benefactor-browse-actions.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import {CharityActionService} from "./charity-action/charity-action.service";
     RegisterComponent,
     UserComponent,
     CharityActionComponent,
+    BenefactorProfileComponent,
+    BenefactorApplicationListComponent,
+    BenefactorBrowseActionsComponent,
 
   ],
   imports: [
