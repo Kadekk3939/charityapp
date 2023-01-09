@@ -40,17 +40,11 @@
                 <mat-radio-group
                   aria-labelledby="example-radio-group-label"
                   class="example-radio-group"
-                  [(ngModel)]="chosenRole"
-                  name = "radio-button">
-                  <mat-radio-button class="example-radio-button" *ngFor="let role of roles" [value]="role">
-                    {{role}}
-                  </mat-radio-button>
+                  ngModel name="userRole">
 
-                  <!--
-                  <mat-radio-button class="example-radio-button" value=1 >Donor</mat-radio-button>
-                  <mat-radio-button class="example-radio-button" value=2 >Benefactor</mat-radio-button>
-                  -->
-                  
+                  <mat-radio-button class="example-radio-button" value=Donor >Donor</mat-radio-button>
+                  <mat-radio-button class="example-radio-button" value=Benefactor >Benefactor</mat-radio-button>
+
                 </mat-radio-group>
                 <div>Your chosen role is {{chosenRole}}</div>
 

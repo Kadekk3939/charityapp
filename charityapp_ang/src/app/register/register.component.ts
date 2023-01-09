@@ -16,6 +16,7 @@ export class RegisterComponent {
   roles: string[] = ['Donor', 'Benefactor'];
 
   public onRegisterUser(registerForm:NgForm){
+    console.log(registerForm.value);
     this.userService.addUser(registerForm.value).subscribe({
       next: (res) => {
           console.log(res);
