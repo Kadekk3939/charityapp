@@ -16,7 +16,7 @@ public class UserRole {
     @Column(name = "role_id")
     private Long roleId;
 
-    //@NotBlank(message = "Role must not be blank")
+    @NotBlank(message = "Role must not be blank")
     @Column(name = "role", unique = true)
     private String roleName;
 

@@ -39,16 +39,16 @@ public class User implements UserDetails {
     @Column(name = "email", unique = true)
     private String email;
 
-    //@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "roleId")
-    //@NotNull(message = "Role must be provided")
-    private Long userRole;
+    @NotNull(message = "Role must be provided")
+    private UserRole userRole;
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> role = new ArrayList<>();
-        //role.add(new SimpleGrantedAuthority(userRole.getRoleName()));
+        role.add(new SimpleGrantedAuthority(userRole.getRoleName()));
         return role;
     }
 

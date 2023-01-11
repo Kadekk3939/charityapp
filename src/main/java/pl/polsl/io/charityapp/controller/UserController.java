@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.polsl.io.charityapp.model.dto.write.UserWriteModel;
 import pl.polsl.io.charityapp.model.entity.User;
 import pl.polsl.io.charityapp.repository.UserRepository;
 import pl.polsl.io.charityapp.service.UserService;
@@ -47,7 +48,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<User> addUser(@RequestBody User user){
+    public ResponseEntity<User> addUser(@RequestBody UserWriteModel user){
         User newUser = userService.addUser(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }

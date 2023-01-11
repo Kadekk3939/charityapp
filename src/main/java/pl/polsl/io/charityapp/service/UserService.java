@@ -7,7 +7,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.polsl.io.charityapp.exceptions.UserNotFoundException;
+import pl.polsl.io.charityapp.mappers.UserMapper;
+import pl.polsl.io.charityapp.model.dto.write.UserWriteModel;
 import pl.polsl.io.charityapp.model.entity.User;
+import pl.polsl.io.charityapp.model.entity.UserRole;
 import pl.polsl.io.charityapp.repository.UserRepository;
 import pl.polsl.io.charityapp.repository.UserRoleRepository;
 
@@ -18,20 +21,25 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final UserRoleRepository userRoleRepository;
-
     private final PasswordEncoder encoder;
+    private final UserMapper userMapper;
 
     @Autowired
-    public UserService(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder encoder) {
+    public UserService(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder encoder, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
         this.encoder = encoder;
+        this.userMapper = userMapper;
     }
 
+    public User addUser(UserWriteModel userWriteModel){
+        User user = new User();
+        userMapper.updateUserFromDto(userWriteModel, user);
+        user.setPassword(encoder.encode(userWriteModel.getPassword()));
 
-    public User addUser(User user){
-        user.setPassword(encoder.encode(user.getPassword()));
-        user.setUserRole(1L);
+        Optional<UserRole> role = userRoleRepository.findUserRoleByRoleName(userWriteModel.getRole());
+
+        role.ifPresent(user::setUserRole);
         return userRepository.save(user);
     }
 
