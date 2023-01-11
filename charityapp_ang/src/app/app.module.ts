@@ -40,7 +40,7 @@ import { BenefactorBrowseActionsComponent } from './benefactor-profile/benefacto
     MatRadioModule
   ],
   providers: [
-    //AppService,
+    AppService,
     CharityActionService
   ],
   bootstrap: [AppComponent]

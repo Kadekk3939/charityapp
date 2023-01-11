@@ -19,7 +19,4 @@ public class UserRole {
     @NotBlank(message = "Role must not be blank")
     @Column(name = "role", unique = true)
     private String roleName;
-
-    @OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<User> users;
 }
