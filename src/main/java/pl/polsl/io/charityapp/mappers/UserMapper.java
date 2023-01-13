@@ -12,5 +12,7 @@ import pl.polsl.io.charityapp.model.entity.User;
 public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
+    User toEntity(UserWriteModel userWriteModel);
+
     void updateUserFromDto(UserWriteModel userWriteModel, @MappingTarget User user);
 }

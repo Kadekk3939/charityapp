@@ -20,6 +20,7 @@ public class CharityActionService {
         this.charityActionMapper = charityActionMapper;
     }
 
+    //TODO: change to toEntity()
     public CharityAction addCharityAction(CharityActionWriteModel charityActionWriteModel) {
         CharityAction charityAction = new CharityAction();
         charityActionMapper.updateCharityActionFromDto(charityActionWriteModel, charityAction);

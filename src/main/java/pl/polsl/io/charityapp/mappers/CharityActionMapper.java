@@ -16,11 +16,12 @@ import java.util.List;
 public interface CharityActionMapper {
     CharityActionMapper INSTANCE = Mappers.getMapper(CharityActionMapper.class);
 
+    CharityAction toEntity(CharityActionWriteModel charityActionWriteModel);
+
     @Mapping(target = "shortDescription", constant = "true")
     CharityActionReadModel toReadModel(CharityAction charityAction);
 
     void updateCharityActionFromDto(CharityActionWriteModel charityActionWriteModel, @MappingTarget CharityAction charityAction);
-
 
     List<CharityActionReadModel> map(List<CharityAction> charityActions);
 }
