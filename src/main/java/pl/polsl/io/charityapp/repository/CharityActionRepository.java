@@ -9,6 +9,9 @@ import java.util.Optional;
 public interface CharityActionRepository extends JpaRepository<CharityAction, Long> {
     List<CharityAction> findAll();
 
-    Optional<CharityAction> findByName(String name);
+    List<CharityAction> findAllByOrderByEndDateAsc();
+
+    Optional<CharityAction> findCharityActionByName(String name);
+    Optional<CharityAction> findCharityActionByActionId(Long actionId);
 }
 

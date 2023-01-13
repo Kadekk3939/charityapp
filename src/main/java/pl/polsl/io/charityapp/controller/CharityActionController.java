@@ -1,10 +1,12 @@
 package pl.polsl.io.charityapp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.polsl.io.charityapp.model.dto.read.CharityActionReadModel;
+import pl.polsl.io.charityapp.model.dto.write.CharityActionWriteModel;
 import pl.polsl.io.charityapp.model.entity.CharityAction;
-import pl.polsl.io.charityapp.repository.CharityActionRepository;
 import pl.polsl.io.charityapp.service.CharityActionService;
 
 import java.util.List;
@@ -14,23 +16,36 @@ import java.util.List;
 @RequestMapping("/action")
 public class CharityActionController {
     private final CharityActionService charityActionService;
-
+    @Autowired
     public CharityActionController(CharityActionService charityActionService) {
         this.charityActionService = charityActionService;
     }
 
+    @PostMapping("/add")
+    public ResponseEntity<CharityAction> addCharityAction(@RequestBody CharityActionWriteModel charityActionWriteModel){
+        CharityAction newCharityAction = charityActionService.addCharityAction(charityActionWriteModel);
+        return new ResponseEntity<>(newCharityAction, HttpStatus.CREATED);
+    }
+
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/all")
-    public ResponseEntity<List<CharityAction>> getAllCharityActions(){
-        List<CharityAction> listOfCharityActions = charityActionService.getAllActions();
+    public ResponseEntity<List<CharityActionReadModel>> getAllCharityActions(){
+        List<CharityActionReadModel> listOfCharityActions = charityActionService.getAllActions();
         return new ResponseEntity<>(listOfCharityActions, HttpStatus.OK);
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<CharityAction> addCharityAction(@RequestBody CharityAction charityAction){
-        CharityAction newCharityAction = charityActionService.addAction(charityAction);
-        return new ResponseEntity<>(newCharityAction, HttpStatus.CREATED);
+    @GetMapping("/name/{name}")
+    public ResponseEntity<CharityActionReadModel> getCharityActionByName(@PathVariable String name) {
+        CharityActionReadModel charityActionReadModel = charityActionService.getCharityActionByName(name);
+        return new ResponseEntity<>(charityActionReadModel, HttpStatus.OK);
     }
-    // ocena aplikacji beneficjenta
-//    @PutMapping("/{userName}/{actionName}/{result}")
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<CharityActionReadModel> getCharityActionById(@PathVariable Long id) {
+        CharityActionReadModel charityActionReadModel = charityActionService.getCharityActionById(id);
+        return new ResponseEntity<>(charityActionReadModel, HttpStatus.OK);
+    }
+
+
+
 }

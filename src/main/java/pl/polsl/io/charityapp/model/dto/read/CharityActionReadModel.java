@@ -15,5 +15,9 @@ public class CharityActionReadModel {
 
     private Date endDate;
 
-    private boolean shortDescription;
+    private boolean shortDescription = false;
+
+    public String getDescription() {
+        return shortDescription ? description.substring(0, Math.min(description.length(), 30)) + "..." : description;
+    }
 }
