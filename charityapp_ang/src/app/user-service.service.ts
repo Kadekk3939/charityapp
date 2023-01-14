@@ -27,8 +27,8 @@ export class UserServiceService {
       return this.http.delete<void>(`${environment.apiBaseUrl}/user/delete/${id}`);
   }
 
-  public getUserByLogin(login:string,headers:HttpHeaders):Observable<User>{
-      return this.http.get<User>(`${environment.apiBaseUrl}/user/find/login/${login}`, {headers:headers});
+  public getUserByLogin(login:string):Observable<User>{
+      return this.http.get<User>(`${environment.apiBaseUrl}/user/find/login/${login}`);
   }
 
 }

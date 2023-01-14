@@ -4,6 +4,7 @@ import {CharityActionService} from "./charity-action.service";
 import {HttpErrorResponse} from "@angular/common/http";
 //import {Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-charity-action',
@@ -13,7 +14,7 @@ import {NgForm} from "@angular/forms";
 export class CharityActionComponent implements OnInit {
   public charityActions: CharityAction[];
 
-  constructor(private charityActionService: CharityActionService){}
+  constructor(private charityActionService: CharityActionService,private router:Router){}
 
   ngOnInit() {
     this.getCharityActions();
@@ -69,6 +70,10 @@ export class CharityActionComponent implements OnInit {
     button.click();
   }
 
-
+  public show(actionName:string){
+    this.charityActionService.chName = actionName;
+    console.log(actionName);
+    this.router.navigate(['/charityAction',actionName]);
+  }
 
 }

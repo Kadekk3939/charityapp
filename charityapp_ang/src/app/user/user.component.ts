@@ -22,25 +22,26 @@ export class UserComponent implements OnInit {
       this.app.refresh();
     }
   }
-  
+
   ngOnInit(): void {
 
-    
+
     this.headers = this.app.headers;
     this.login = this.app.login;
     console.log(localStorage.getItem('login'));
-    
+
     this.getUser();
 
   }
 
   public logout():void{
+    console.log(this.user);
     localStorage.clear();
     this.router.navigateByUrl('/');
   }
 
   public getUser():void{
-    this.userService.getUserByLogin(this.login,this.headers).subscribe(
+    this.userService.getUserByLogin(this.login).subscribe(
       (response: User) => {
         this.user = response;
       },

@@ -17,6 +17,7 @@ import {CharityActionService} from "./charity-action/charity-action.service";
 import { BenefactorProfileComponent } from './benefactor-profile/benefactor-profile.component';
 import { BenefactorApplicationListComponent } from './benefactor-profile/benefactor-application-list.component';
 import { BenefactorBrowseActionsComponent } from './benefactor-profile/benefactor-browse-actions.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { BenefactorBrowseActionsComponent } from './benefactor-profile/benefacto
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule  ,
-    MatRadioModule
+    MatRadioModule,
+    RouterModule
   ],
   providers: [
     AppService,
