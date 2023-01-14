@@ -29,6 +29,13 @@
         <p class="lead">Example img</p>
         <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0"height="50" width="100" />
         <div style="height: 200px"></div>
+        <div *ngIf="isBenecient()">
+            <div class="float-right btn-group btn-group-sm">
+                <a (click)="routeA()" class="btn btn-primary tooltips"  data-placement="top" data-original-title="Show">Applay </a>
+    <!--&lt;!&ndash;&lt;!&ndash;            <a (click)="onOpenModal(chAction, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;          </div>&ndash;&gt;-->
+            </div>  
+        </div>
       </div>
     </div>
   </div>
