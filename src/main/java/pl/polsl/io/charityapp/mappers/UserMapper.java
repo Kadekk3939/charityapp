@@ -1,6 +1,7 @@
 package pl.polsl.io.charityapp.mappers;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
@@ -17,6 +18,7 @@ public interface UserMapper {
 
     User toEntity(UserWriteModel userWriteModel);
 
+    @Mapping(source = "userRole.roleName", target = "role")
     UserReadModel toReadModel(User user);
 
     void updateUserFromDto(UserWriteModel userWriteModel, @MappingTarget User user);
