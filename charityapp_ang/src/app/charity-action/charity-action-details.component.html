@@ -1,0 +1,34 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0"height="36" />
+        Charity organisation
+    </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link" (click)="routeR()" routerLinkActive="active" ariaCurrentWhenActive="page">User</a>
+              </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="card border-0 shadow my-5">
+      <div class="card-body p-5">
+        <h1 class="fw-light">{{charityAction.name}}</h1>
+        <p class="lead">Short description of our goal</p>
+        <p class="lead"><b></b> <br> {{charityAction.description}} </p>
+        <p></p>
+        <p class="lead">Example img</p>
+        <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0"height="50" width="100" />
+        <div style="height: 200px"></div>
+      </div>
+    </div>
+  </div>
