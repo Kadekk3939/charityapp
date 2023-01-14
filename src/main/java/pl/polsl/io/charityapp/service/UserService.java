@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.polsl.io.charityapp.exceptions.UserNotFoundException;
 import pl.polsl.io.charityapp.mappers.UserMapper;
+import pl.polsl.io.charityapp.model.dto.read.UserReadModel;
 import pl.polsl.io.charityapp.model.dto.write.UserWriteModel;
 import pl.polsl.io.charityapp.model.entity.User;
 import pl.polsl.io.charityapp.model.entity.UserRole;
@@ -58,14 +59,14 @@ public class UserService implements UserDetailsService {
         userRepository.deleteById(userId);
     }
 
-    public User findUserByUserId(Long userId){
-        return userRepository.findUserByUserId(userId)
-                .orElseThrow(()->new UserNotFoundException("User by id "+ userId + " not found"));
+    public UserReadModel findUserByUserId(Long userId){
+        Optional<User> user = userRepository.findUserByUserId(userId);
+        return user.<UserReadModel>map(userMapper::toReadModel).orElse(null);
     }
 
-    public User findUserByLogin(String login){
-        return userRepository.findUserByLogin(login)
-                .orElseThrow(()->new UserNotFoundException("User by login "+ login + " not found"));
+    public UserReadModel findUserByLogin(String login){
+        Optional<User> user = userRepository.findUserByLogin(login);
+        return user.<UserReadModel>map(userMapper::toReadModel).orElse(null);
     }
 
     public User findUserByEmail(String email){

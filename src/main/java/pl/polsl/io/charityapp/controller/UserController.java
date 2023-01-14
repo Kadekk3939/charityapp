@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.polsl.io.charityapp.model.dto.read.UserReadModel;
 import pl.polsl.io.charityapp.model.dto.write.UserWriteModel;
 import pl.polsl.io.charityapp.model.entity.User;
 import pl.polsl.io.charityapp.repository.UserRepository;
@@ -30,14 +31,14 @@ public class UserController {
     }
 
     @GetMapping("/find/id/{userId}")
-    public ResponseEntity<User> getUserByUserId(@PathVariable("userId") Long userId){
-        User user = userService.findUserByUserId(userId);
+    public ResponseEntity<UserReadModel> getUserByUserId(@PathVariable("userId") Long userId){
+        UserReadModel user = userService.findUserByUserId(userId);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @GetMapping("/find/login/{login}")
-    public ResponseEntity<User> getUserByLogin(@PathVariable("login") String login){
-        User user = userService.findUserByLogin(login);
+    public ResponseEntity<UserReadModel> getUserByLogin(@PathVariable("login") String login){
+        UserReadModel user = userService.findUserByLogin(login);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 

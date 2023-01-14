@@ -21,7 +21,7 @@ public class UserRoleController {
 
     @PutMapping("/fill")
     public ResponseEntity<String> fillRoles() {
-        userRoleService.addBasicRoles();
+        userRoleService.addBasicRoles("Donor", "Benefactor", "Worker");
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 

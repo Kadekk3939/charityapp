@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import pl.polsl.io.charityapp.model.entity.User;
 
+import java.util.Objects;
+
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CurrentUserData {
@@ -49,7 +51,7 @@ public class CurrentUserData {
         Object principal = getPrincipal();
 
         if (principal instanceof User) {
-            return ((User)principal).getAuthorities().toString();
+            return ((User)principal).getAuthorities().stream().filter(Objects::nonNull).findFirst().toString();
         }
         return null;
     }
