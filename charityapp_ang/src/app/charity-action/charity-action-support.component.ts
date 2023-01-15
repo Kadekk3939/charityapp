@@ -6,15 +6,16 @@ import { CharityActionService } from "./charity-action.service";
 import { RouterModule } from '@angular/router';
 import { UserServiceService } from "../user-service.service";
 import { AppService } from "../app.service";
+import { NgForm } from "@angular/forms";
 
 
 @Component({
     selector: 'app-charity-action',
-    templateUrl: './charity-action-details.component.html',
-    styleUrls: ['./charity-action-details.component.css']
+    templateUrl: './charity-action-support.component.html',
+    styleUrls: ['./charity-action-support.component.css']
   })
 
-  export class CharityActionDetailsComponent implements OnInit {
+  export class CharityActionSupportComponent implements OnInit {
     public charityAction: CharityAction;
     name:string;
     public login:string;
@@ -35,30 +36,5 @@ import { AppService } from "../app.service";
                   alert(error.message);
                 }
               );
-    }
-    public routeR(){
-        this.router.navigateByUrl('/user');
-    }
-    public routeA(){
-      this.router.navigate(['/charityAction',this.name,'applay']);
-    }
-    public routeS(){
-      this.router.navigate(['/charityAction',this.name,'support']);
-    }
-    public isUserBenefactor():boolean{
-      if(this.app.user.role=="Benefactor"){
-        return true;
-      }
-      else{
-        return false;
-      }
-    }
-    public isUserDonor():boolean{
-      if(this.app.user.role=="Donor"){
-        return true;
-      }
-      else{
-        return false;
-      }
     }
 }
