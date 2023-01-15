@@ -80,6 +80,12 @@ export class CharityActionComponent implements OnInit {
     this.router.navigate(['/charityAction',actionName]);
   }
 
+  public logout():void{
+    console.log(this.user);
+    localStorage.clear();
+    this.router.navigateByUrl('/');
+  }
+
   public userIsWorker():boolean{
     if(this.user.role == "Worker"){
       return true;

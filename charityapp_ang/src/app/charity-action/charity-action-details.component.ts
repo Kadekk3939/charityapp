@@ -36,6 +36,10 @@ import { AppService } from "../app.service";
                 }
               );
     }
+    public logout():void{
+      localStorage.clear();
+      this.router.navigateByUrl('/');
+    }
     public routeR(){
         this.router.navigateByUrl('/user');
     }

@@ -37,4 +37,9 @@ import { NgForm } from "@angular/forms";
                 }
               );
     }
+
+    public logout():void{
+        localStorage.clear();
+        this.router.navigateByUrl('/');
+      }
 }

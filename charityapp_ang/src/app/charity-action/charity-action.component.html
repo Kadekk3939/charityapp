@@ -13,8 +13,14 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/user" routerLinkActive="active" ariaCurrentWhenActive="page">User</a>
         </li>
+        <div *ngIf="userIsWorker()">
+          <li class="nav-item">
+            <a class="nav-link" (click)="onOpenModal( 'add')">Add Action <span class="sr-only">(current)</span></a>
+          </li>
+        </div>
+        
         <li class="nav-item">
-          <a class="nav-link" (click)="onOpenModal( 'add')">Add Action <span class="sr-only">(current)</span></a>
+          <a class="nav-link"(click)="logout()" routerLinkActive="active" ariaCurrentWhenActive="page">Logout</a>
         </li>
       </ul>
     </div>
@@ -53,11 +59,10 @@
         <div class="card-body">
           <div class="float-right btn-group btn-group-sm">
             <a (click)="show(chAction.name)" class="btn btn-primary tooltips"  data-placement="top" data-original-title="Show">Show </a>
-<!--&lt;!&ndash;&lt;!&ndash;            <a (click)="onOpenModal(chAction, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;          </div>&ndash;&gt;-->
         </div>
       </div>
     </div>
+  </div>
   </div>
 </div>
 
