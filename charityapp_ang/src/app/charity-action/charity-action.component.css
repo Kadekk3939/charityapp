@@ -19,13 +19,7 @@ header {
   height: 15vh;
   box-shadow: 5px 5px 10px rgb(0,0,0,0.3);
 }
-.multiline-ellipsis {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3; /* start showing ellipsis when 3rd line is reached */
-  white-space: pre-wrap; /* let the text wrap preserving spaces */
-}
+
 a {
   cursor: pointer;
 }
@@ -50,6 +44,15 @@ a {
   width: 60px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 10px;
+  font-weight: 600;
+}
 
 .social-links li a {
   -webkit-border-radius: 50%;

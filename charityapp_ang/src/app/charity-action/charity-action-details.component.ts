@@ -40,7 +40,7 @@ import { AppService } from "../app.service";
         this.router.navigateByUrl('/user');
     }
     public routeA(){
-        this.router.navigateByUrl('/applay');
+      this.router.navigate(['/charityAction',this.name,'apply']);
     }
     public isUSerBenefactor():boolean{
       if(this.app.user.role=="Benefactor"){
