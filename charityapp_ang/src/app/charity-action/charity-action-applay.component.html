@@ -32,35 +32,14 @@
     <main>
         <form #applayForm="ngForm" (ngSubmit)="onApplay(applayForm)" class="form_class">
             <div class="form_div">
-                <label>First name:</label>
-                <input class="field_class" ngModel name="firstName"type="text" placeholder="first name" autofocus>
-                <label>Last name:</label>
-                <input class="field_class" ngModel name="lastName" type="text" placeholder="last name" autofocus>
-                <label>Login:</label>
-                <input class="field_class" ngModel name="login" type="text" placeholder="login" autofocus>
-                <label>Password:</label>
-                <input class="field_class" ngModel name="password" type="text" placeholder="password">
-                <!-- <label>Repeat password:</label>
-                <input class="field_class" ngModel name="repeat_password_txt" type="text" placeholder="password"> -->
-                <label>Email:</label>
-                <input class="field_class" ngModel name="email" type="text" placeholder="email">
-
-                <label id="example-radio-group-label">Pick your role</label>
-                <mat-radio-group
-                  aria-labelledby="example-radio-group-label"
-                  class="example-radio-group"
-                  ngModel name="role">
-
-                  <mat-radio-button class="example-radio-button" value=Donor >Donor</mat-radio-button>
-                  <mat-radio-button class="example-radio-button" value=Benefactor >Benefactor</mat-radio-button>
-
-
-                </mat-radio-group>
-
-                <button [disabled]="applayForm.form.invalid" class="register_button"  type="submit">Register</button>
-            </div>
-            <div class="info_div">
-                <p>If you already have an account login <a class="nav-link" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">here</a></p>
+                <label>Reason:</label>
+                <input ngModel name="actionName" class="cdk-visually-hidden">
+                <div>
+                  <textarea ngModel name="reason" rows = "5" cols="60" type = "text">
+                  
+                  </textarea>
+                </div>
+                <button [disabled]="applayForm.form.invalid" class="register_button"  type="submit">Applay</button>
             </div>
         </form>
     </main>

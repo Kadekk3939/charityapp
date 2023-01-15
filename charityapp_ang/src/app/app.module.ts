@@ -21,6 +21,7 @@ import { RouterModule } from '@angular/router';
 import { CharityActionDetailsComponent } from './charity-action/charity-action-details.component';
 import {CharityActionApplayComponent} from './charity-action/charity-action-applay.component'
 import { CharityActionSupportComponent } from './charity-action/charity-action-support.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CharityActionSupportComponent } from './charity-action/charity-action-s
     HttpClientModule,
     BrowserAnimationsModule  ,
     MatRadioModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AppService,
