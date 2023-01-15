@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserServiceService } from './user-service.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { User } from './user';
 
 @Injectable()
 export class AppService {
@@ -10,6 +11,7 @@ export class AppService {
   authenticated = false;
   public headers:HttpHeaders;
   public login:string;
+  public user:User;
   credentials = {login: '', password: ''}
   constructor(private http: HttpClient,private router : Router) {
   }
@@ -42,6 +44,7 @@ export class AppService {
         this.headers = new HttpHeaders(credentials ? {
             authorization : 'Basic ' + btoa(credentials.login + ':' + credentials.password)
         } : {});
+        localStorage.clear()
         localStorage.setItem('login',credentials.login);
         localStorage.setItem('password',credentials.password);
         this.http.get(`${environment.apiBaseUrl}/user/find/login/${credentials.login}`, {headers: this.headers}).subscribe(response => {

@@ -9,6 +9,7 @@ import {BenefactorProfileComponent} from "./benefactor-profile/benefactor-profil
 import {BenefactorApplicationListComponent} from "./benefactor-profile/benefactor-application-list.component";
 import {BenefactorBrowseActionsComponent} from "./benefactor-profile/benefactor-browse-actions.component";
 import { CharityActionDetailsComponent } from './charity-action/charity-action-details.component';
+import { CharityActionApplyComponent } from './charity-action/charity-action-apply.component';
 
 const routes: Routes = [
   {path: 'welcome', component: StartingPageComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'benefactorProfile', component: BenefactorProfileComponent},
   {path: 'benefactorApplicationList', component: BenefactorApplicationListComponent},
   {path: 'benefactorBrowseActions', component: BenefactorBrowseActionsComponent},
-  {path: 'charityAction/:name', component: CharityActionDetailsComponent}
+  {path: 'charityAction/:name', component: CharityActionDetailsComponent},
+  {path: 'charityAction/:name/apply', component: CharityActionApplyComponent}
 
 ];
 
