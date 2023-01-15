@@ -44,6 +44,8 @@ export class UserComponent implements OnInit {
     this.userService.getUserByLogin(this.login).subscribe(
       (response: User) => {
         this.user = response;
+        this.app.user = response;
+        console.log(this.user);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

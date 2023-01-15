@@ -5,14 +5,16 @@ export class User {
     login: string;
     password: string;
     email: string;
-    userRole: string;
+    role: string;
     /**
      * name
      */
-    public isBenefactor() {
-        if(this.userRole=="Benefactor")
+    public isBenefactor():boolean {
+        if(this.role=="Benefactor"){
             return true;
-        else
+        }       
+        else{
             return false
+        }           
     }
 }

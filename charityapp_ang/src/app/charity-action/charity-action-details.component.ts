@@ -23,6 +23,7 @@ import { AppService } from "../app.service";
         
     ngOnInit(): void {
         this.login = this.app.login;
+        console.log(this.app.user);
         this.sub = this.routeP.params.subscribe(params =>
             this.name = params['name'])
             this.charityActionService.getCharityActionByName(this.name).subscribe(
@@ -41,10 +42,12 @@ import { AppService } from "../app.service";
     public routeA(){
         this.router.navigateByUrl('/applay');
     }
-    public isBenecient():boolean{
-        if(this.login == "bbb"){
-            return true;
-        }      
+    public isUSerBenefactor():boolean{
+      if(this.app.user.role=="Benefactor"){
+        return true;
+      }
+      else{
         return false;
+      }
     }
 }
