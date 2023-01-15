@@ -6,15 +6,16 @@ import { CharityActionService } from "./charity-action.service";
 import { RouterModule } from '@angular/router';
 import { UserServiceService } from "../user-service.service";
 import { AppService } from "../app.service";
+import { NgForm } from "@angular/forms";
 
 
 @Component({
     selector: 'app-charity-action',
-    templateUrl: './charity-action-apply.component.html',
-    styleUrls: ['./charity-action-details.component.css']
+    templateUrl: './charity-action-applay.component.html',
+    styleUrls: ['./charity-action-applay.component.css']
   })
 
-  export class CharityActionApplyComponent implements OnInit {
+  export class CharityActionApplayComponent implements OnInit {
     public charityAction: CharityAction;
     name:string;
     public login:string;
@@ -36,18 +37,7 @@ import { AppService } from "../app.service";
                 }
               );
     }
-    public routeR(){
-        this.router.navigateByUrl('/user');
-    }
-    public routeA(){
-        this.router.navigateByUrl('/applay');
-    }
-    public isUSerBenefactor():boolean{
-      if(this.app.user.role=="Benefactor"){
-        return true;
-      }
-      else{
-        return false;
-      }
+    public onApplay(applayForm:NgForm){
+
     }
 }

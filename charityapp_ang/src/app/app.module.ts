@@ -19,7 +19,7 @@ import { BenefactorApplicationListComponent } from './benefactor-profile/benefac
 import { BenefactorBrowseActionsComponent } from './benefactor-profile/benefactor-browse-actions.component';
 import { RouterModule } from '@angular/router';
 import { CharityActionDetailsComponent } from './charity-action/charity-action-details.component';
-import {CharityActionApplyComponent} from './charity-action/charity-action-apply.component'
+import {CharityActionApplayComponent} from './charity-action/charity-action-applay.component'
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import {CharityActionApplyComponent} from './charity-action/charity-action-apply
     BenefactorApplicationListComponent,
     BenefactorBrowseActionsComponent,
     CharityActionDetailsComponent,
-    CharityActionApplyComponent
+    CharityActionApplayComponent
 
   ],
   imports: [
