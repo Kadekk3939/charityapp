@@ -5,6 +5,8 @@ import {HttpErrorResponse} from "@angular/common/http";
 //import {Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import { Router } from '@angular/router';
+import { User } from '../user';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-charity-action',
@@ -13,11 +15,13 @@ import { Router } from '@angular/router';
 })
 export class CharityActionComponent implements OnInit {
   public charityActions: CharityAction[];
+  private user:User;
 
-  constructor(private charityActionService: CharityActionService,private router:Router){}
+  constructor(private charityActionService: CharityActionService,private router:Router,private app:AppService){}
 
   ngOnInit() {
     this.getCharityActions();
+    this.user = this.app.user;
   }
 
   public getCharityActions(): void {
@@ -74,6 +78,13 @@ export class CharityActionComponent implements OnInit {
     this.charityActionService.chName = actionName;
     console.log(actionName);
     this.router.navigate(['/charityAction',actionName]);
+  }
+
+  public userIsWorker():boolean{
+    if(this.user.role == "Worker"){
+      return true;
+    }
+    return false;
   }
 
 }
