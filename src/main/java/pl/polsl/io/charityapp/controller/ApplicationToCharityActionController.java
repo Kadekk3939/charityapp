@@ -32,8 +32,8 @@ public class ApplicationToCharityActionController {
     // wypisanie aplikacji bieżącego użytkownika
     @GetMapping("/all")
     public ResponseEntity<List<ApplicationToCharityActionReadModel>> getAllUserApplications() {
-        //List<ApplicationToCharityActionReadModel> applicationToCharityActionReadModels =
-        return null;
+        List<ApplicationToCharityActionReadModel> applicationToCharityActionReadModels = applicationToCharityActionService.getCurrentUserApplications();
+        return new ResponseEntity<>(applicationToCharityActionReadModels, HttpStatus.OK);
     }
 
 }

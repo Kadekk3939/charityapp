@@ -13,6 +13,7 @@ import pl.polsl.io.charityapp.utility.ApplicationStatus;
 import pl.polsl.io.charityapp.utility.CurrentUserData;
 
 import java.util.Currency;
+import java.util.List;
 
 @Service
 public class ApplicationToCharityActionService {
@@ -45,8 +46,15 @@ public class ApplicationToCharityActionService {
         newApp.setCharityActionId(action);
         newApp.setStatus(ApplicationStatus.UNCHECKED);
 
+        applicationToCharityActionRepository.save(newApp);
 
         return applicationToCharityMapper.toReadModel(newApp);
+    }
+
+    public List<ApplicationToCharityActionReadModel> getCurrentUserApplications() {
+        User currentUser = userService.getUserEntityByLogin(CurrentUserData.getCurrentUserLogin());
+        List<ApplicationToCharityAction> applications = applicationToCharityActionRepository.findAllByBenefactorId(currentUser);
+        return applicationToCharityMapper.map(applications);
     }
 
 }
