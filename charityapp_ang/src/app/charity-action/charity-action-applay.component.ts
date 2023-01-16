@@ -6,7 +6,7 @@ import { CharityActionService } from "./charity-action.service";
 import { RouterModule } from '@angular/router';
 import { UserServiceService } from "../user-service.service";
 import { AppService } from "../app.service";
-import { NgForm } from "@angular/forms";
+import { FormControl, FormGroup ,NgForm,ReactiveFormsModule} from '@angular/forms'
 
 
 @Component({
@@ -20,11 +20,18 @@ import { NgForm } from "@angular/forms";
     name:string;
     public login:string;
     private sub:any;
+
+    applayForm = new FormGroup({
+      actionName: new FormControl(''),
+      reason: new FormControl('')
+    });
+
     constructor(private charityActionService: CharityActionService,private router:Router,private routeP: ActivatedRoute,private app:AppService){}
         
     ngOnInit(): void {
         this.login = this.app.login;
         console.log(this.app.user);
+
         this.sub = this.routeP.params.subscribe(params =>
             this.name = params['name'])
             this.charityActionService.getCharityActionByName(this.name).subscribe(
@@ -42,6 +49,7 @@ import { NgForm } from "@angular/forms";
       this.router.navigateByUrl('/');
     }
     public onApplay(applayForm:NgForm){
-
+      applayForm.controls['actionName'].setValue(this.name);
+      console.log(applayForm);
     }
 }
