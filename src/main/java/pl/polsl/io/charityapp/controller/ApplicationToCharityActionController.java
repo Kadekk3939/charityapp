@@ -24,7 +24,7 @@ public class ApplicationToCharityActionController {
 
     // dodanie aplikacji
     @PostMapping("/add")
-    public ResponseEntity<ApplicationToCharityActionReadModel> addApplication(ApplicationToCharityActionWriteModel application) {
+    public ResponseEntity<ApplicationToCharityActionReadModel> addApplication(@RequestBody ApplicationToCharityActionWriteModel application) {
         ApplicationToCharityActionReadModel newApp = applicationToCharityActionService.addApplication(application);
         return new ResponseEntity<>(newApp, HttpStatus.OK);
     }
