@@ -14,15 +14,13 @@ import pl.polsl.io.charityapp.utility.CurrentUserData;
 
 import java.util.Currency;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class ApplicationToCharityActionService {
     private final ApplicationToCharityActionRepository applicationToCharityActionRepository;
-
     private final ApplicationToCharityMapper applicationToCharityMapper;
-
     private final CharityActionService charityActionService;
-
     private final UserService userService;
 
     @Autowired
@@ -34,10 +32,7 @@ public class ApplicationToCharityActionService {
     }
 
 
-
     public ApplicationToCharityActionReadModel addApplication(ApplicationToCharityActionWriteModel application) {
-        //TODO: fix something (doesnt read values)
-
         ApplicationToCharityAction newApp = applicationToCharityMapper.toEntity(application);
         CharityAction action = charityActionService.getCharityActionEntityByName(application.getCharityActionName());
         User currentUser = userService.getUserEntityByLogin(CurrentUserData.getCurrentUserLogin());
@@ -56,5 +51,14 @@ public class ApplicationToCharityActionService {
         List<ApplicationToCharityAction> applications = applicationToCharityActionRepository.findAllByBenefactorId(currentUser);
         return applicationToCharityMapper.map(applications);
     }
+
+    public ApplicationToCharityActionReadModel getRandomUncheckedApplication() {
+        Random random = new Random();
+        List<ApplicationToCharityAction> applications = applicationToCharityActionRepository.findAllByStatus(ApplicationStatus.UNCHECKED);
+        //TODO: error when no unchecked applications
+        return applicationToCharityMapper.toReadModel(applications.get(random.nextInt(applications.size())));
+    }
+
+//    public void checkApplication()
 
 }

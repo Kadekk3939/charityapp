@@ -6,15 +6,10 @@ import java.sql.Date;
 
 @Data
 public class CharityActionReadModel {
-
     private String name;
-
     private String description;
-
     private Float goal;
-
     private Date endDate;
-
     private boolean shortDescription = false;
 
     public String getDescription() {
