@@ -35,6 +35,11 @@ public class CharityActionService {
         return charityAction.map(charityActionMapper::toShortReadModel).orElse(null);
     }
 
+    public CharityAction getCharityActionEntityByName(String name) {
+        Optional<CharityAction> charityAction = charityActionRepository.findCharityActionByName(name);
+        return charityAction.orElse(null);
+    }
+
     public CharityActionReadModel getCharityActionById(Long id) {
         Optional<CharityAction> charityAction = charityActionRepository.findCharityActionByActionId(id);
 

@@ -6,7 +6,13 @@ import pl.polsl.io.charityapp.mappers.ApplicationToCharityMapper;
 import pl.polsl.io.charityapp.model.dto.read.ApplicationToCharityActionReadModel;
 import pl.polsl.io.charityapp.model.dto.write.ApplicationToCharityActionWriteModel;
 import pl.polsl.io.charityapp.model.entity.ApplicationToCharityAction;
+import pl.polsl.io.charityapp.model.entity.CharityAction;
+import pl.polsl.io.charityapp.model.entity.User;
 import pl.polsl.io.charityapp.repository.ApplicationToCharityActionRepository;
+import pl.polsl.io.charityapp.utility.ApplicationStatus;
+import pl.polsl.io.charityapp.utility.CurrentUserData;
+
+import java.util.Currency;
 
 @Service
 public class ApplicationToCharityActionService {
@@ -16,19 +22,31 @@ public class ApplicationToCharityActionService {
 
     private final CharityActionService charityActionService;
 
+    private final UserService userService;
+
     @Autowired
-    public ApplicationToCharityActionService(ApplicationToCharityActionRepository applicationToCharityActionRepository, ApplicationToCharityMapper applicationToCharityMapper, CharityActionService charityActionService) {
+    public ApplicationToCharityActionService(ApplicationToCharityActionRepository applicationToCharityActionRepository, ApplicationToCharityMapper applicationToCharityMapper, CharityActionService charityActionService, UserService userService) {
         this.applicationToCharityActionRepository = applicationToCharityActionRepository;
         this.applicationToCharityMapper = applicationToCharityMapper;
         this.charityActionService = charityActionService;
+        this.userService = userService;
     }
 
 
-    //TODO: put service dependency in mapper
-    public ApplicationToCharityActionReadModel addApplication(ApplicationToCharityActionWriteModel application) {
-        ApplicationToCharityAction newApp = applicationToCharityMapper.toEntity(application);
-        Long actionId = charityActionService.getActionIdByName(application.getCharityActionName());
 
+    public ApplicationToCharityActionReadModel addApplication(ApplicationToCharityActionWriteModel application) {
+        //TODO: fix something (doesnt read values)
+
+        ApplicationToCharityAction newApp = applicationToCharityMapper.toEntity(application);
+        CharityAction action = charityActionService.getCharityActionEntityByName(application.getCharityActionName());
+        User currentUser = userService.getUserEntityByLogin(CurrentUserData.getCurrentUserLogin());
+
+        newApp.setBenefactorId(currentUser);
+        newApp.setCharityActionId(action);
+        newApp.setStatus(ApplicationStatus.UNCHECKED);
+
+
+        return applicationToCharityMapper.toReadModel(newApp);
     }
 
 }

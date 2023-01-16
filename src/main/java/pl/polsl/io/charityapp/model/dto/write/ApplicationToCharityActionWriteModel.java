@@ -11,7 +11,6 @@ import javax.persistence.*;
 public class ApplicationToCharityActionWriteModel {
 
     private String charityActionName;
-
     private String reason;
 
 //    private List<Document> documents;

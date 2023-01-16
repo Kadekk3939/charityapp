@@ -74,6 +74,11 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(()->new UserNotFoundException("User by email "+ email + " not found"));
     }
 
+    public User getUserEntityByLogin(String login) {
+        Optional<User> user = userRepository.findUserByLogin(login);
+        return user.orElse(null);
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
