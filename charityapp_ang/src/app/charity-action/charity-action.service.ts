@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CharityAction} from "./charity-action";
+import { aplicationToCharityAction, aplicationToCharityActionRead } from './aplicationToCharityAction';
 import {environment} from "../../environments/environment";
 
 @Injectable({
@@ -22,5 +23,8 @@ export class CharityActionService {
 
     public getCharityActionByName(name:string):Observable<CharityAction>{
       return this.http.get<CharityAction>(`${this.apiServerUrl}/action/name/${name}`);
+    }
+    public postCharityAplication(aplication:aplicationToCharityAction,headers:HttpHeaders):Observable<aplicationToCharityActionRead>{
+      return this.http.post<aplicationToCharityActionRead>(`${this.apiServerUrl}/application2charity/add`,aplication, {headers:headers});
     }
 }

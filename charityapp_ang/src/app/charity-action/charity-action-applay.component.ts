@@ -44,12 +44,21 @@ import { FormControl, FormGroup ,NgForm,ReactiveFormsModule} from '@angular/form
                 }
               );
     }
+    
     public logout():void{
       localStorage.clear();
       this.router.navigateByUrl('/');
     }
+
     public onApplay(applayForm:NgForm){
-      applayForm.controls['actionName'].setValue(this.name);
+      applayForm.controls['charityActionName'].setValue(this.name);
       console.log(applayForm);
+      this.charityActionService.postCharityAplication(applayForm.value,this.app.headers).subscribe({
+        next: (res) => {
+            console.log(res);
+        },
+        error: (err) => {alert(err.message);}
     }
+    );
+  }
 }
