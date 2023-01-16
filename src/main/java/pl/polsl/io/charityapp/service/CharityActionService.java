@@ -44,4 +44,10 @@ public class CharityActionService {
     public List<CharityActionReadModel> getAllActions() {
         return charityActionMapper.map(charityActionRepository.findAll());
     }
+
+    public Long getActionIdByName(String name) {
+        Optional<CharityAction> charityAction = charityActionRepository.findCharityActionByName(name);
+
+        return charityAction.map(CharityAction::getActionId).orElse(null);
+    }
 }

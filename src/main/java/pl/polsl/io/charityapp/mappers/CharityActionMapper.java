@@ -25,6 +25,6 @@ public interface CharityActionMapper {
 
     void updateCharityActionFromDto(CharityActionWriteModel charityActionWriteModel, @MappingTarget CharityAction charityAction);
 
-    @Mapping(target = "charityAction", expression = "java(toShortReadModel(charityAction))")
+//    @Mapping(target = "charityAction", expression = "java(toShortReadModel(charityAction))")
     List<CharityActionReadModel> map(List<CharityAction> charityActions);
 }
