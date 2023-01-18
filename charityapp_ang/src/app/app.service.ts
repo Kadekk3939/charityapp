@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { UserServiceService } from './user-service.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ export class AppService {
   public login:string;
   public user:User;
   credentials = {login: '', password: ''}
-  constructor(private http: HttpClient,private router : Router) {
+  constructor(private http: HttpClient,private router : Router,private userService:UserServiceService) {
   }
 
   public getAuthenticated():boolean{
@@ -22,6 +22,7 @@ export class AppService {
   
   public refresh():void{
     
+
     if(localStorage.length==2){
         if(this.headers == undefined){
             this.credentials.login = localStorage.getItem('login')!;
@@ -29,7 +30,19 @@ export class AppService {
             this.login = localStorage.getItem('login')!
             this.authenticate(this.credentials, () => {  
                 console.log('Refresh');
+            
             });
+
+            this.userService.getUserByLogin(this.login).subscribe(
+                (response: User) => {
+                  this.user = response;
+                  console.log(this.user);
+                },
+                (error: HttpErrorResponse) => {
+                  alert(error.message);
+                }
+              );
+
         }
     }
     else{

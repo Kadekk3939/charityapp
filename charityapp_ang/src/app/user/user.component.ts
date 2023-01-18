@@ -28,8 +28,6 @@ export class UserComponent implements OnInit {
 
     this.headers = this.app.headers;
     this.login = this.app.login;
-    console.log(localStorage.getItem('login'));
-
     this.getUser();
 
   }

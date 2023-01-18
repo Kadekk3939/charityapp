@@ -15,7 +15,7 @@ import { AppService } from "../app.service";
   })
 
   export class CharityActionDetailsComponent implements OnInit {
-    public charityAction: CharityAction;
+    public charityAction: CharityAction|undefined;
     name:string;
     public login:string;
     private sub:any;
@@ -23,7 +23,6 @@ import { AppService } from "../app.service";
         
     ngOnInit(): void {
         this.login = this.app.login;
-        console.log(this.app.user);
         this.sub = this.routeP.params.subscribe(params =>
             this.name = params['name'])
             this.charityActionService.getCharityActionByName(this.name).subscribe(
@@ -36,29 +35,35 @@ import { AppService } from "../app.service";
                 }
               );
     }
+
     public logout():void{
       localStorage.clear();
       this.router.navigateByUrl('/');
     }
+
     public routeR(){
         this.router.navigateByUrl('/user');
     }
+
     public routeA(){
       this.router.navigate(['/charityAction',this.name,'applay']);
     }
+
     public routeS(){
       this.router.navigate(['/charityAction',this.name,'support']);
     }
+
     public isUserBenefactor():boolean{
-      if(this.app.user.role=="Benefactor"){
+      if(this.app.user?.role=="Benefactor"){
         return true;
       }
       else{
         return false;
       }
     }
+    
     public isUserDonor():boolean{
-      if(this.app.user.role=="Donor"){
+      if(this.app.user?.role=="Donor"){
         return true;
       }
       else{
