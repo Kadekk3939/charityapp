@@ -16,6 +16,7 @@ export class CharityActionAplicationListComponent implements OnInit{
   charityAplications:aplicationToCharityActionRead[];
 
   ngOnInit(): void {
+    this.app.refresh();
     this.getListOfAplications();
   }
 

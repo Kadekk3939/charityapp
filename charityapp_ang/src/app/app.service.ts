@@ -40,6 +40,7 @@ export class AppService {
                 },
                 (error: HttpErrorResponse) => {
                   alert(error.message);
+                  this.router.navigateByUrl('/');
                 }
               );
 

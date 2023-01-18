@@ -23,6 +23,7 @@ import { NgForm } from "@angular/forms";
     constructor(private charityActionService: CharityActionService,private router:Router,private routeP: ActivatedRoute,private app:AppService){}
         
     ngOnInit(): void {
+      this.app.refresh();
         this.login = this.app.login;
         console.log(this.app.user);
         this.sub = this.routeP.params.subscribe(params =>

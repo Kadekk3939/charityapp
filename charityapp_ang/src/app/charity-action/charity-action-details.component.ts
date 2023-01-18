@@ -22,6 +22,7 @@ import { AppService } from "../app.service";
     constructor(private charityActionService: CharityActionService,private router:Router,private routeP: ActivatedRoute,private app:AppService){}
         
     ngOnInit(): void {
+      this.app.refresh();
         this.login = this.app.login;
         this.sub = this.routeP.params.subscribe(params =>
             this.name = params['name'])

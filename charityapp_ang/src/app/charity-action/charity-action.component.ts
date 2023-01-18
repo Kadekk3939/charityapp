@@ -20,6 +20,7 @@ export class CharityActionComponent implements OnInit {
   constructor(private charityActionService: CharityActionService,private router:Router,private app:AppService){}
 
   ngOnInit() {
+    this.app.refresh();
     this.getCharityActions();
     this.user = this.app.user;
   }
