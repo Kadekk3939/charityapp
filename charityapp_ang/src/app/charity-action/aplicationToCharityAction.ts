@@ -1,10 +1,15 @@
+import { User } from "../user"
+import { CharityAction } from "./charity-action"
+
 export interface aplicationToCharityAction {
     reason:string,
     charityActionName:string
   }
   export interface aplicationToCharityActionRead{
-    benefactor: string,
+    user:User,
+    charityAction:CharityAction,
     reason:string,
-    charityActionName:string
+    charityActionName:string,
+    aplicationStatus: string
   }
   

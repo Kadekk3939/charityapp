@@ -15,7 +15,7 @@ export class UserComponent implements OnInit {
 
   headers:HttpHeaders;
   login:string = '';
-  public user:User;
+  public user:User|undefined;
 
   constructor (private app: AppService,private http: HttpClient,private userService:UserServiceService,private router:Router){
     if(this.login == ''){
@@ -51,6 +51,12 @@ export class UserComponent implements OnInit {
         alert(error.message);
       }
     );
+  }
+  public userIsBenefactor():boolean{
+    if(this.user!.role=='Benefactor'){
+      return true;
+    }
+    return false;
   }
 
 }

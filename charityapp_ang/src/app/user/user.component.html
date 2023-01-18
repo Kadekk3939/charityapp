@@ -16,6 +16,11 @@
               <li class="nav-item">
                 <a class="nav-link" routerLink="/charityAction" routerLinkActive="active" ariaCurrentWhenActive="page">Open charity actions</a>
               </li>
+              <div *ngIf="userIsBenefactor()">
+                <li class="nav-item">
+                  <a class="nav-link"routerLink="/charityActionAplicationList" routerLinkActive="active" ariaCurrentWhenActive="page">Charity actions aplications</a>
+                </li>
+              </div>
               <li class="nav-item">
                 <a class="nav-link"(click)="logout()" routerLinkActive="active" ariaCurrentWhenActive="page">Logout</a>
               </li>
@@ -24,16 +29,16 @@
         </div>
       </nav>
     <header>
-        <h1>Welcome {{user.login}}</h1>
+        <h1>Welcome {{user?.login}}</h1>
     </header>
     <!-- Page Content -->
   <div class="container">
     <div class="card border-0 shadow my-5">
       <div class="card-body p-5">
-        <p class="lead">User name : {{user.firstName}} {{user.lastName}}</p>
-        <p class="lead">User login : {{user.login}}</p>
-        <p class="lead">User email : {{user.email}}</p>
-        <p class="lead">User role : {{user.role}}</p>
+        <p class="lead">User name : {{user?.firstName}} {{user?.lastName}}</p>
+        <p class="lead">User login : {{user?.login}}</p>
+        <p class="lead">User email : {{user?.email}}</p>
+        <p class="lead">User role : {{user?.role}}</p>
         <p></p>
       </div>
     </div>

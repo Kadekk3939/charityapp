@@ -22,6 +22,7 @@ import { CharityActionDetailsComponent } from './charity-action/charity-action-d
 import {CharityActionApplayComponent} from './charity-action/charity-action-applay.component'
 import { CharityActionSupportComponent } from './charity-action/charity-action-support.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CharityActionAplicationListComponent } from './charity-action-aplication-list/charity-action-aplication-list.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BenefactorBrowseActionsComponent,
     CharityActionDetailsComponent,
     CharityActionApplayComponent,
-    CharityActionSupportComponent
+    CharityActionSupportComponent,
+    CharityActionAplicationListComponent
 
   ],
   imports: [
