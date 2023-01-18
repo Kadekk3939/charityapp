@@ -53,7 +53,7 @@ export class UserComponent implements OnInit {
     );
   }
   public userIsBenefactor():boolean{
-    if(this.user!.role=='Benefactor'){
+    if(this.user?.role=='Benefactor'){
       return true;
     }
     return false;
