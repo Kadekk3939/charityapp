@@ -1,82 +1,81 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0" height="36" />
-      Charity organisation
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0" height="36" /> Charity organisation
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/benefactorProfile" routerLinkActive="active" ariaCurrentWhenActive="page">Your Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/benefactorApplicationList" routerLinkActive="active" ariaCurrentWhenActive="page">Application List</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/benefactorBrowseActions" routerLinkActive="active" ariaCurrentWhenActive="page">Browse Actions</a>
-        </li>
-      </ul>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/benefactorProfile" routerLinkActive="active" ariaCurrentWhenActive="page">Your Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/benefactorApplicationList" routerLinkActive="active" ariaCurrentWhenActive="page">Application List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/benefactorBrowseActions" routerLinkActive="active" ariaCurrentWhenActive="page">Browse Actions</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
 
 <!-- Page Content -->
 <div class="container">
-  <div class="card border-0 shadow my-5">
-    <div class="card-body p-5">
-      <div class="container" id="main-container">
-        <div class="row">
-          <div *ngFor= "let chAction of charityActions" class="col-md-6 col-xl-3 p-1">
-            <div class="card m-b-30">
-              <div class="card-body row" style="margin-left: 5px">
-                <div class="col card-title align-self-center mb-0">
-                  <b><h5 style="text-align: center">{{chAction?.name}}</h5></b>
-                  <p class="m-0">{{chAction?.description}}</p>
+    <div class="card border-0 shadow my-5">
+        <div class="card-body p-5">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div *ngFor="let chAction of charityActions" class="col-md-6 col-xl-3 p-1">
+                        <div class="card m-b-30">
+                            <div class="card-body row" style="margin-left: 5px">
+                                <div class="col card-title align-self-center mb-0">
+                                    <b><h5 style="text-align: center">{{chAction?.name}}</h5></b>
+                                    <p class="m-0">{{chAction?.description}}</p>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-flush" style="margin-left: 5px">
+                                <li class="list-group-item"><i class="fa fa-battery-full float-right"></i>Goal: {{chAction?.goal}}</li>
+                                <li class="list-group-item"><i class="fa fa-calendar float-right"></i>Ends on: {{chAction?.endDate}}</li>
+                            </ul>
+                            <a (click)="onOpenModal('apply')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Apply">Apply</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <ul class="list-group list-group-flush" style="margin-left: 5px">
-                <li class="list-group-item"><i class="fa fa-battery-full float-right"></i>Goal: {{chAction?.goal}}</li>
-                <li class="list-group-item"><i class="fa fa-calendar float-right"></i>Ends on: {{chAction?.endDate}}</li>
-              </ul>
-              <a (click)="onOpenModal('apply')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Apply">Apply</a>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <!-- Apply Modal -->
 <div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="applyModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="applyModalLabel">Apply </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="applyModalLabel">Apply </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true"></span>
         </button>
-      </div>
-      <div class="modal-body">
-        <form #applyForm="ngForm" (ngSubmit)="onApply(applyForm)">
-          <div class="form-group">
-            <label for="reason">Reason</label>
-            <input type="text" ngModel="" name="reason" class="form-control" id="reason" placeholder="Enter reason of application">
-          </div>
-          <div class="form-group">
-            <label for="document">Document</label>
-            <input type="email" ngModel="" name="document" class="form-control" id="document" placeholder="Enter document">
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="apply-form" data-dismiss="modal" class="btn btn-secondary">Close</button>
-            <button (click)="onOpenModal('apply')" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
-          </div>
-        </form>
-      </div>
+            </div>
+            <div class="modal-body">
+                <form #applyForm="ngForm" (ngSubmit)="onApply(applyForm)">
+                    <div class="form-group">
+                        <label for="reason">Reason</label>
+                        <input type="text" ngModel="" name="reason" class="form-control" id="reason" placeholder="Enter reason of application">
+                    </div>
+                    <div class="form-group">
+                        <label for="document">Document</label>
+                        <input type="email" ngModel="" name="document" class="form-control" id="document" placeholder="Enter document">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="apply-form" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                        <button (click)="onOpenModal('apply')" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

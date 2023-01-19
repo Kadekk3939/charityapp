@@ -1,43 +1,50 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0" height="36" />
-      Charity organisation
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0" height="36" /> Charity organisation
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/benefactorProfile" routerLinkActive="active" ariaCurrentWhenActive="page">Your Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/benefactorApplicationList" routerLinkActive="active" ariaCurrentWhenActive="page">Application List</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/benefactorBrowseActions" routerLinkActive="active" ariaCurrentWhenActive="page">Browse Actions</a>
-        </li>
-      </ul>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/benefactorProfile" routerLinkActive="active" ariaCurrentWhenActive="page">Your Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/benefactorApplicationList" routerLinkActive="active" ariaCurrentWhenActive="page">Application List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/benefactorBrowseActions" routerLinkActive="active" ariaCurrentWhenActive="page">Browse Actions</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
 
 <!-- Page Content -->
 <div class="container">
-  <div class="card border-0 shadow my-5">
-    <div class="card-body p-5">
-      <h1 class="fw-light">Your profile</h1><br>
-      <p class="lead">First name: <!--{{user?.firstName}}--></p>
-      <hr>
-      <p class="lead">Last name: <!--{{user?.lastName}}--></p>
-      <hr>
-      <p class="lead">Login: <!--{{user?.login}}--></p>
-      <hr>
-      <p class="lead">Email: <!--{{user?.email}}--></p>
-      <hr>
-      <p class="lead">Role: </p>
+    <div class="card border-0 shadow my-5">
+        <div class="card-body p-5">
+            <h1 class="fw-light">Your profile</h1><br>
+            <p class="lead">First name:
+                <!--{{user?.firstName}}-->
+            </p>
+            <hr>
+            <p class="lead">Last name:
+                <!--{{user?.lastName}}-->
+            </p>
+            <hr>
+            <p class="lead">Login:
+                <!--{{user?.login}}-->
+            </p>
+            <hr>
+            <p class="lead">Email:
+                <!--{{user?.email}}-->
+            </p>
+            <hr>
+            <p class="lead">Role: </p>
+        </div>
     </div>
-  </div>
 </div>

@@ -1,106 +1,104 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0" height="36" />
-      Charity organisation
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0" height="36" /> Charity organisation
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarColor02">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/user" routerLinkActive="active" ariaCurrentWhenActive="page">User</a>
-        </li>
-        <div *ngIf="userIsWorker()">
-          <li class="nav-item">
-            <a class="nav-link" (click)="onOpenModal( 'add')">Add Action <span class="sr-only">(current)</span></a>
-          </li>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/user" routerLinkActive="active" ariaCurrentWhenActive="page">User</a>
+                </li>
+                <div *ngIf="userIsWorker()">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="onOpenModal( 'add')">Add Action <span class="sr-only">(current)</span></a>
+                    </li>
+                </div>
+
+                <li class="nav-item">
+                    <a class="nav-link" (click)="logout()" routerLinkActive="active" ariaCurrentWhenActive="page">Logout</a>
+                </li>
+            </ul>
         </div>
-        
-        <li class="nav-item">
-          <a class="nav-link"(click)="logout()" routerLinkActive="active" ariaCurrentWhenActive="page">Logout</a>
-        </li>
-      </ul>
+        <!--    <div class="collapse navbar-collapse" id="navbarResponsive">-->
+        <!--      <ul class="navbar-nav ms-auto">-->
+        <!--        <li class="nav-item">-->
+        <!--          <a class="nav-link"onclick="return back()" ></a>-->
+        <!--        </li>-->
+        <!--      </ul>-->
+        <!--    </div>-->
     </div>
-<!--    <div class="collapse navbar-collapse" id="navbarResponsive">-->
-<!--      <ul class="navbar-nav ms-auto">-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link"onclick="return back()" ></a>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--    </div>-->
-  </div>
 </nav>
 <header>
-  <h1>Our charity actions</h1>
+    <h1>Our charity actions</h1>
 </header>
 <br>
 <div class="container" id="main-container">
-  <div class="row">
-    <div *ngFor= "let chAction of charityActions" class="col-md-6 col-xl-3 p-1">
-      <div class="card m-b-30">
-        <div class="card-body row" style="margin-left: 5px">
-<!--          wyswietlanie zdj-->
-<!--          <div class="col-6">-->
-<!--            <a href=""><img src="{{employee?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>-->
-<!--          </div>-->
-          <div class="col card-title align-self-center mb-0">
-            <h5 style="text-align: center">{{chAction?.name}}</h5>
-            <p class="m-0">{{chAction?.description}}</p>
-          </div>
+    <div class="row">
+        <div *ngFor="let chAction of charityActions" class="col-md-6 col-xl-3 p-1">
+            <div class="card m-b-30">
+                <div class="card-body row" style="margin-left: 5px">
+                    <!--          wyswietlanie zdj-->
+                    <!--          <div class="col-6">-->
+                    <!--            <a href=""><img src="{{employee?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>-->
+                    <!--          </div>-->
+                    <div class="col card-title align-self-center mb-0">
+                        <h5 style="text-align: center">{{chAction?.name}}</h5>
+                        <p class="m-0">{{chAction?.description}}</p>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush" style="margin-left: 5px">
+                    <li class="list-group-item"><i class="fa fa-battery-full float-right"></i>Goal: {{chAction?.goal}}</li>
+                    <li class="list-group-item"><i class="fa fa-calendar float-right"></i>Ends on: {{chAction?.endDate}}</li>
+                </ul>
+                <!--        przyciski-->
+                <div class="card-body">
+                    <div class="float-right btn-group btn-group-sm">
+                        <a (click)="show(chAction.name)" class="btn btn-primary tooltips" data-placement="top" data-original-title="Show">Show </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <ul class="list-group list-group-flush" style="margin-left: 5px">
-          <li class="list-group-item"><i class="fa fa-battery-full float-right"></i>Goal: {{chAction?.goal}}</li>
-          <li class="list-group-item"><i class="fa fa-calendar float-right"></i>Ends on: {{chAction?.endDate}}</li>
-        </ul>
-<!--        przyciski-->
-        <div class="card-body">
-          <div class="float-right btn-group btn-group-sm">
-            <a (click)="show(chAction.name)" class="btn btn-primary tooltips"  data-placement="top" data-original-title="Show">Show </a>
-        </div>
-      </div>
     </div>
-  </div>
-  </div>
 </div>
 
 <!-- Add Charity Action Modal -->
 <div class="modal fade" id="addActionModal" tabindex="-1" role="dialog" aria-labelledby="addActionModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addActionModalLabel">Add Action</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addActionModalLabel">Add Action</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
-        <form #addForm="ngForm" (ngSubmit)="onAddAction(addForm)">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
-          </div>
-          <div class="form-group">
-            <label for="description">description</label>
-            <input type="description" ngModel name="description" class="form-control" id="description" placeholder="description" required>
-          </div>
-          <div class="form-group">
-            <label for="goal">Goal</label>
-            <input type="number" ngModel name="goal" class="form-control" id="goal" placeholder="goal" required>
-          </div>
-          <div class="form-group">
-            <label for="endDate">endDate</label>
-            <input type="date" ngModel name="endDate" class="form-control" id="endDate" placeholder="endDate" required>
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="add-action-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
-          </div>
-        </form>
-      </div>
+            </div>
+            <div class="modal-body">
+                <form #addForm="ngForm" (ngSubmit)="onAddAction(addForm)">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">description</label>
+                        <input type="description" ngModel name="description" class="form-control" id="description" placeholder="description" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goal">Goal</label>
+                        <input type="number" ngModel name="goal" class="form-control" id="goal" placeholder="goal" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">endDate</label>
+                        <input type="date" ngModel name="endDate" class="form-control" id="endDate" placeholder="endDate" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="add-action-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
