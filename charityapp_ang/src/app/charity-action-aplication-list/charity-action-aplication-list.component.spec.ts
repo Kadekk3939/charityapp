@@ -8,9 +8,9 @@ describe('CharityActionAplicationListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CharityActionAplicationListComponent ]
+      declarations: [CharityActionAplicationListComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(CharityActionAplicationListComponent);
     component = fixture.componentInstance;

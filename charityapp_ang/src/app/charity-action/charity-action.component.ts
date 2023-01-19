@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {CharityAction} from "./charity-action";
-import {CharityActionService} from "./charity-action.service";
-import {HttpErrorResponse} from "@angular/common/http";
+import { Component, OnInit } from '@angular/core';
+import { CharityAction } from "./charity-action";
+import { CharityActionService } from "./charity-action.service";
+import { HttpErrorResponse } from "@angular/common/http";
 //import {Router} from "@angular/router";
-import {NgForm} from "@angular/forms";
+import { NgForm } from "@angular/forms";
 import { Router } from '@angular/router';
 import { User } from '../user';
 import { AppService } from '../app.service';
@@ -15,9 +15,9 @@ import { AppService } from '../app.service';
 })
 export class CharityActionComponent implements OnInit {
   public charityActions: CharityAction[];
-  private user:User;
+  private user: User;
 
-  constructor(private charityActionService: CharityActionService,private router:Router,private app:AppService){}
+  constructor(private charityActionService: CharityActionService, private router: Router, private app: AppService) { }
 
   ngOnInit() {
     this.app.refresh();
@@ -53,7 +53,7 @@ export class CharityActionComponent implements OnInit {
     );
   }
 
-  public onOpenModal( mode: string): void {
+  public onOpenModal(mode: string): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
@@ -75,20 +75,20 @@ export class CharityActionComponent implements OnInit {
     button.click();
   }
 
-  public show(actionName:string){
+  public show(actionName: string) {
     this.charityActionService.chName = actionName;
     console.log(actionName);
-    this.router.navigate(['/charityAction',actionName]);
+    this.router.navigate(['/charityAction', actionName]);
   }
 
-  public logout():void{
+  public logout(): void {
     console.log(this.user);
     localStorage.clear();
     this.router.navigateByUrl('/');
   }
 
-  public userIsWorker():boolean{
-    if(this.user.role == "Worker"){
+  public userIsWorker(): boolean {
+    if (this.user.role == "Worker") {
       return true;
     }
     return false;

@@ -1,18 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {CharityAction} from "../charity-action/charity-action";
-import {HttpErrorResponse} from "@angular/common/http";
-import {CharityActionService} from "../charity-action/charity-action.service";
-import {NgForm} from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { CharityAction } from "../charity-action/charity-action";
+import { HttpErrorResponse } from "@angular/common/http";
+import { CharityActionService } from "../charity-action/charity-action.service";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: 'app-benefactor-browse-actions',
   templateUrl: './benefactor-browse-actions.component.html',
   styleUrls: ['./benefactor-browse-actions.component.css']
 })
-export class BenefactorBrowseActionsComponent implements OnInit{
+export class BenefactorBrowseActionsComponent implements OnInit {
   public charityActions: CharityAction[];
 
-  constructor(private charityActionService: CharityActionService){}
+  constructor(private charityActionService: CharityActionService) { }
 
 
   ngOnInit() {
@@ -31,7 +31,7 @@ export class BenefactorBrowseActionsComponent implements OnInit{
     );
   }
 
-  public onOpenModal( mode: string ): void {
+  public onOpenModal(mode: string): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
@@ -46,7 +46,7 @@ export class BenefactorBrowseActionsComponent implements OnInit{
     button.click();
   }
 
-  public onApply (applyForm: NgForm): void {
+  public onApply(applyForm: NgForm): void {
 
   }
 

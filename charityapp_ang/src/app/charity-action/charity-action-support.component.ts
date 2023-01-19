@@ -10,37 +10,37 @@ import { NgForm } from "@angular/forms";
 
 
 @Component({
-    selector: 'app-charity-action',
-    templateUrl: './charity-action-support.component.html',
-    styleUrls: ['./charity-action-support.component.css']
-  })
+  selector: 'app-charity-action',
+  templateUrl: './charity-action-support.component.html',
+  styleUrls: ['./charity-action-support.component.css']
+})
 
-  export class CharityActionSupportComponent implements OnInit {
-    public charityAction: CharityAction;
-    name:string;
-    public login:string;
-    private sub:any;
-    constructor(private charityActionService: CharityActionService,private router:Router,private routeP: ActivatedRoute,private app:AppService){}
-        
-    ngOnInit(): void {
-      this.app.refresh();
-        this.login = this.app.login;
-        console.log(this.app.user);
-        this.sub = this.routeP.params.subscribe(params =>
-            this.name = params['name'])
-            this.charityActionService.getCharityActionByName(this.name).subscribe(
-                (response: CharityAction) => {
-                  this.charityAction = response;
-                  console.log(this.charityAction);
-                },
-                (error: HttpErrorResponse) => {
-                  alert(error.message);
-                }
-              );
-    }
+export class CharityActionSupportComponent implements OnInit {
+  public charityAction: CharityAction;
+  name: string;
+  public login: string;
+  private sub: any;
+  constructor(private charityActionService: CharityActionService, private router: Router, private routeP: ActivatedRoute, private app: AppService) { }
 
-    public logout():void{
-        localStorage.clear();
-        this.router.navigateByUrl('/');
+  ngOnInit(): void {
+    this.app.refresh();
+    this.login = this.app.login;
+    console.log(this.app.user);
+    this.sub = this.routeP.params.subscribe(params =>
+      this.name = params['name'])
+    this.charityActionService.getCharityActionByName(this.name).subscribe(
+      (response: CharityAction) => {
+        this.charityAction = response;
+        console.log(this.charityAction);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
       }
+    );
+  }
+
+  public logout(): void {
+    localStorage.clear();
+    this.router.navigateByUrl('/');
+  }
 }

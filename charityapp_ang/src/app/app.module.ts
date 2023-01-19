@@ -13,13 +13,13 @@ import { CharityActionComponent } from './charity-action/charity-action.componen
 import { AppService } from './app.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
-import {CharityActionService} from "./charity-action/charity-action.service";
+import { CharityActionService } from "./charity-action/charity-action.service";
 import { BenefactorProfileComponent } from './benefactor-profile/benefactor-profile.component';
 import { BenefactorApplicationListComponent } from './benefactor-profile/benefactor-application-list.component';
 import { BenefactorBrowseActionsComponent } from './benefactor-profile/benefactor-browse-actions.component';
 import { RouterModule } from '@angular/router';
 import { CharityActionDetailsComponent } from './charity-action/charity-action-details.component';
-import {CharityActionApplayComponent} from './charity-action/charity-action-applay.component'
+import { CharityActionApplayComponent } from './charity-action/charity-action-applay.component'
 import { CharityActionSupportComponent } from './charity-action/charity-action-support.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CharityActionAplicationListComponent } from './charity-action-aplication-list/charity-action-aplication-list.component';
@@ -46,7 +46,7 @@ import { CharityActionAplicationListComponent } from './charity-action-aplicatio
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule  ,
+    BrowserAnimationsModule,
     MatRadioModule,
     RouterModule,
     ReactiveFormsModule,

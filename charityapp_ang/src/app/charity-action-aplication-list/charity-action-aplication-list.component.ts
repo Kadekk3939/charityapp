@@ -10,17 +10,17 @@ import { CharityActionService } from '../charity-action/charity-action.service';
   templateUrl: './charity-action-aplication-list.component.html',
   styleUrls: ['./charity-action-aplication-list.component.css']
 })
-export class CharityActionAplicationListComponent implements OnInit{
+export class CharityActionAplicationListComponent implements OnInit {
 
-  constructor(private router:Router,private charityActionService:CharityActionService,private app:AppService){}
-  charityAplications:aplicationToCharityActionRead[];
+  constructor(private router: Router, private charityActionService: CharityActionService, private app: AppService) { }
+  charityAplications: aplicationToCharityActionRead[];
 
   ngOnInit(): void {
     this.app.refresh();
     this.getListOfAplications();
   }
 
-  getListOfAplications(){
+  getListOfAplications() {
     this.charityActionService.getListOfCharityAplications(this.app.headers).subscribe(
       (response: aplicationToCharityActionRead[]) => {
         this.charityAplications = response;
@@ -34,7 +34,7 @@ export class CharityActionAplicationListComponent implements OnInit{
 
 
 
-  public logout():void{
+  public logout(): void {
     localStorage.clear();
     this.router.navigateByUrl('/');
   }

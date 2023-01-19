@@ -1,3 +1,3 @@
-export interface ApplicationToCharityAction{
+export interface ApplicationToCharityAction {
   reason: string
 }

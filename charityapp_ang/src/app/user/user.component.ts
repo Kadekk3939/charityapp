@@ -13,12 +13,12 @@ import { UserServiceService } from '../user-service.service';
 })
 export class UserComponent implements OnInit {
 
-  headers:HttpHeaders;
-  login:string = '';
-  public user:User|undefined;
+  headers: HttpHeaders;
+  login: string = '';
+  public user: User | undefined;
 
-  constructor (private app: AppService,private http: HttpClient,private userService:UserServiceService,private router:Router){
-    if(this.login == ''){
+  constructor(private app: AppService, private http: HttpClient, private userService: UserServiceService, private router: Router) {
+    if (this.login == '') {
       this.app.refresh();
     }
   }
@@ -32,13 +32,14 @@ export class UserComponent implements OnInit {
 
   }
 
-  public logout():void{
+
+  public logout(): void {
     console.log(this.user);
     localStorage.clear();
     this.router.navigateByUrl('/');
   }
 
-  public getUser():void{
+  public getUser(): void {
     this.userService.getUserByLogin(this.login).subscribe(
       (response: User) => {
         this.user = response;
@@ -50,8 +51,8 @@ export class UserComponent implements OnInit {
       }
     );
   }
-  public userIsBenefactor():boolean{
-    if(this.user?.role=='Benefactor'){
+  public userIsBenefactor(): boolean {
+    if (this.user?.role == 'Benefactor') {
       return true;
     }
     return false;
