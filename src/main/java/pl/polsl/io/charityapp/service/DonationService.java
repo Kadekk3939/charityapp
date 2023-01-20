@@ -25,6 +25,8 @@ public class DonationService {
     //TODO: Donation -> DonationReadModel
     public Donation addDonation(DonationWriteModel donationWriteModel) {
         Donation donation = donationMapper.toEntity(donationWriteModel, charityActionService, userService);
+        // 50% for paymentConfirmed = true
+        donation.setPaymentConfirmed(Math.random() <= 0.5);
         return donationRepository.save(donation);
     }
 }
