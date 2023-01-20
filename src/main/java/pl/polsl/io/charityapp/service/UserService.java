@@ -14,6 +14,7 @@ import pl.polsl.io.charityapp.model.entity.User;
 import pl.polsl.io.charityapp.model.entity.UserRole;
 import pl.polsl.io.charityapp.repository.UserRepository;
 import pl.polsl.io.charityapp.repository.UserRoleRepository;
+import pl.polsl.io.charityapp.utility.CurrentUserData;
 
 import java.util.List;
 import java.util.Optional;
@@ -93,6 +94,14 @@ public class UserService implements UserDetailsService {
     public User getUserEntityByLogin(String login) {
         Optional<User> user = userRepository.findUserByLogin(login);
         return user.orElse(null);
+    }
+
+    public User getLoggedUserEntity() {
+        String login = CurrentUserData.getCurrentUserLogin();
+        if (login != null) {
+            return this.getUserEntityByLogin(login);
+        }
+        return null;
     }
 
 
