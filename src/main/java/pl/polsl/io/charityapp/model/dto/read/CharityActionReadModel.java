@@ -10,7 +10,7 @@ public class CharityActionReadModel {
     private String description;
     private Float goal;
     private Date endDate;
-    private boolean shortDescription = false;
+    private boolean shortDescription;
 
     public String getDescription() {
         return shortDescription ? description.substring(0, Math.min(description.length(), 30)) + "..." : description;

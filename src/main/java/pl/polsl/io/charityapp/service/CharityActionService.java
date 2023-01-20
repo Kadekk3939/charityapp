@@ -16,7 +16,6 @@ public class CharityActionService {
     private final CharityActionRepository charityActionRepository;
     private final CharityActionMapper charityActionMapper;
     @Autowired
-
     public CharityActionService(CharityActionRepository charityActionRepository, CharityActionMapper charityActionMapper) {
         this.charityActionRepository = charityActionRepository;
         this.charityActionMapper = charityActionMapper;
@@ -32,7 +31,7 @@ public class CharityActionService {
     public CharityActionReadModel getCharityActionByName(String name) {
         Optional<CharityAction> charityAction = charityActionRepository.findCharityActionByName(name);
 
-        return charityAction.map(charityActionMapper::toShortReadModel).orElse(null);
+        return charityAction.map(charityActionMapper::toLongReadModel).orElse(null);
     }
 
     public CharityAction getCharityActionEntityByName(String name) {
@@ -43,7 +42,7 @@ public class CharityActionService {
     public CharityActionReadModel getCharityActionById(Long id) {
         Optional<CharityAction> charityAction = charityActionRepository.findCharityActionByActionId(id);
 
-        return charityAction.map(charityActionMapper::toShortReadModel).orElse(null);
+        return charityAction.map(charityActionMapper::toLongReadModel).orElse(null);
     }
 
     public List<CharityActionReadModel> getAllActions() {
