@@ -4,6 +4,7 @@ import lombok.Data;
 import pl.polsl.io.charityapp.utility.ApplicationStatus;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -25,6 +26,7 @@ public class ApplicationToCharityAction {
     private CharityAction charityActionId;
 
     @Column(name = "reason")
+    @NotBlank(message = "Reason must not be blank")
     private String reason;
 
     @Enumerated(EnumType.STRING)
