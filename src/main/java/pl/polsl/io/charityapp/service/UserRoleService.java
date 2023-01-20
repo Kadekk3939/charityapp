@@ -24,9 +24,7 @@ public class UserRoleService {
         return role.map(UserRole::getRoleId).orElse(null);
     }
 
-    public void addBasicRoles(String... roleNames) {
-        List<String> roles = new ArrayList<>(Arrays.asList(roleNames));
-
+    public void addBasicRoles(List<String> roles) {
         for (String name : roles) {
             if (getUserRoleIdByRoleName(name) == null) {
                 UserRole role = new UserRole();

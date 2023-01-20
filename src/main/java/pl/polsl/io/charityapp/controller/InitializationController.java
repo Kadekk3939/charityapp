@@ -8,20 +8,32 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.polsl.io.charityapp.service.UserRoleService;
+import pl.polsl.io.charityapp.service.UserService;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/userRole")
-public class UserRoleController {
+public class InitializationController {
     private final UserRoleService userRoleService;
+    private final UserService userService;
+
     @Autowired
-    public UserRoleController(UserRoleService userRoleService) {
+    public InitializationController(UserRoleService userRoleService, UserService userService) {
         this.userRoleService = userRoleService;
+        this.userService = userService;
     }
 
-    @PutMapping("/fill")
-    public ResponseEntity<String> fillRoles() {
-        userRoleService.addBasicRoles("Donor", "Benefactor", "Worker");
+    @PutMapping("/init")
+    public ResponseEntity<String> initializeData() {
+        // roles
+        List<String> roles = new ArrayList<>(Arrays.asList("Donor", "Benefactor", "Worker"));
+        userRoleService.addBasicRoles(roles);
+        // users
+        userService.addBasicUsers(roles);
+
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 

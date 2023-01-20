@@ -44,7 +44,23 @@ public class UserService implements UserDetailsService {
         Optional<UserRole> role = userRoleRepository.findUserRoleByRoleName(userWriteModel.getRole());
 
         role.ifPresent(user::setUserRole);
-        return userRepository.save(user);
+        return userRepository.existsUserByLoginOrEmail(user.getLogin(), user.getEmail())
+                ? null : userRepository.save(user);
+    }
+
+    public void addBasicUsers(List<String> roles) {
+        for (String role : roles) {
+            UserWriteModel user = new UserWriteModel();
+
+            user.setFirstName(role);
+            user.setLastName(role);
+            user.setLogin(role);
+            user.setPassword("123");
+            user.setEmail(role + "@app.pl");
+            user.setRole(role);
+
+            this.addUser(user);
+        }
     }
 
     public List<User> getAllUsers(){
