@@ -5,5 +5,5 @@ export interface aplicationToCharityActionRead {
   user: User,
   charityAction: CharityAction,
   reason: string,
-  aplicationStatus: string
+  status: string
 }

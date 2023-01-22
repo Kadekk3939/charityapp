@@ -43,7 +43,7 @@ export class CharityActionSupportComponent implements OnInit {
     this.charityActionService.postCharityDonation(donationForm.value, this.app.headers).subscribe({
       next: (res) => {
         console.log(res);
-        this.router.navigateByUrl('/charityActionAplicationList');
+        this.router.navigateByUrl('/user');
       },
       error: (err) => { 
         if(donationForm.value.amount==0){
