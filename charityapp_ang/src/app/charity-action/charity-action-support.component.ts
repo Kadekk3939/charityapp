@@ -28,15 +28,6 @@ export class CharityActionSupportComponent implements OnInit {
     console.log(this.app.user);
     this.sub = this.routeP.params.subscribe(params =>
       this.name = params['name'])
-    this.charityActionService.getCharityActionByName(this.name).subscribe(
-      (response: CharityAction) => {
-        this.charityAction = response;
-        console.log(this.charityAction);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
   }
 
   public logout(): void {

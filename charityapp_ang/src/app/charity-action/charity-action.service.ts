@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { CharityAction } from "./charity-action";
-import { aplicationToCharityAction } from './aplicationToCharityAction';
+import { aplicationToCharityAction } from './aplication-to-charity-action';
 import { environment } from "../../environments/environment";
 import { aplicationToCharityActionRead } from '../charity-action-aplication-list/aplication-to-charity-action-read';
+import { donationToCharityAction } from './donation-to-charity-action';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,10 @@ export class CharityActionService {
 
   public postCharityAplication(aplication: aplicationToCharityAction, headers: HttpHeaders): Observable<aplicationToCharityActionRead> {
     return this.http.post<aplicationToCharityActionRead>(`${this.apiServerUrl}/application2charity/add`, aplication, { headers: headers });
+  }
+
+  public postCharityDonation(donation: donationToCharityAction, headers: HttpHeaders): Observable<donationToCharityAction> {
+    return this.http.post<donationToCharityAction>(`${this.apiServerUrl}/donation/add`, donation, { headers: headers });
   }
 
   public getListOfCharityAplications(headers: HttpHeaders): Observable<aplicationToCharityActionRead[]> {

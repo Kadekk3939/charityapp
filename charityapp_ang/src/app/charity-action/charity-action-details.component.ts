@@ -52,7 +52,7 @@ export class CharityActionDetailsComponent implements OnInit {
   }
 
   public routeS() {
-    this.router.navigate(['#!/charityAction', this.name, 'support']);
+    this.router.navigate(['/charityAction', this.name, 'support']);
   }
 
   public isUserBenefactor(): boolean {
