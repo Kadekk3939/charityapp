@@ -36,6 +36,7 @@ export class CharityActionSupportComponent implements OnInit {
     this.sub = this.routeP.params.subscribe(params =>
       this.name = params['name'])
   }
+  
 
   public onDonation(donationForm:NgForm){
     donationForm.controls['charityActionName'].setValue(this.name);

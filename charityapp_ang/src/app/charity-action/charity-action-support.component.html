@@ -28,7 +28,7 @@
                 <form #donationForm="ngForm" (ngSubmit)="onDonation(donationForm)" class="form_class">
                     <div class="form_div">
                         <label>Amount:</label>
-                        <input type="number" ngModel name="amount" />
+                        <input type="number" step="0.01" ngModel name="amount" />
                         <input ngModel name="charityActionName" class="cdk-visually-hidden">
                         <div>
                             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" ngModel name="anonymous">
