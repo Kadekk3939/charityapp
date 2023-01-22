@@ -16,7 +16,7 @@ import { NgForm } from "@angular/forms";
 })
 
 export class CharityActionSupportComponent implements OnInit {
-  public charityAction: CharityAction;
+  public err: boolean;
   name: string;
   public login: string;
   private sub: any;
@@ -28,6 +28,10 @@ export class CharityActionSupportComponent implements OnInit {
     console.log(this.app.user);
     this.sub = this.routeP.params.subscribe(params =>
       this.name = params['name'])
+  }
+
+  public onDonation(donationForm:NgForm){
+
   }
 
   public logout(): void {
