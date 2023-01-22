@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID,NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,7 @@ import { CharityActionDetailsComponent } from './charity-action/charity-action-d
 import { CharityActionApplayComponent } from './charity-action/charity-action-applay.component'
 import { CharityActionSupportComponent } from './charity-action/charity-action-support.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule, CurrencyPipe} from '@angular/common';
 import { CharityActionAplicationListComponent } from './charity-action-aplication-list/charity-action-aplication-list.component';
 
 @NgModule({
@@ -53,7 +54,8 @@ import { CharityActionAplicationListComponent } from './charity-action-aplicatio
   ],
   providers: [
     AppService,
-    CharityActionService
+    CharityActionService,
+    CurrencyPipe
   ],
   bootstrap: [AppComponent]
 })

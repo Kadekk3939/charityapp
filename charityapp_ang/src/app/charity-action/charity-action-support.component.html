@@ -28,7 +28,7 @@
                 <form #donationForm="ngForm" (ngSubmit)="onDonation(donationForm)" class="form_class">
                     <div class="form_div">
                         <label>Amount:</label>
-                        <input type="number" ngModel name="amount" class="form-control" id="amount" placeholder="amount" required>
+                        <input type="number" ngModel name="amount" />
                         <input ngModel name="charityActionName" class="cdk-visually-hidden">
                         <div>
                             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" ngModel name="anonymous">
@@ -36,7 +36,7 @@
                                 <mat-radio-button class="example-radio-button" value=true>Anonymous</mat-radio-button>
                             </mat-radio-group>
                             <div *ngIf="err">
-                                <p style="color:red">*You need to amount reason</p>
+                                <p style="color:red">*You need to put an amount amount</p>
                             </div>
                         </div>
                         <button class="btn btn-primary tooltips" type="submit">Donate</button>
