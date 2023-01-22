@@ -78,7 +78,7 @@ export class CharityActionComponent implements OnInit {
   public show(actionName: string) {
     this.charityActionService.chName = actionName;
     console.log(actionName);
-    this.router.navigate(['/charityAction', actionName]);
+    this.router.navigate(['/charityAction',actionName]);
   }
 
   public logout(): void {

@@ -25,7 +25,8 @@ export class CharityActionDetailsComponent implements OnInit {
     this.app.refresh();
     this.login = this.app.login;
     this.sub = this.routeP.params.subscribe(params =>
-      this.name = params['name'])
+      this.name = params["name"])
+      console.log(this.name);
     this.charityActionService.getCharityActionByName(this.name).subscribe(
       (response: CharityAction) => {
         this.charityAction = response;
@@ -51,7 +52,7 @@ export class CharityActionDetailsComponent implements OnInit {
   }
 
   public routeS() {
-    this.router.navigate(['/charityAction', this.name, 'support']);
+    this.router.navigate(['#!/charityAction', this.name, 'support']);
   }
 
   public isUserBenefactor(): boolean {

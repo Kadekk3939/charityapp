@@ -37,6 +37,9 @@
                     <textarea ngModel name="reason" rows="5" cols="60" type="text">
                   
                   </textarea>
+                    <div *ngIf="err">
+                        <p style="color:red">*You need to provide reason</p>
+                    </div>
                 </div>
                 <button [disabled]="applayForm.form.invalid" class="register_button" type="submit">Applay</button>
             </div>

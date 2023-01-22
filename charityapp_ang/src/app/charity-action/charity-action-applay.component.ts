@@ -18,6 +18,7 @@ import { FormControl, FormGroup, NgForm, ReactiveFormsModule } from '@angular/fo
 export class CharityActionApplayComponent implements OnInit {
   public charityAction: CharityAction;
   name: string;
+  public err:boolean;
   public login: string;
   private sub: any;
 
@@ -26,7 +27,11 @@ export class CharityActionApplayComponent implements OnInit {
     reason: new FormControl('')
   });
 
-  constructor(private charityActionService: CharityActionService, private router: Router, private routeP: ActivatedRoute, private app: AppService) { }
+  constructor(private charityActionService: CharityActionService, private router: Router,
+     private routeP: ActivatedRoute, private app: AppService) { 
+      this.err=false;
+      
+     }
 
   ngOnInit(): void {
     this.app.refresh();
@@ -57,8 +62,13 @@ export class CharityActionApplayComponent implements OnInit {
     this.charityActionService.postCharityAplication(applayForm.value, this.app.headers).subscribe({
       next: (res) => {
         console.log(res);
+        this.router.navigateByUrl('/charityActionAplicationList');
       },
-      error: (err) => { alert(err.message); }
+      error: (err) => { 
+        if(applayForm.value.reason==""){
+          this.err = true;
+        }
+       }
     }
     );
   }
