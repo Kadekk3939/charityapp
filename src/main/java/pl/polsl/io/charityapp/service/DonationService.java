@@ -7,6 +7,8 @@ import pl.polsl.io.charityapp.model.dto.write.DonationWriteModel;
 import pl.polsl.io.charityapp.model.entity.Donation;
 import pl.polsl.io.charityapp.repository.DonationRepository;
 
+import java.util.List;
+
 @Service
 public class DonationService {
     private final DonationRepository donationRepository;
@@ -29,4 +31,9 @@ public class DonationService {
         donation.setPaymentConfirmed(Math.random() <= 0.5);
         return donationRepository.save(donation);
     }
+
+//    public List<Donation> getLoggedUserDonations() {
+//
+//        return
+//    }
 }

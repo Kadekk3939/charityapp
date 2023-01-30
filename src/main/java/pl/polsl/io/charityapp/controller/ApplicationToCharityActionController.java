@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.polsl.io.charityapp.model.dto.read.ApplicationToCharityActionReadModel;
 import pl.polsl.io.charityapp.model.dto.write.ApplicationToCharityActionWriteModel;
 import pl.polsl.io.charityapp.service.ApplicationToCharityActionService;
+import pl.polsl.io.charityapp.utility.ApplicationStatus;
 
 import java.util.List;
 
@@ -34,6 +35,11 @@ public class ApplicationToCharityActionController {
     public ResponseEntity<List<ApplicationToCharityActionReadModel>> getAllUserApplications() {
         List<ApplicationToCharityActionReadModel> applicationToCharityActionReadModels = applicationToCharityActionService.getCurrentUserApplications();
         return new ResponseEntity<>(applicationToCharityActionReadModels, HttpStatus.OK);
+    }
+
+    @GetMapping("/{action}/{benefactor}")
+    public ResponseEntity<ApplicationStatus> getUserApplicationStatus(@PathVariable String action, @PathVariable String benefactor) {
+        return new ResponseEntity<>(applicationToCharityActionService.getUserApplication2Action(benefactor, action), HttpStatus.OK);
     }
 
 }
