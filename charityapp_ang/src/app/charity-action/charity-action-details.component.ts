@@ -40,7 +40,7 @@ export class CharityActionDetailsComponent implements OnInit {
         alert(error.message);
       }
     );
-    this.charityActionService.getCharityAplication(this.name,this.login).subscribe(
+    this.charityActionService.getUserApplicationStatus(this.name,this.login).subscribe(
       (response:string)=>{
         if(response==null){
           this.status=true;
