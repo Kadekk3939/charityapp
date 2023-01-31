@@ -38,4 +38,7 @@ export class CharityActionService {
   public getListOfCharityAplications(headers: HttpHeaders): Observable<aplicationToCharityActionRead[]> {
     return this.http.get<aplicationToCharityActionRead[]>(`${this.apiServerUrl}/application2charity/all`, { headers: headers });
   }
+  public getCharityAplication(action:string,benefactor:string): Observable<string> {
+    return this.http.get<string>(`${this.apiServerUrl}/application2charity/${action}/${benefactor}`);
+  }
 }

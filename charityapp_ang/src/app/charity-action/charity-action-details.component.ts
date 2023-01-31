@@ -6,6 +6,7 @@ import { CharityActionService } from "./charity-action.service";
 import { RouterModule } from '@angular/router';
 import { UserServiceService } from "../user-service.service";
 import { AppService } from "../app.service";
+import { aplicationToCharityActionRead } from "../charity-action-aplication-list/aplication-to-charity-action-read";
 
 
 @Component({
@@ -18,10 +19,13 @@ export class CharityActionDetailsComponent implements OnInit {
   public charityAction: CharityAction | undefined;
   name: string;
   public login: string;
+  public status:boolean|null;
+  public reason: string;
   private sub: any;
   constructor(private charityActionService: CharityActionService, private router: Router, private routeP: ActivatedRoute, private app: AppService) { }
 
   ngOnInit(): void {
+    this.status = null;
     this.app.refresh();
     this.login = this.app.login;
     this.sub = this.routeP.params.subscribe(params =>
@@ -36,6 +40,29 @@ export class CharityActionDetailsComponent implements OnInit {
         alert(error.message);
       }
     );
+    this.charityActionService.getCharityAplication(this.name,this.login).subscribe(
+      (response:string)=>{
+        if(response==null){
+          this.status=true;
+        }
+        else if(response=="ACCEPTED"){
+          this.status=false;
+          this.reason='Accepted'
+
+        }
+        else if(response=="UNCHECKED"){
+          this.status=false;
+          this.reason='Unchecked'
+
+        }
+        else if(response=="DECLINED"){
+          this.status=true;
+        }
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
   }
 
   public logout(): void {

@@ -37,9 +37,19 @@
             <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0" height="50" width="100" />
             <div style="height: 200px"></div>
             <div *ngIf="isUserBenefactor()">
-                <div class="float-right btn-group btn-group-sm">
-                    <a (click)="routeA()" class="btn btn-primary tooltips" data-placement="top" data-original-title="Show">Applay </a>
+                <div *ngIf="status;else other_content">
+                    <div class="float-right btn-group btn-group-sm">
+                        <a (click)="routeA()" class="btn btn-primary tooltips" data-placement="top" data-original-title="Show">Applay </a>
+                    </div>
                 </div>
+                <ng-template #other_content>
+                    <div>
+                        <div class="float-right btn-group btn-group-sm">
+                            <a class="btn btn-primary tooltips" data-placement="top" data-original-title="Show">{{reason}} </a>
+                        </div>
+                    </div>
+                </ng-template>
+
             </div>
             <div *ngIf="isUserDonor()">
                 <div class="float-right btn-group btn-group-sm">
