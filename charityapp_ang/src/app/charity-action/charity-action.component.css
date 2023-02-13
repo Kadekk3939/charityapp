@@ -79,3 +79,11 @@ i {
 a {
   color: white;
 }
+
+p {
+  height: 30px;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
