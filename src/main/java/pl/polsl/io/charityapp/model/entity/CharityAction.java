@@ -25,4 +25,7 @@ public class CharityAction {
 
     @Column(name = "end_time")
     private Date endDate;
+
+    @Column(name = "closed_early")
+    private Boolean closedEarly = false;
 }

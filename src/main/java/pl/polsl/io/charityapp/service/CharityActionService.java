@@ -8,6 +8,8 @@ import pl.polsl.io.charityapp.model.dto.write.CharityActionWriteModel;
 import pl.polsl.io.charityapp.model.entity.CharityAction;
 import pl.polsl.io.charityapp.repository.CharityActionRepository;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,10 +23,8 @@ public class CharityActionService {
         this.charityActionMapper = charityActionMapper;
     }
 
-    //TODO: change to toEntity()
     public CharityAction addCharityAction(CharityActionWriteModel charityActionWriteModel) {
-        CharityAction charityAction = new CharityAction();
-        charityActionMapper.updateCharityActionFromDto(charityActionWriteModel, charityAction);
+        CharityAction charityAction = charityActionMapper.toEntity(charityActionWriteModel);
         return charityActionRepository.save(charityAction);
     }
 
@@ -53,5 +53,20 @@ public class CharityActionService {
         Optional<CharityAction> charityAction = charityActionRepository.findCharityActionByName(name);
 
         return charityAction.map(CharityAction::getActionId).orElse(null);
+    }
+
+    public List<CharityActionReadModel> getOpenCharityActions() {
+        Date tomorrow = java.sql.Date.valueOf(LocalDate.now().plusDays(1));
+        return charityActionMapper.map(charityActionRepository.findAllByClosedEarlyIsFalseAndEndDateGreaterThanOrderByEndDateAsc(tomorrow));
+    }
+
+    public Boolean closeAction(String name) {
+        CharityAction action = this.getCharityActionEntityByName(name);
+        if (action.getClosedEarly()) {
+            return false;
+        }
+        action.setClosedEarly(true);
+        charityActionRepository.save(action);
+        return true;
     }
 }

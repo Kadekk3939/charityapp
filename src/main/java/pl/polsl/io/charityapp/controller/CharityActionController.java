@@ -29,8 +29,10 @@ public class CharityActionController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/all")
+    //TODO: filters
     public ResponseEntity<List<CharityActionReadModel>> getAllCharityActions(){
-        List<CharityActionReadModel> listOfCharityActions = charityActionService.getAllActions();
+//        List<CharityActionReadModel> listOfCharityActions = charityActionService.getAllActions();
+        List<CharityActionReadModel> listOfCharityActions = charityActionService.getOpenCharityActions();
         return new ResponseEntity<>(listOfCharityActions, HttpStatus.OK);
     }
 
@@ -46,6 +48,9 @@ public class CharityActionController {
         return new ResponseEntity<>(charityActionReadModel, HttpStatus.OK);
     }
 
-
-
+    @PatchMapping("/close/{name}")
+    public ResponseEntity<Boolean> closeAction(@PathVariable String name) {
+        Boolean result = charityActionService.closeAction(name);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 }
