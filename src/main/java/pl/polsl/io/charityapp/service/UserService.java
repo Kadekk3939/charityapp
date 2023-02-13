@@ -34,11 +34,7 @@ public class UserService implements UserDetailsService {
         this.userMapper = userMapper;
     }
 
-    //TODO: change to toEntity()
-
     public User addUser(UserWriteModel userWriteModel){
-//        User user = new User();
-//        userMapper.updateUserFromDto(userWriteModel, user);
         User user = userMapper.toEntity(userWriteModel);
         user.setPassword(encoder.encode(userWriteModel.getPassword()));
 
