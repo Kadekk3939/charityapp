@@ -16,13 +16,7 @@ public class Document {
     @Column(name = "file_name")
     private String fileName;
 
-    //bytestream strategy.lazy ?
-
     @ManyToOne
     @JoinColumn(name = "application_id")
     private ApplicationToCharityAction applicationToCharityActionId;
-
-    public void openFile(){
-
-    }
 }

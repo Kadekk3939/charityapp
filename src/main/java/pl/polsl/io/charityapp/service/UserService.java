@@ -16,6 +16,7 @@ import pl.polsl.io.charityapp.repository.UserRepository;
 import pl.polsl.io.charityapp.repository.UserRoleRepository;
 import pl.polsl.io.charityapp.utility.CurrentUserData;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -100,6 +101,10 @@ public class UserService implements UserDetailsService {
         return null;
     }
 
+    public String getUserKey(String login) {
+        User user = getUserEntityByLogin(login);
+        return String.format("u%04x_", user.getUserId());
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

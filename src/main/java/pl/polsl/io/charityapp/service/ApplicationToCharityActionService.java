@@ -42,7 +42,8 @@ public class ApplicationToCharityActionService {
         newApp.setCharityActionId(action);
         newApp.setStatus(ApplicationStatus.UNCHECKED);
 
-        applicationToCharityActionRepository.save(newApp);
+        Long applicationId = applicationToCharityActionRepository.save(newApp).getApplicationId();
+        //
 
         return applicationToCharityMapper.toReadModel(newApp);
     }
@@ -67,6 +68,11 @@ public class ApplicationToCharityActionService {
         Optional<ApplicationToCharityAction> application = applicationToCharityActionRepository.findFirstByBenefactorIdAndCharityActionIdOrderByLastUpdatedDesc(user, charityAction);
 
         return application.map(ApplicationToCharityAction::getStatus).orElse(null);
+    }
+
+    public ApplicationToCharityAction getApplicationEntityById(Long applicationId) {
+//        Optional<ApplicationToCharityAction> app = applicationToCharityActionRepository.
+        return null;
     }
 
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.polsl.io.charityapp.model.dto.read.ApplicationToCharityActionReadModel;
 import pl.polsl.io.charityapp.model.dto.write.ApplicationToCharityActionWriteModel;
 import pl.polsl.io.charityapp.service.ApplicationToCharityActionService;
+import pl.polsl.io.charityapp.service.DocumentService;
 import pl.polsl.io.charityapp.utility.ApplicationStatus;
 
 import java.util.List;
@@ -18,9 +19,12 @@ public class ApplicationToCharityActionController {
 
     private final ApplicationToCharityActionService applicationToCharityActionService;
 
+    private final DocumentService documentService;
+
     @Autowired
-    public ApplicationToCharityActionController(ApplicationToCharityActionService applicationToCharityActionService) {
+    public ApplicationToCharityActionController(ApplicationToCharityActionService applicationToCharityActionService, DocumentService documentService) {
         this.applicationToCharityActionService = applicationToCharityActionService;
+        this.documentService = documentService;
     }
 
     // dodanie aplikacji
