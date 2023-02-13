@@ -9,6 +9,7 @@ import pl.polsl.io.charityapp.model.dto.write.ApplicationToCharityActionWriteMod
 import pl.polsl.io.charityapp.service.ApplicationToCharityActionService;
 import pl.polsl.io.charityapp.service.DocumentService;
 import pl.polsl.io.charityapp.utility.ApplicationStatus;
+import pl.polsl.io.charityapp.utility.FileManager;
 
 import java.util.List;
 
@@ -30,7 +31,14 @@ public class ApplicationToCharityActionController {
     // dodanie aplikacji
     @PostMapping("/add")
     public ResponseEntity<ApplicationToCharityActionReadModel> addApplication(@RequestBody ApplicationToCharityActionWriteModel application) {
-        ApplicationToCharityActionReadModel newApp = applicationToCharityActionService.addApplication(application);
+        Long applicationId = applicationToCharityActionService.addApplication(application);
+
+
+        //List<String> documents = FileManager.uploadFiles()
+        // DocWriteModel -> MultipartFile?
+
+        ApplicationToCharityActionReadModel newApp = applicationToCharityActionService.addDocumentsToApplication();
+
         return new ResponseEntity<>(newApp, HttpStatus.OK);
     }
 
