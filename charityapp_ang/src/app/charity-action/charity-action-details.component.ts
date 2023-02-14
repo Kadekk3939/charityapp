@@ -91,6 +91,27 @@ export class CharityActionDetailsComponent implements OnInit {
     }
   }
 
+  public isUserWorker(): boolean {
+    if (this.app.user?.role == "Worker") {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  public endCharityAction() {
+    this.charityActionService.endCharityAction(this.name).subscribe(
+      (response: Boolean) => {
+        console.log(response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+    this.router.navigateByUrl('/charityAction');
+  }
+
   public isUserDonor(): boolean {
     if (this.app.user?.role == "Donor") {
       return true;

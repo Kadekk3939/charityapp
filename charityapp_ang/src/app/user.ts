@@ -7,12 +7,4 @@ export class User {
     email: string;
     role: string;
 
-    public isBenefactor(): boolean {
-        if (this.role == "Benefactor") {
-            return true;
-        }
-        else {
-            return false
-        }
-    }
 }

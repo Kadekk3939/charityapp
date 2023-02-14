@@ -23,6 +23,10 @@ export class CharityActionService {
     return this.http.post<CharityAction>(`${this.apiServerUrl}/action/add`, charityAction);
   }
 
+  public endCharityAction(name: string): Observable<Boolean> {
+    return this.http.patch<Boolean>(`${this.apiServerUrl}/action/close/${name}`, name);
+  }
+
   public getCharityActionByName(name: string): Observable<CharityAction> {
     return this.http.get<CharityAction>(`${this.apiServerUrl}/action/name/${name}`);
   }
