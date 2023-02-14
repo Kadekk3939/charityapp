@@ -12,6 +12,8 @@ import { CharityActionDetailsComponent } from './charity-action/charity-action-d
 import { CharityActionApplayComponent } from './charity-action/charity-action-applay.component';
 import { CharityActionSupportComponent } from './charity-action/charity-action-support.component';
 import { CharityActionAplicationListComponent } from './charity-action-aplication-list/charity-action-aplication-list.component'
+import { BenefactorsApplicationsComponent } from './benefactors-applications/benefactors-applications.component'
+import { RateDonorsListComponent } from './rate-donors-list/rate-donors-list.component'
 
 const routes: Routes = [
   { path: 'welcome', component: StartingPageComponent },
@@ -26,7 +28,9 @@ const routes: Routes = [
   { path: 'charityAction/:name', component: CharityActionDetailsComponent },
   { path: 'charityAction/:name/applay', component: CharityActionApplayComponent },
   { path: 'charityAction/:name/support', component: CharityActionSupportComponent },
-  { path: 'charityActionAplicationList', component: CharityActionAplicationListComponent }
+  { path: 'charityActionApplicationList', component: CharityActionAplicationListComponent },
+  { path: 'benefactorsApplications', component: BenefactorsApplicationsComponent },
+  { path: 'rateDonorsList', component: RateDonorsListComponent }
 
 ];
 

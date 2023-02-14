@@ -24,6 +24,8 @@ import { CharityActionSupportComponent } from './charity-action/charity-action-s
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, CurrencyPipe} from '@angular/common';
 import { CharityActionAplicationListComponent } from './charity-action-aplication-list/charity-action-aplication-list.component';
+import { BenefactorsApplicationsComponent } from './benefactors-applications/benefactors-applications.component';
+import { RateDonorsListComponent } from './rate-donors-list/rate-donors-list.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { CharityActionAplicationListComponent } from './charity-action-aplicatio
     CharityActionDetailsComponent,
     CharityActionApplayComponent,
     CharityActionSupportComponent,
-    CharityActionAplicationListComponent
+    CharityActionAplicationListComponent,
+    BenefactorsApplicationsComponent,
+    RateDonorsListComponent
 
   ],
   imports: [

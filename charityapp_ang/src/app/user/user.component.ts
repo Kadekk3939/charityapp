@@ -58,4 +58,11 @@ export class UserComponent implements OnInit {
     return false;
   }
 
+  public userIsWorker(): boolean {
+    if (this.user?.role == 'Worker') {
+      return true;
+    }
+    return false;
+  }
+
 }
