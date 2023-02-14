@@ -45,7 +45,7 @@ public class FileController {
             try {
                 uploaded = false;
                 fileName = null;
-                fileName = uploadSingleFile("d_", file);
+                fileName = uploadSingleFile(documentService.generatePrefixFromId(applicationId), file);
                 uploaded = true;
             } catch (IOException e) {
                 uploaded = false;
@@ -60,10 +60,10 @@ public class FileController {
     }
 
     // pobranie dokumentu
-    @GetMapping("/documents/download/{filename}")
-    public ResponseEntity<Resource> addDocumentsToApplication(@PathVariable String filename) {
+    @GetMapping("/documents/download/{directory}/{filename}")
+    public ResponseEntity<Resource> addDocumentsToApplication(@PathVariable String directory, @PathVariable String filename) {
         try {
-            return downloadSingleFile(filename);
+            return downloadSingleFile(directory, filename);
         } catch (IOException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -84,15 +84,18 @@ public class FileController {
 //    }
 
 
-    private String uploadSingleFile(String prefix, MultipartFile file) throws IOException {
-        String filename = prefix + StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
-        Path fileStorage = Paths.get(DIRECTORY, filename).toAbsolutePath().normalize();
+    private String uploadSingleFile(String directory, MultipartFile file) throws IOException {
+        if (!Files.exists(Paths.get(DIRECTORY, directory).toAbsolutePath().normalize())) {
+            Files.createDirectory(Paths.get(DIRECTORY, directory).toAbsolutePath().normalize());
+        }
+        String filename = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
+        Path fileStorage = Paths.get(DIRECTORY, directory, filename).toAbsolutePath().normalize();
         Files.copy(file.getInputStream(), fileStorage, StandardCopyOption.REPLACE_EXISTING);
         return filename;
     }
 
-    private ResponseEntity<Resource> downloadSingleFile(String fileName) throws IOException {
-        Path filePath = Paths.get(DIRECTORY).toAbsolutePath().normalize().resolve(fileName);
+    private ResponseEntity<Resource> downloadSingleFile(String directory, String fileName) throws IOException {
+        Path filePath = Paths.get(DIRECTORY, directory).toAbsolutePath().normalize().resolve(fileName);
         if(!Files.exists(filePath)) {
             throw new FileNotFoundException(fileName + " was not found on the server");
         }

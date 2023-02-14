@@ -44,8 +44,8 @@ public class ApplicationToCharityActionService {
         return applicationToCharityActionRepository.save(newApp).getApplicationId();
     }
 
-    public ApplicationToCharityActionReadModel addDocumentsToApplication() {
-        return null;
+    public ApplicationToCharityAction save(ApplicationToCharityAction application) {
+        return applicationToCharityActionRepository.save(application);
     }
 
     public List<ApplicationToCharityActionReadModel> getCurrentUserApplications() {

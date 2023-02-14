@@ -42,4 +42,9 @@ public class ApplicationToCharityActionController {
         return new ResponseEntity<>(applicationToCharityActionService.getUserApplication2Action(benefactor, action), HttpStatus.OK);
     }
 
+    @GetMapping("/random")
+    public ResponseEntity<ApplicationToCharityActionReadModel> getRandomApplication() {
+        return null;
+    }
+
 }

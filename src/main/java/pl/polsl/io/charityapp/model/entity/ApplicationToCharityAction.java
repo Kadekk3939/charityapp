@@ -6,6 +6,7 @@ import pl.polsl.io.charityapp.utility.ApplicationStatus;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -35,7 +36,7 @@ public class ApplicationToCharityAction {
     private ApplicationStatus status;
 
     @OneToMany
-    private List<Document> documents;
+    private List<Document> documents = new ArrayList<>();
 
     @Column(name = "last_updated")
     private LocalDateTime lastUpdated;

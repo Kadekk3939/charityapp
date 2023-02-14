@@ -5,11 +5,13 @@ import org.springframework.stereotype.Service;
 import pl.polsl.io.charityapp.mappers.DocumentMapper;
 import pl.polsl.io.charityapp.model.dto.read.DocumentReadModel;
 import pl.polsl.io.charityapp.model.dto.write.DocumentWriteModel;
+import pl.polsl.io.charityapp.model.entity.ApplicationToCharityAction;
 import pl.polsl.io.charityapp.model.entity.Document;
 import pl.polsl.io.charityapp.repository.DocumentRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DocumentService {
@@ -26,8 +28,11 @@ public class DocumentService {
 
     public DocumentReadModel addDocument(Long applicationId, DocumentWriteModel documentWriteModel) {
         Document doc = documentMapper.toEntity(applicationToCharityActionService, applicationId, documentWriteModel);
-        documentRepository.save(doc);
+        ApplicationToCharityAction application = applicationToCharityActionService.getApplicationEntityById(applicationId);
+        application.getDocuments().add(documentRepository.save(doc));
+        applicationToCharityActionService.save(application);
         return documentMapper.toReadModel(doc);
+
     }
 
     public List<DocumentReadModel> addDocuments(Long applicationId, List<String> fileNames) {
@@ -41,10 +46,11 @@ public class DocumentService {
     }
 
     public List<DocumentReadModel> getDocuments(Long applicationId) {
-        return documentMapper.map(documentRepository.findAllByApplicationToCharityActionId(applicationId));
+        List<Document> docs = documentRepository.findAllByApplicationToCharityActionId(applicationId);
+        return docs.stream().map(documentMapper::toReadModel).collect(Collectors.toList());
     }
 
     public String generatePrefixFromId(Long applicationId) {
-        return null;
+        return String.format("%04x", applicationId);
     }
 }
