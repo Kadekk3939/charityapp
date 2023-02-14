@@ -8,7 +8,6 @@ import java.util.List;
 public class ApplicationToCharityActionWriteModel {
     private String charityActionName;
     private String reason;
-    private List<String> documents;
 }
 
 

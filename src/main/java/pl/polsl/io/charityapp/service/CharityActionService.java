@@ -74,4 +74,8 @@ public class CharityActionService {
         CharityAction action = getCharityActionEntityByName(name);
         return String.format("a%04x_", action.getActionId());
     }
+
+    public String generatePrefix(Long actionId) {
+        return null;
+    }
 }

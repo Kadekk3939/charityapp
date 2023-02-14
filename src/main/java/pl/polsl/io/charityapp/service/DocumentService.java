@@ -14,17 +14,18 @@ import java.util.List;
 @Service
 public class DocumentService {
     private final DocumentRepository documentRepository;
-
     private final DocumentMapper documentMapper;
+    private final ApplicationToCharityActionService applicationToCharityActionService;
 
     @Autowired
-    public DocumentService(DocumentRepository documentRepository, DocumentMapper documentMapper) {
+    public DocumentService(DocumentRepository documentRepository, DocumentMapper documentMapper, ApplicationToCharityActionService applicationToCharityActionService) {
         this.documentRepository = documentRepository;
         this.documentMapper = documentMapper;
+        this.applicationToCharityActionService = applicationToCharityActionService;
     }
 
     public DocumentReadModel addDocument(Long applicationId, DocumentWriteModel documentWriteModel) {
-        Document doc = documentMapper.toEntity(applicationId, documentWriteModel);
+        Document doc = documentMapper.toEntity(applicationToCharityActionService, applicationId, documentWriteModel);
         documentRepository.save(doc);
         return documentMapper.toReadModel(doc);
     }
@@ -43,5 +44,7 @@ public class DocumentService {
         return documentMapper.map(documentRepository.findAllByApplicationToCharityActionId(applicationId));
     }
 
-
+    public String generatePrefixFromId(Long applicationId) {
+        return null;
+    }
 }

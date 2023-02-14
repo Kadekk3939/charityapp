@@ -101,9 +101,8 @@ public class UserService implements UserDetailsService {
         return null;
     }
 
-    public String getUserKey(String login) {
-        User user = getUserEntityByLogin(login);
-        return String.format("u%04x_", user.getUserId());
+    public String generatePrefix(Long userId) {
+        return String.format("%04x", userId);
     }
 
     @Override

@@ -11,7 +11,7 @@ import pl.polsl.io.charityapp.model.entity.ApplicationToCharityAction;
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    uses = {UserMapper.class, CharityActionMapper.class, DocumentMapper.class})
+    uses = {UserMapper.class, CharityActionMapper.class})
 public interface ApplicationToCharityMapper {
     ApplicationToCharityMapper INSTANCE = Mappers.getMapper(ApplicationToCharityMapper.class);
 

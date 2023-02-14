@@ -8,7 +8,6 @@ import pl.polsl.io.charityapp.model.dto.read.CharityActionReadModel;
 import pl.polsl.io.charityapp.model.dto.write.CharityActionWriteModel;
 import pl.polsl.io.charityapp.model.entity.CharityAction;
 import pl.polsl.io.charityapp.service.CharityActionService;
-import pl.polsl.io.charityapp.utility.FileManager;
 
 import java.util.List;
 

@@ -8,7 +8,6 @@ import pl.polsl.io.charityapp.model.dto.read.DocumentReadModel;
 import pl.polsl.io.charityapp.model.dto.write.DocumentWriteModel;
 import pl.polsl.io.charityapp.model.entity.Document;
 import pl.polsl.io.charityapp.service.ApplicationToCharityActionService;
-import pl.polsl.io.charityapp.service.CharityActionService;
 
 import java.util.List;
 
@@ -17,9 +16,11 @@ import java.util.List;
 public interface DocumentMapper {
     DocumentMapper INSTANCE = Mappers.getMapper(DocumentMapper.class);
 
-    //@Mapping(source = "applicationId", expression = "java(charityActionService.getApplicationE applicationToCharityActionId)")
-    Document toEntity(CharityActionService charityActionService, Long applicationId, DocumentWriteModel documentWriteModel);
+    @Mapping(target = "applicationToCharityActionId", expression = "java(applicationToCharityActionService.getApplicationEntityById(applicationId))")
+    Document toEntity(ApplicationToCharityActionService applicationToCharityActionService, Long applicationId, DocumentWriteModel documentWriteModel);
+
     DocumentReadModel toReadModel(Document document);
+    DocumentReadModel toReadModelFromString(String fileName);
     DocumentWriteModel toWriteModel(String fileName);
 
     List<DocumentWriteModel> mapFromString(List<String> fileNames);

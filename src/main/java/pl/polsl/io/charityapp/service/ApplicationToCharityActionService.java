@@ -71,8 +71,8 @@ public class ApplicationToCharityActionService {
     }
 
     public ApplicationToCharityAction getApplicationEntityById(Long applicationId) {
-//        Optional<ApplicationToCharityAction> app = applicationToCharityActionRepository.
-        return null;
+        Optional<ApplicationToCharityAction> app = applicationToCharityActionRepository.findById(applicationId);
+        return app.orElse(null);
     }
 
 }

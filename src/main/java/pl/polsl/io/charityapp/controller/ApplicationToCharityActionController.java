@@ -9,7 +9,6 @@ import pl.polsl.io.charityapp.model.dto.write.ApplicationToCharityActionWriteMod
 import pl.polsl.io.charityapp.service.ApplicationToCharityActionService;
 import pl.polsl.io.charityapp.service.DocumentService;
 import pl.polsl.io.charityapp.utility.ApplicationStatus;
-import pl.polsl.io.charityapp.utility.FileManager;
 
 import java.util.List;
 
@@ -20,28 +19,17 @@ public class ApplicationToCharityActionController {
 
     private final ApplicationToCharityActionService applicationToCharityActionService;
 
-    private final DocumentService documentService;
-
     @Autowired
-    public ApplicationToCharityActionController(ApplicationToCharityActionService applicationToCharityActionService, DocumentService documentService) {
+    public ApplicationToCharityActionController(ApplicationToCharityActionService applicationToCharityActionService) {
         this.applicationToCharityActionService = applicationToCharityActionService;
-        this.documentService = documentService;
     }
 
-    // dodanie aplikacji
+    // dodanie aplikacji bez dokumentów
     @PostMapping("/add")
-    public ResponseEntity<ApplicationToCharityActionReadModel> addApplication(@RequestBody ApplicationToCharityActionWriteModel application) {
+    public ResponseEntity<Long> addApplicationWithoutDocuments(@RequestBody ApplicationToCharityActionWriteModel application) {
         Long applicationId = applicationToCharityActionService.addApplication(application);
-
-
-        //List<String> documents = FileManager.uploadFiles()
-        // DocWriteModel -> MultipartFile?
-
-        ApplicationToCharityActionReadModel newApp = applicationToCharityActionService.addDocumentsToApplication();
-
-        return new ResponseEntity<>(newApp, HttpStatus.OK);
+        return new ResponseEntity<>(applicationId, HttpStatus.OK);
     }
-
     // wypisanie aplikacji bieżącego użytkownika
     @GetMapping("/all")
     public ResponseEntity<List<ApplicationToCharityActionReadModel>> getAllUserApplications() {
