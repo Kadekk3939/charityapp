@@ -11,6 +11,7 @@ import pl.polsl.io.charityapp.model.entity.User;
 import pl.polsl.io.charityapp.repository.ApplicationToCharityActionRepository;
 import pl.polsl.io.charityapp.utility.ApplicationStatus;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;

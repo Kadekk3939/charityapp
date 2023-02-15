@@ -3,6 +3,8 @@ package pl.polsl.io.charityapp.model.dto.read;
 import lombok.Data;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class CharityActionReadModel {
@@ -11,6 +13,10 @@ public class CharityActionReadModel {
     private Float goal;
     private Date endDate;
     private boolean shortDescription;
+
+    //TODO: money collected
+    private String directory;
+    private List<String> images = new ArrayList<>();
 
     public String getDescription() {
         int len = 30;

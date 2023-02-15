@@ -28,4 +28,7 @@ public class CharityAction {
 
     @Column(name = "closed_early")
     private Boolean closedEarly = false;
+
+    @Column(name = "images")
+    private String images = "";
 }
