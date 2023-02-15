@@ -6,6 +6,9 @@ import { aplicationToCharityAction } from './aplication-to-charity-action';
 import { environment } from "../../environments/environment";
 import { aplicationToCharityActionRead } from '../charity-action-aplication-list/aplication-to-charity-action-read';
 import { donationToCharityAction } from './donation-to-charity-action';
+import {
+  benefApplicationToCharityActionRead
+} from "../benefactors-applications/benef-application-to-charity-action-read";
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +45,11 @@ export class CharityActionService {
   public getListOfCharityAplications(headers: HttpHeaders): Observable<aplicationToCharityActionRead[]> {
     return this.http.get<aplicationToCharityActionRead[]>(`${this.apiServerUrl}/application2charity/all`, { headers: headers });
   }
+
+  public getBenefactorApplication(): Observable<benefApplicationToCharityActionRead[]> {
+    return this.http.get<benefApplicationToCharityActionRead[]>(`${this.apiServerUrl}/application2charity/random`);
+  }
+
   public getUserApplicationStatus(action:string,benefactor:string): Observable<string> {
     return this.http.get<string>(`${this.apiServerUrl}/application2charity/${action}/${benefactor}`);
   }
