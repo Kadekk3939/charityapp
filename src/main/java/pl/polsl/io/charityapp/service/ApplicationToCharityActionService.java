@@ -32,8 +32,7 @@ public class ApplicationToCharityActionService {
         this.userService = userService;
     }
 
-
-    public ApplicationToCharityActionReadModel addApplication(ApplicationToCharityActionWriteModel application) {
+    public Long addApplication(ApplicationToCharityActionWriteModel application) {
         ApplicationToCharityAction newApp = applicationToCharityMapper.toEntity(application);
         CharityAction action = charityActionService.getCharityActionEntityByName(application.getCharityActionName());
         User currentUser = userService.getLoggedUserEntity();
@@ -42,9 +41,11 @@ public class ApplicationToCharityActionService {
         newApp.setCharityActionId(action);
         newApp.setStatus(ApplicationStatus.UNCHECKED);
 
-        applicationToCharityActionRepository.save(newApp);
+        return applicationToCharityActionRepository.save(newApp).getApplicationId();
+    }
 
-        return applicationToCharityMapper.toReadModel(newApp);
+    public ApplicationToCharityAction save(ApplicationToCharityAction application) {
+        return applicationToCharityActionRepository.save(application);
     }
 
     public List<ApplicationToCharityActionReadModel> getCurrentUserApplications() {
@@ -67,6 +68,11 @@ public class ApplicationToCharityActionService {
         Optional<ApplicationToCharityAction> application = applicationToCharityActionRepository.findFirstByBenefactorIdAndCharityActionIdOrderByLastUpdatedDesc(user, charityAction);
 
         return application.map(ApplicationToCharityAction::getStatus).orElse(null);
+    }
+
+    public ApplicationToCharityAction getApplicationEntityById(Long applicationId) {
+        Optional<ApplicationToCharityAction> app = applicationToCharityActionRepository.findById(applicationId);
+        return app.orElse(null);
     }
 
 }

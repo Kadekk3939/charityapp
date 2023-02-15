@@ -69,4 +69,13 @@ public class CharityActionService {
         charityActionRepository.save(action);
         return true;
     }
+
+    public String getActionKey(String name) {
+        CharityAction action = getCharityActionEntityByName(name);
+        return String.format("a%04x_", action.getActionId());
+    }
+
+    public String generatePrefix(Long actionId) {
+        return null;
+    }
 }

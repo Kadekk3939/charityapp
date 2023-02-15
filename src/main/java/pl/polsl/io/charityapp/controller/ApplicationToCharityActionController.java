@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.polsl.io.charityapp.model.dto.read.ApplicationToCharityActionReadModel;
 import pl.polsl.io.charityapp.model.dto.write.ApplicationToCharityActionWriteModel;
 import pl.polsl.io.charityapp.service.ApplicationToCharityActionService;
+import pl.polsl.io.charityapp.service.DocumentService;
 import pl.polsl.io.charityapp.utility.ApplicationStatus;
 
 import java.util.List;
@@ -23,13 +24,12 @@ public class ApplicationToCharityActionController {
         this.applicationToCharityActionService = applicationToCharityActionService;
     }
 
-    // dodanie aplikacji
+    // dodanie aplikacji bez dokumentów
     @PostMapping("/add")
-    public ResponseEntity<ApplicationToCharityActionReadModel> addApplication(@RequestBody ApplicationToCharityActionWriteModel application) {
-        ApplicationToCharityActionReadModel newApp = applicationToCharityActionService.addApplication(application);
-        return new ResponseEntity<>(newApp, HttpStatus.OK);
+    public ResponseEntity<Long> addApplicationWithoutDocuments(@RequestBody ApplicationToCharityActionWriteModel application) {
+        Long applicationId = applicationToCharityActionService.addApplication(application);
+        return new ResponseEntity<>(applicationId, HttpStatus.OK);
     }
-
     // wypisanie aplikacji bieżącego użytkownika
     @GetMapping("/all")
     public ResponseEntity<List<ApplicationToCharityActionReadModel>> getAllUserApplications() {
@@ -40,6 +40,11 @@ public class ApplicationToCharityActionController {
     @GetMapping("/{action}/{benefactor}")
     public ResponseEntity<ApplicationStatus> getUserApplicationStatus(@PathVariable String action, @PathVariable String benefactor) {
         return new ResponseEntity<>(applicationToCharityActionService.getUserApplication2Action(benefactor, action), HttpStatus.OK);
+    }
+
+    @GetMapping("/random")
+    public ResponseEntity<ApplicationToCharityActionReadModel> getRandomApplication() {
+        return null;
     }
 
 }
