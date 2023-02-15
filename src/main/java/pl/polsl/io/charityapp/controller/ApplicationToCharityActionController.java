@@ -43,9 +43,20 @@ public class ApplicationToCharityActionController {
     }
 
     @GetMapping("/random")
-    public ResponseEntity<ApplicationToCharityActionReadModel> getRandomApplication() {
-        ApplicationToCharityActionReadModel randomApplicationToCharityActionReadModel = applicationToCharityActionService.getRandomUncheckedApplication();
-        return new ResponseEntity<>(randomApplicationToCharityActionReadModel, HttpStatus.OK);
+    public ResponseEntity<Long> getRandomApplication() {
+        Long applicationId = applicationToCharityActionService.getRandomUncheckedOrPreviouslyChosenApplication();
+        return new ResponseEntity<>(applicationId, HttpStatus.OK);
+    }
+
+    @GetMapping("/find/{applicationId}")
+    public ResponseEntity<ApplicationToCharityActionReadModel> getApplicationByApplicationId(@PathVariable Long applicationId) {
+        ApplicationToCharityActionReadModel app = applicationToCharityActionService.getApplicationById(applicationId);
+        return new ResponseEntity<>(app, HttpStatus.OK);
+    }
+
+    @GetMapping("/process/{applicationId}/{verdict}")
+    public ResponseEntity<String> processApplication(@PathVariable Long applicationId, @PathVariable String verdict) {
+        return new ResponseEntity<>(applicationToCharityActionService.processVerdict(applicationId, verdict), HttpStatus.OK);
     }
 
 }

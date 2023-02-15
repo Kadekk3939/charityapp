@@ -5,6 +5,7 @@ import pl.polsl.io.charityapp.utility.ApplicationStatus;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Null;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,10 @@ public class ApplicationToCharityAction {
 
     @Column(name = "last_updated")
     private LocalDateTime lastUpdated;
+
+    @ManyToOne
+    @JoinColumn(name="verified_by")
+    private User verifiedBy = null;
 
     @PrePersist
     public void prePersist() {

@@ -10,9 +10,7 @@ import pl.polsl.io.charityapp.model.entity.CharityAction;
 import pl.polsl.io.charityapp.model.entity.User;
 import pl.polsl.io.charityapp.repository.ApplicationToCharityActionRepository;
 import pl.polsl.io.charityapp.utility.ApplicationStatus;
-import pl.polsl.io.charityapp.utility.CurrentUserData;
 
-import java.util.Currency;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -54,11 +52,24 @@ public class ApplicationToCharityActionService {
         return applicationToCharityMapper.map(applications);
     }
 
-    public ApplicationToCharityActionReadModel getRandomUncheckedApplication() {
+    public Long getRandomUncheckedOrPreviouslyChosenApplication() {
+        User currentUser = userService.getLoggedUserEntity();
+        Optional<ApplicationToCharityAction> application = applicationToCharityActionRepository.findByVerifiedByAndStatus(currentUser, ApplicationStatus.UNCHECKED);
+        // worker already has application to process
+        if (application.isPresent()) {
+            return application.get().getApplicationId();
+        }
         Random random = new Random();
-        List<ApplicationToCharityAction> applications = applicationToCharityActionRepository.findAllByStatus(ApplicationStatus.UNCHECKED);
-        //TODO: error when no unchecked applications
-        return applicationToCharityMapper.toReadModel(applications.get(random.nextInt(applications.size())));
+        List<ApplicationToCharityAction> applications = applicationToCharityActionRepository.findAllByStatusAndVerifiedByIsNull(ApplicationStatus.UNCHECKED);
+        // no applications to process
+        if (applications == null || applications.isEmpty()) {
+            return null;
+        }
+        // random application
+        ApplicationToCharityAction app = applications.get(random.nextInt(applications.size()));
+        app.setVerifiedBy(currentUser);
+        applicationToCharityActionRepository.save(app);
+        return app.getApplicationId();
     }
 
     public ApplicationStatus getUserApplication2Action(String benefactorLogin, String actionName) {
@@ -75,4 +86,27 @@ public class ApplicationToCharityActionService {
         return app.orElse(null);
     }
 
+    public ApplicationToCharityActionReadModel getApplicationById(Long applicationId) {
+        ApplicationToCharityAction app = getApplicationEntityById(applicationId);
+        return applicationToCharityMapper.toReadModel(app);
+    }
+
+    public String processVerdict(Long applicationId, String verdict) {
+        ApplicationToCharityAction app = getApplicationEntityById(applicationId);
+        String result = null;
+        switch (verdict) {
+            case "ACCEPTED":
+                app.setStatus(ApplicationStatus.ACCEPTED);
+                result = "OK";
+                break;
+            case "REJECTED":
+                app.setStatus(ApplicationStatus.REJECTED);
+                result = "OK";
+                break;
+            default:
+                result = "ERROR";
+        }
+        applicationToCharityActionRepository.save(app);
+        return result;
+    }
 }
