@@ -62,11 +62,6 @@
         </button>
             </div>
             <div class="modal-body">
-                <!-- <form #documentsForm="ngForm" (ngSubmit)="documentsSend(documentsForm)" class="form_class_documents">
-                    <div>
-                        <button type="submit" class="button" data-dismiss="modal">Send</button>
-                    </div>
-                </form> -->
 
                 <form enctype="multipart/form-data">
                     <fieldset>
@@ -77,6 +72,13 @@
                         </div>
                     </fieldset>
                 </form>
+                <div *ngIf="filenames?.length! > 0" class="js-upload-finished">
+                    <h4>Sent files</h4>
+                    <div *ngFor="let filename of filenames" class="list-group">
+                        {{ filename }}
+                        <br>
+                    </div>
+                </div>
                 <button class="button" data-dismiss="modal" (click)="finish()">Finish</button>
 
 

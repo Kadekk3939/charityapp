@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from "@angular/common/http";
+import { HttpErrorResponse, HttpEvent, HttpEventType } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CharityAction } from "./charity-action";
@@ -22,6 +22,7 @@ export class CharityActionApplayComponent implements OnInit {
   public login: string;
   private sub: any;
   private action:number;
+  filenames: string[] = [];
 
   applayForm = new FormGroup({
     actionName: new FormControl(''),
@@ -96,23 +97,30 @@ export class CharityActionApplayComponent implements OnInit {
     button.click();
   }
 
-  public documentsSend(documentsForm: NgForm) {
-    
-  }
   onUploadFiles(files: File[]): void {
     const formData = new FormData();
     for (const file of files) { formData.append('files', file, file.name); }
     this.charityActionService.upload(this.action,formData).subscribe(
       event => {
         console.log(event);
-        //this.resportProgress(event);
+        this.raport(event);
+        
       },
       (error: HttpErrorResponse) => {
         console.log(error);
       }
     );
   }
-
+  private raport(httpEvent: HttpEvent<string[] | Blob>){
+    switch(httpEvent.type) {
+      case HttpEventType.Response:
+        if (httpEvent.body instanceof Array) {
+          for (const filename of httpEvent.body) {
+            this.filenames.unshift(filename);
+          }
+        }
+    }   
+  }
   public finish(){
     this.router.navigateByUrl('/charityActionAplicationList');
   }
