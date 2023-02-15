@@ -45,7 +45,6 @@
                     </div>
                     <div>
                         <button class="button" type="submit">Applay</button>
-                        <a class="button" (click)="onOpenModal()">Add documents</a>
                     </div>
                 </div>
             </form>
@@ -63,10 +62,23 @@
         </button>
             </div>
             <div class="modal-body">
+                <!-- <form #documentsForm="ngForm" (ngSubmit)="documentsSend(documentsForm)" class="form_class_documents">
+                    <div>
+                        <button type="submit" class="button" data-dismiss="modal">Send</button>
+                    </div>
+                </form> -->
 
-                <div class="modal-footer">
-                    <button type="button" id="add-action-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                <form enctype="multipart/form-data">
+                    <fieldset>
+                        <div class="form-group">
+                            <div>
+                                <input type="file" (change)="onUploadFiles($any($event).target.files)" name="files" multiple class="form-control" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <button class="button" data-dismiss="modal" (click)="finish()">Finish</button>
+
 
             </div>
         </div>

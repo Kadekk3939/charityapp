@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpEvent, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { CharityAction } from "./charity-action";
 import { aplicationToCharityAction } from './aplication-to-charity-action';
@@ -52,5 +52,20 @@ export class CharityActionService {
 
   public getUserApplicationStatus(action:string,benefactor:string): Observable<string> {
     return this.http.get<string>(`${this.apiServerUrl}/application2charity/${action}/${benefactor}`);
+  }
+
+  upload(applicationId:number,formData: FormData): Observable<HttpEvent<string[]>> {
+    return this.http.post<string[]>(`${this.apiServerUrl}/files/documents/add/${applicationId}`, formData, {
+      reportProgress: true,
+      observe: 'events'
+    });
+  }
+
+  download(directory:string,filename: string): Observable<HttpEvent<Blob>> {
+    return this.http.get(`${this.apiServerUrl}/files/documents/download/${directory}/${filename}`, {
+      reportProgress: true,
+      observe: 'events',
+      responseType: 'blob'
+    });
   }
 }

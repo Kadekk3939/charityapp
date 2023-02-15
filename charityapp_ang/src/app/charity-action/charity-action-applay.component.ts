@@ -64,7 +64,8 @@ export class CharityActionApplayComponent implements OnInit {
       next: (res) => {
         this.action=res;
         console.log(res);
-        this.router.navigateByUrl('/charityActionAplicationList');
+        this.onOpenModal()
+        //this.router.navigateByUrl('/charityActionAplicationList');
       },
       error: (err) => { 
         if(applayForm.value.reason==""){
@@ -95,18 +96,26 @@ export class CharityActionApplayComponent implements OnInit {
     button.click();
   }
 
-  public onAddDocuments(addForm: NgForm): void {
-    // @ts-ignore
-    document.getElementById('add-action-form').click();
-    this.charityActionService.addCharityAction(addForm.value).subscribe(
-      (response: CharityAction) => {
-        console.log(response);
-        addForm.reset();
+  public documentsSend(documentsForm: NgForm) {
+    
+  }
+  onUploadFiles(files: File[]): void {
+    const formData = new FormData();
+    for (const file of files) { formData.append('files', file, file.name); }
+    this.charityActionService.upload(this.action,formData).subscribe(
+      event => {
+        console.log(event);
+        //this.resportProgress(event);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
-        addForm.reset();
+        console.log(error);
       }
     );
   }
+
+  public finish(){
+    this.router.navigateByUrl('/charityActionAplicationList');
+  }
 }
+
+
