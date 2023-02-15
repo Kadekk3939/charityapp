@@ -15,9 +15,11 @@ public interface ApplicationToCharityActionRepository extends JpaRepository<Appl
 
     List<ApplicationToCharityAction> findAllByBenefactorId(User benefactorId);
 
-    List<ApplicationToCharityAction> findAllByStatus(ApplicationStatus applicationStatus);
+    List<ApplicationToCharityAction> findAllByStatusAndVerifiedByIsNull(ApplicationStatus applicationStatus);
 
     Optional<ApplicationToCharityAction> findFirstByBenefactorIdAndCharityActionIdOrderByLastUpdatedDesc(User benefactor, CharityAction charityAction);
 
     Optional<ApplicationToCharityAction> findApplicationToCharityActionByBenefactorIdAndCharityActionId(User benefactorId, CharityAction charityActionId);
+
+    Optional<ApplicationToCharityAction> findByVerifiedByAndStatus(User verifiedBy, ApplicationStatus status);
 }

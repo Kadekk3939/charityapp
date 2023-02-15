@@ -1,10 +1,14 @@
 package pl.polsl.io.charityapp.model.dto.write;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserWriteModel  {
     private String firstName;
     private String lastName;
