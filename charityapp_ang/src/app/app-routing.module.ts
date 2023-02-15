@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'charityAction/:name', component: CharityActionDetailsComponent },
   { path: 'charityAction/:name/applay', component: CharityActionApplayComponent },
   { path: 'charityAction/:name/support', component: CharityActionSupportComponent },
-  { path: 'charityActionApplicationList', component: CharityActionAplicationListComponent },
+  { path: 'charityActionAplicationList', component: CharityActionAplicationListComponent },
   { path: 'benefactorsApplications', component: BenefactorsApplicationsComponent },
   { path: 'rateDonorsList', component: RateDonorsListComponent }
 
