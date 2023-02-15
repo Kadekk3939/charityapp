@@ -34,8 +34,8 @@ export class CharityActionService {
     return this.http.get<CharityAction>(`${this.apiServerUrl}/action/name/${name}`);
   }
 
-  public postCharityAplication(aplication: aplicationToCharityAction, headers: HttpHeaders): Observable<aplicationToCharityActionRead> {
-    return this.http.post<aplicationToCharityActionRead>(`${this.apiServerUrl}/application2charity/add`, aplication, { headers: headers });
+  public postCharityAplication(aplication: aplicationToCharityAction, headers: HttpHeaders): Observable<number> {
+    return this.http.post<number>(`${this.apiServerUrl}/application2charity/add`, aplication, { headers: headers });
   }
 
   public postCharityDonation(donation: donationToCharityAction, headers: HttpHeaders): Observable<donationToCharityAction> {

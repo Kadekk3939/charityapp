@@ -1,48 +1,74 @@
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0" height="36" /> Charity organisation
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+<div id="main-container">
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0" height="36" /> Charity organisation
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" onclick="return back()"></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/user" routerLinkActive="active" ariaCurrentWhenActive="page">User</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/charityAction" routerLinkActive="active" ariaCurrentWhenActive="page">Open charity actions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" (click)="logout()" routerLinkActive="active" ariaCurrentWhenActive="page">Logout</a>
-                    </li>
-                </ul>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="return back()"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/user" routerLinkActive="active" ariaCurrentWhenActive="page">User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/charityAction" routerLinkActive="active" ariaCurrentWhenActive="page">Open charity actions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" (click)="logout()" routerLinkActive="active" ariaCurrentWhenActive="page">Logout</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    <header>
-        <h1>Application to {{name}}</h1>
-    </header>
-    <main>
-        <form #applayForm="ngForm" (ngSubmit)="onApplay(applayForm)" class="form_class">
-            <div class="form_div">
-                <label>Reason:</label>
-                <input ngModel name="charityActionName" class="cdk-visually-hidden">
-                <div>
-                    <textarea ngModel name="reason" rows="5" cols="60" type="text">
+        </nav>
+        <header>
+            <h1>Application to {{name}}</h1>
+        </header>
+        <main>
+            <form #applayForm="ngForm" (ngSubmit)="onApplay(applayForm)" class="form_class">
+                <div class="form_div">
+                    <label>Reason:</label>
+                    <input ngModel name="charityActionName" class="cdk-visually-hidden">
+                    <div>
+                        <textarea ngModel name="reason" type="text">
 
                   </textarea>
-                    <div *ngIf="err">
-                        <p style="color:red">*You need to provide reason</p>
+                        <div *ngIf="err">
+                            <p style="color:red">*You need to provide reason</p>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="button" type="submit">Applay</button>
+                        <a class="button" (click)="onOpenModal()">Add documents</a>
                     </div>
                 </div>
-                <button [disabled]="applayForm.form.invalid" class="register_button" type="submit">Apply</button>
+            </form>
+        </main>
+    </body>
+</div>
+
+<div class="modal fade" id="addDocumentModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addDocumentModalLabel">Add Documents</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
             </div>
-        </form>
-    </main>
-</body>
+            <div class="modal-body">
+
+                <div class="modal-footer">
+                    <button type="button" id="add-action-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

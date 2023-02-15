@@ -21,6 +21,7 @@ export class CharityActionApplayComponent implements OnInit {
   public err:boolean;
   public login: string;
   private sub: any;
+  private action:number;
 
   applayForm = new FormGroup({
     actionName: new FormControl(''),
@@ -61,6 +62,7 @@ export class CharityActionApplayComponent implements OnInit {
     console.log(applayForm);
     this.charityActionService.postCharityAplication(applayForm.value, this.app.headers).subscribe({
       next: (res) => {
+        this.action=res;
         console.log(res);
         this.router.navigateByUrl('/charityActionAplicationList');
       },
@@ -70,6 +72,41 @@ export class CharityActionApplayComponent implements OnInit {
         }
        }
     }
+    );
+  }
+
+  public onOpenModal(): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#addDocumentModal');
+    // if (mode === 'edit') {
+    //   this.editEmployee = employee;
+    //   button.setAttribute('data-target', '#updateEmployeeModal');
+    // }
+    // if (mode === 'delete') {
+    //   this.deleteEmployee = employee;
+    //   button.setAttribute('data-target', '#deleteEmployeeModal');
+    // }
+    // @ts-ignore
+    container.appendChild(button);
+    button.click();
+  }
+
+  public onAddDocuments(addForm: NgForm): void {
+    // @ts-ignore
+    document.getElementById('add-action-form').click();
+    this.charityActionService.addCharityAction(addForm.value).subscribe(
+      (response: CharityAction) => {
+        console.log(response);
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
     );
   }
 }
