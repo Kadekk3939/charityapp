@@ -1,14 +1,14 @@
 package pl.polsl.io.charityapp.mappers;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
+import pl.polsl.io.charityapp.model.dto.read.DonationReadModel;
 import pl.polsl.io.charityapp.model.dto.write.DonationWriteModel;
 import pl.polsl.io.charityapp.model.entity.Donation;
-import pl.polsl.io.charityapp.repository.CharityActionRepository;
 import pl.polsl.io.charityapp.service.CharityActionService;
 import pl.polsl.io.charityapp.service.UserService;
+
+import java.util.List;
 
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
@@ -24,6 +24,9 @@ public interface DonationMapper {
             expression = "java(userService.getLoggedUserEntity())")
     Donation toEntity(DonationWriteModel donationWriteModel, CharityActionService charityActionService, UserService userService);
 
-    //TODO:convert to readModel depending on anonymous value
+    @Mapping(target = "fullName", expression = "java(donation.getAnonymous() ? null : donation.getDonorId().getFirstName() + \" \" + donation.getDonorId().getLastName())")
+    @Mapping(target = "charityActionName", expression = "java(donation.getCharityActionId().getName())")
+    DonationReadModel toReadModel(Donation donation);
 
+    List<DonationReadModel> map(List<Donation> donations);
 }

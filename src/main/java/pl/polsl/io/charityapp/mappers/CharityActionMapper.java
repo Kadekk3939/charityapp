@@ -19,11 +19,15 @@ public interface CharityActionMapper {
     @Named("CharityActionShortDescription")
     @Mapping(target = "shortDescription", constant = "true")
     @Mapping(target = "directory", expression = "java(String.format(\"%04x\", charityAction.getActionId()))")
+    @Mapping(target = "raised", expression = "java(null)")
+    @Mapping(target = "topDonors", expression = "java(null)")
     CharityActionReadModel toShortReadModel(CharityAction charityAction);
 
     @Named("CharityActionLongDescription")
     @Mapping(target = "shortDescription", constant = "false")
     @Mapping(target = "directory", expression = "java(String.format(\"%04x\", charityAction.getActionId()))")
+    @Mapping(target = "raised", expression = "java(null)")
+    @Mapping(target = "topDonors", expression = "java(null)")
     CharityActionReadModel toLongReadModel(CharityAction charityAction);
 
     void updateCharityActionFromDto(CharityActionWriteModel charityActionWriteModel, @MappingTarget CharityAction charityAction);
