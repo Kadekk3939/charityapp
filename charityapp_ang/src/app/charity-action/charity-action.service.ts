@@ -9,6 +9,7 @@ import { donationToCharityAction } from './donation-to-charity-action';
 import {
   benefApplicationToCharityActionRead
 } from "../benefactors-applications/benef-application-to-charity-action-read";
+import { BenefactorDocument } from './document';
 
 @Injectable({
   providedIn: 'root'
@@ -65,15 +66,19 @@ export class CharityActionService {
     });
   }
 
-  download(directory:string,filename: string): Observable<HttpEvent<Blob>> {
-    return this.http.get(`${this.apiServerUrl}/files/documents/download/${directory}/${filename}`, {
+  download(file:BenefactorDocument): Observable<HttpEvent<Blob>> {
+    return this.http.get(`${this.apiServerUrl}/files/documents/download/${file.directory}/${file.fileName}`, {
       reportProgress: true,
       observe: 'events',
       responseType: 'blob'
     });
   }
 
-  akceptAplicationToAction(aplicationId:number):Observable<string>{
-    return this.http.get<string>(`${this.apiServerUrl}/application2charity/process/${aplicationId}/AKCEPT`)
+  acceptedAplicationToAction(aplicationId:number):Observable<string>{
+    return this.http.get<string>(`${this.apiServerUrl}/application2charity/process/${aplicationId}/ACCEPTED`)
+  }
+
+  rejectAplicationToAction(aplicationId:number):Observable<string>{
+    return this.http.get<string>(`${this.apiServerUrl}/application2charity/process/${aplicationId}/REJECTED`)
   }
 }

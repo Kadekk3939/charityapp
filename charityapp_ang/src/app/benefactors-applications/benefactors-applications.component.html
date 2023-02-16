@@ -26,21 +26,50 @@
         </div>
     </nav>
     <!-- Page Content -->
-    <div class="container">
-        <div class="card border-0 shadow my-5">
-            <div class="card-body p-5">
-                <p class="fw-light">User : {{userLogin}}</p>
-                <p></p>
-                <p>Reason</p>
-                <p>{{benefApplication?.reason}} </p>
-                <div style="height: 200px"></div>
+    <div *ngIf="noAplicationsToVerify() else avaible_action">
+        <div class="container">
+            <div class="card border-0 shadow my-5">
+                <div class="card-body p-5">
+                    <h3>There is no avaible aplications to actions to verify</h3>
+                    <div style="height: 100px"></div>
+                </div>
             </div>
-        </div>
-        <div>
-            <button class="button" data-dismiss="modal" (click)="akcept()">Akcept></button>
-            <button class="button" data-dismiss="modal" (click)="decline()">Decline</button>
+
         </div>
     </div>
+    <ng-template #avaible_action>
+        <div class="container">
+            <div class="card border-0 shadow my-5">
+                <div class="card-body p-5">
+                    <p class="fw-light">User : {{userLogin}}</p>
+                    <p></p>
+                    <p>Reason</p>
+                    <p>{{benefApplication?.reason}} </p>
+                    <div style="height: 100px"></div>
+                </div>
+                <div *ngIf="files.length==undefined" else lengthDefine>
+
+                </div>
+                <ng-template #lengthDefine>
+                    <div *ngIf="files.length > 0" class="js-upload-finished">
+                        <h3>Provided files</h3>
+                        <div *ngFor="let file of files" class="list-group">
+                            <a class="list-group-item list-group-item-success">
+                    {{ file!.fileName }}   
+                    <a (click)="onDownload(file)" style="cursor: pointer;" class="alert-success float-right">Download</a>
+                            </a>
+                            <br>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="button" data-dismiss="modal" (click)="akcept()">Akcept</button>
+                        <button class="button" data-dismiss="modal" (click)="decline()">Decline</button>
+                    </div>
+                </ng-template>
+            </div>
+
+        </div>
+    </ng-template>
 
 
 </body>
