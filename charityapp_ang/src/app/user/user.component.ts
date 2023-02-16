@@ -65,4 +65,11 @@ export class UserComponent implements OnInit {
     return false;
   }
 
+  public userIsDonor(): boolean{
+    if(this.user?.role=='Donor'){
+      return true;
+    }
+    return false;
+  }
+
 }

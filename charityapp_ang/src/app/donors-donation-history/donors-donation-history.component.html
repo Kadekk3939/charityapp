@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0" height="36" /> Charity organisation
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/user" routerLinkActive="active" ariaCurrentWhenActive="page">User</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="logout()" routerLinkActive="active" ariaCurrentWhenActive="page">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!--    <div class="collapse navbar-collapse" id="navbarResponsive">-->
+        <!--      <ul class="navbar-nav ms-auto">-->
+        <!--        <li class="nav-item">-->
+        <!--          <a class="nav-link"onclick="return back()" ></a>-->
+        <!--        </li>-->
+        <!--      </ul>-->
+        <!--    </div>-->
+    </div>
+</nav>
+<header>
+    <h1>Donation history</h1>
+</header>
+<br>
+<div class="container" id="main-container">
+    <div class="row">
+        <div *ngFor="let donation of donations" class="col-md-6 col-xl-3 p-1">
+            <div class="card m-b-30">
+                <ul class="list-group list-group-flush" style="margin-left: 5px">
+                    <li class="list-group-item">Action name: {{donation?.charityActionName}}</li>
+                    <li class="list-group-item">Amount: {{donation?.amount}}</li>
+                    <li class="list-group-item">Payment confirmed: {{donation?.paymentConfirmed}}</li>
+                    <li class="list-group-item">Public: {{donation?.anonymous}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

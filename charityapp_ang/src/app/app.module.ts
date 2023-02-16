@@ -26,6 +26,8 @@ import { CommonModule, CurrencyPipe} from '@angular/common';
 import { CharityActionAplicationListComponent } from './charity-action-aplication-list/charity-action-aplication-list.component';
 import { BenefactorsApplicationsComponent } from './benefactors-applications/benefactors-applications.component';
 import { RateDonorsListComponent } from './rate-donors-list/rate-donors-list.component';
+import { DonorsDonationHistoryComponent } from './donors-donation-history/donors-donation-history.component';
+import { DonationService } from './donors-donation-history/donation.service';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { RateDonorsListComponent } from './rate-donors-list/rate-donors-list.com
     CharityActionAplicationListComponent,
     BenefactorsApplicationsComponent,
     RateDonorsListComponent,
+    DonorsDonationHistoryComponent,
 
   ],
   imports: [
@@ -59,6 +62,7 @@ import { RateDonorsListComponent } from './rate-donors-list/rate-donors-list.com
   providers: [
     AppService,
     CharityActionService,
+    DonationService,
     CurrencyPipe
   ],
   bootstrap: [AppComponent]

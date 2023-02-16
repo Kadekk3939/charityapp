@@ -20,12 +20,15 @@
                             <a class="nav-link" routerLink="/charityActionAplicationList" routerLinkActive="active" ariaCurrentWhenActive="page">Charity actions applications</a>
                         </li>
                     </div>
+                    <div *ngIf="userIsDonor()">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/donorsDonationHistory" routerLinkActive="active" ariaCurrentWhenActive="page">Donation history</a>
+                        </li>
+                    </div>
                     <div *ngIf="userIsWorker()">
                         <li class="nav-item">
                             <a class="nav-link" routerLink="/benefactorsApplications" routerLinkActive="active" ariaCurrentWhenActive="page">Verify benefactors</a>
                         </li>
-                    </div>
-                    <div *ngIf="userIsWorker()">
                         <li class="nav-item">
                             <a class="nav-link" routerLink="/rateDonorsList" routerLinkActive="active" ariaCurrentWhenActive="page">Rate donors</a>
                         </li>
