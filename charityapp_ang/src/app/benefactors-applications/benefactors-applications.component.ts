@@ -69,17 +69,31 @@ export class BenefactorsApplicationsComponent implements OnInit{
   }
 
   akcept(){
-    this.charityActionService.acceptedAplicationToAction(this.aplicationId)
+    this.charityActionService.acceptedAplicationToAction(this.aplicationId).subscribe(
+      (response: string) => {
+        console.log(response);
         this.router.navigateByUrl('/user');
+
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
 
       
   }
 
   decline(){
-    this.charityActionService.rejectAplicationToAction(this.aplicationId)
+    this.charityActionService.rejectAplicationToAction(this.aplicationId).subscribe(
+      (response: string) => {
+        console.log(response);
         this.router.navigateByUrl('/user');
 
-      
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 
   onDownload(file:BenefactorDocument){

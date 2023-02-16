@@ -75,10 +75,10 @@ export class CharityActionService {
   }
 
   acceptedAplicationToAction(aplicationId:number):Observable<string>{
-    return this.http.get<string>(`${this.apiServerUrl}/application2charity/process/${aplicationId}/ACCEPTED`)
+    return this.http.get(`${this.apiServerUrl}/application2charity/process/${aplicationId}/ACCEPTED`, {responseType: 'text'})
   }
 
   rejectAplicationToAction(aplicationId:number):Observable<string>{
-    return this.http.get<string>(`${this.apiServerUrl}/application2charity/process/${aplicationId}/REJECTED`)
+    return this.http.get(`${this.apiServerUrl}/application2charity/process/${aplicationId}/REJECTED`, {responseType: 'text'})
   }
 }
