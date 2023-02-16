@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 public class ApplicationToCharityActionService {
@@ -109,5 +110,11 @@ public class ApplicationToCharityActionService {
         }
         applicationToCharityActionRepository.save(app);
         return result;
+    }
+
+    public List<CharityAction> getCurrentUserAcceptedActions() {
+        User user = userService.getLoggedUserEntity();
+        List<ApplicationToCharityAction> apps = applicationToCharityActionRepository.findAllByBenefactorIdAndStatus(user, ApplicationStatus.ACCEPTED);
+        return apps.stream().map(ApplicationToCharityAction::getCharityActionId).collect(Collectors.toList());
     }
 }

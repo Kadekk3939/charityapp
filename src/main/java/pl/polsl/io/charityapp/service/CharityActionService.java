@@ -60,6 +60,14 @@ public class CharityActionService {
         return charityActionMapper.map(charityActionRepository.findAllByClosedEarlyIsFalseAndEndDateGreaterThanOrderByEndDateAsc(tomorrow));
     }
 
+    public List<CharityActionReadModel> getClosedCharityActions() {
+        Date tomorrow = java.sql.Date.valueOf(LocalDate.now().plusDays(1));
+        List<CharityAction> open =  charityActionRepository.findAllByClosedEarlyIsFalseAndEndDateGreaterThanOrderByEndDateAsc(tomorrow);
+        List<CharityAction> all = charityActionRepository.findAll();
+        all.removeAll(open);
+        return charityActionMapper.map(all);
+    }
+
     public Boolean closeAction(String name) {
         CharityAction action = this.getCharityActionEntityByName(name);
         if (action.getClosedEarly()) {
