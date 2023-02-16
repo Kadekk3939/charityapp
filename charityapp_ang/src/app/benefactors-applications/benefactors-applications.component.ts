@@ -98,7 +98,7 @@ export class BenefactorsApplicationsComponent implements OnInit{
     console.log(file);
     this.charityActionService.download(file).subscribe(
       event=>{
-        this.download(event);
+        this.download(event,file.fileName);
       },
       (error: HttpErrorResponse)=>{
         console.log(error);
@@ -107,12 +107,12 @@ export class BenefactorsApplicationsComponent implements OnInit{
 
   }
 
-  private download(httpEvent: HttpEvent<string[] | Blob>): void {
+  private download(httpEvent: HttpEvent<string[] | Blob>,file:string): void {
     switch(httpEvent.type) {
       case HttpEventType.Response:
         if (httpEvent.body instanceof Array) {} 
         else {
-          saveAs(new File([httpEvent.body!], httpEvent.headers.get('File-Name')!, 
+          saveAs(new File([httpEvent.body!], file!, 
                   {type: `${httpEvent.headers.get('Content-Type')};charset=utf-8`}));
           // saveAs(new Blob([httpEvent.body!], 
           //   { type: `${httpEvent.headers.get('Content-Type')};charset=utf-8`}),

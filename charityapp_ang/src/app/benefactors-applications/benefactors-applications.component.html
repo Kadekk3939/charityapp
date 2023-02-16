@@ -47,25 +47,21 @@
                     <p>{{benefApplication?.reason}} </p>
                     <div style="height: 100px"></div>
                 </div>
-                <div *ngIf="files.length==undefined" else lengthDefine>
-
+                <div>
+                    <button class="button" data-dismiss="modal" (click)="akcept()">Akcept</button>
+                    <button class="button" data-dismiss="modal" (click)="decline()">Decline</button>
                 </div>
-                <ng-template #lengthDefine>
-                    <div *ngIf="files.length > 0" class="js-upload-finished">
-                        <h3>Provided files</h3>
-                        <div *ngFor="let file of files" class="list-group">
-                            <a class="list-group-item list-group-item-success">
-                    {{ file!.fileName }}   
-                    <a (click)="onDownload(file)" style="cursor: pointer;" class="alert-success float-right">Download</a>
-                            </a>
-                            <br>
-                        </div>
-                    </div>
-                    <div>
-                        <button class="button" data-dismiss="modal" (click)="akcept()">Akcept</button>
-                        <button class="button" data-dismiss="modal" (click)="decline()">Decline</button>
-                    </div>
-                </ng-template>
+
+            </div>
+            <div *ngIf="files.length > 0" class="js-upload-finished">
+                <h3>Provided files</h3>
+                <div *ngFor="let file of files" class="list-group">
+                    <a class="list-group-item list-group-item-success">
+            {{ file!.fileName }}   
+            <a (click)="onDownload(file)" style="cursor: pointer;" class="alert-success float-right">Download</a>
+                    </a>
+                    <br>
+                </div>
             </div>
 
         </div>
