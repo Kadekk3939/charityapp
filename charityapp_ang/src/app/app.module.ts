@@ -43,7 +43,7 @@ import { RateDonorsListComponent } from './rate-donors-list/rate-donors-list.com
     CharityActionSupportComponent,
     CharityActionAplicationListComponent,
     BenefactorsApplicationsComponent,
-    RateDonorsListComponent
+    RateDonorsListComponent,
 
   ],
   imports: [

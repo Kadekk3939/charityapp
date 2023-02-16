@@ -21,7 +21,7 @@ export class BenefactorsApplicationsComponent implements OnInit{
   }
 
   getBenefactorApplication() {
-    this.charityActionService.getBenefactorApplication().subscribe(
+    this.charityActionService.getBenefactorApplication(this.app.headers).subscribe(
       (response: benefApplicationToCharityActionRead[]) => {
         this.benefApplication = response;
         console.log(this.benefApplication);

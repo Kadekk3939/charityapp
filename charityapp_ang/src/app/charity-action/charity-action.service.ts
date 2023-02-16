@@ -46,8 +46,8 @@ export class CharityActionService {
     return this.http.get<aplicationToCharityActionRead[]>(`${this.apiServerUrl}/application2charity/all`, { headers: headers });
   }
 
-  public getBenefactorApplication(): Observable<benefApplicationToCharityActionRead[]> {
-    return this.http.get<benefApplicationToCharityActionRead[]>(`${this.apiServerUrl}/application2charity/random`);
+  public getBenefactorApplication(headers: HttpHeaders): Observable<benefApplicationToCharityActionRead[]> {
+    return this.http.get<benefApplicationToCharityActionRead[]>(`${this.apiServerUrl}/application2charity/random`, { headers: headers });
   }
 
   public getUserApplicationStatus(action:string,benefactor:string): Observable<string> {

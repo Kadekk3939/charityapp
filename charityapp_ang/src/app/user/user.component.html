@@ -20,16 +20,16 @@
                             <a class="nav-link" routerLink="/charityActionAplicationList" routerLinkActive="active" ariaCurrentWhenActive="page">Charity actions applications</a>
                         </li>
                     </div>
-                  <div *ngIf="userIsWorker()">
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/benefactorsApplications" routerLinkActive="active" ariaCurrentWhenActive="page">Verify benefactors</a>
-                    </li>
-                  </div>
-                  <div *ngIf="userIsWorker()">
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/rateDonorsList" routerLinkActive="active" ariaCurrentWhenActive="page">Rate donors</a>
-                    </li>
-                  </div>
+                    <div *ngIf="userIsWorker()">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/benefactorsApplications" routerLinkActive="active" ariaCurrentWhenActive="page">Verify benefactors</a>
+                        </li>
+                    </div>
+                    <div *ngIf="userIsWorker()">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/rateDonorsList" routerLinkActive="active" ariaCurrentWhenActive="page">Rate donors</a>
+                        </li>
+                    </div>
                     <li class="nav-item">
                         <a class="nav-link" (click)="logout()" routerLinkActive="active" ariaCurrentWhenActive="page">Logout</a>
                     </li>
