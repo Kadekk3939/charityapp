@@ -26,7 +26,7 @@ export class BenefactorsApplicationsComponent implements OnInit{
     this.noAvaibleActions=false;
     this.app.refresh();
     this.getBenefactorApplication();
-    
+
   }
 
   getBenefactorApplication() {
@@ -68,18 +68,18 @@ export class BenefactorsApplicationsComponent implements OnInit{
     return this.noAvaibleActions;
   }
 
-  akcept(){
+  accept(){
     this.charityActionService.acceptedAplicationToAction(this.aplicationId)
         this.router.navigateByUrl('/user');
 
-      
+
   }
 
   decline(){
     this.charityActionService.rejectAplicationToAction(this.aplicationId)
         this.router.navigateByUrl('/user');
 
-      
+
   }
 
   onDownload(file:BenefactorDocument){
@@ -98,11 +98,11 @@ export class BenefactorsApplicationsComponent implements OnInit{
   private download(httpEvent: HttpEvent<string[] | Blob>,file:string): void {
     switch(httpEvent.type) {
       case HttpEventType.Response:
-        if (httpEvent.body instanceof Array) {} 
+        if (httpEvent.body instanceof Array) {}
         else {
-          saveAs(new File([httpEvent.body!], file!, 
+          saveAs(new File([httpEvent.body!], file!,
                   {type: `${httpEvent.headers.get('Content-Type')};charset=utf-8`}));
-          // saveAs(new Blob([httpEvent.body!], 
+          // saveAs(new Blob([httpEvent.body!],
           //   { type: `${httpEvent.headers.get('Content-Type')};charset=utf-8`}),
           //    httpEvent.headers.get('File-Name'));
         }
