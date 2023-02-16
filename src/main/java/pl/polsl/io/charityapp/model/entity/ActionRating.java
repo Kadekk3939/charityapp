@@ -1,9 +1,10 @@
 package pl.polsl.io.charityapp.model.entity;
 
-import org.springframework.lang.Nullable;
+import lombok.Data;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "action_ratings")
 public class ActionRating {
