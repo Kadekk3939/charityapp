@@ -68,7 +68,7 @@ export class BenefactorsApplicationsComponent implements OnInit{
     return this.noAvaibleActions;
   }
 
-  akcept(){
+  accept(){
     this.charityActionService.acceptedAplicationToAction(this.aplicationId).subscribe(
       (response: string) => {
         console.log(response);
