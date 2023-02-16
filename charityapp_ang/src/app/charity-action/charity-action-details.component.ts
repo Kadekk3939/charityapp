@@ -36,6 +36,7 @@ export class CharityActionDetailsComponent implements OnInit {
     this.charityActionService.getCharityActionByName(this.name).subscribe(
       (response: CharityAction) => {
         this.charityAction = response;
+        this.donations=this.charityAction.topDonors;
         console.log(this.charityAction);
       },
       (error: HttpErrorResponse) => {

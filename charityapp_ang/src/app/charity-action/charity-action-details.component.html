@@ -63,5 +63,16 @@
             </div>
         </div>
     </div>
-
+    <div class="container" id="main-container">
+        <div class="row">
+            <div *ngFor="let donation of donations" class="col-md-6 col-xl-3 p-1">
+                <div class="card m-b-30">
+                    <ul class="list-group list-group-flush" style="margin-left: 5px">
+                        <li class="list-group-item">Donor: {{donation?.fullName}}</li>
+                        <li class="list-group-item">Amount: {{donation?.amount}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
