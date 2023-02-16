@@ -2,8 +2,7 @@ import { User } from "../user";
 import { CharityAction } from "../charity-action/charity-action";
 
 export interface benefApplicationToCharityActionRead {
-  user: User,
+  benefactor: User,
   charityAction: CharityAction,
   reason: string,
-  status: string
 }

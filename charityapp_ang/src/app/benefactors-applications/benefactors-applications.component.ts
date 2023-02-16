@@ -13,17 +13,37 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class BenefactorsApplicationsComponent implements OnInit{
   constructor(private router: Router, private charityActionService: CharityActionService, private app: AppService) { }
-  benefApplication: benefApplicationToCharityActionRead[];
+
+  public benefApplication: benefApplicationToCharityActionRead|undefined;
+  public aplicationId:number;
+  public userLogin:string;
 
   ngOnInit(): void {
     this.app.refresh();
     this.getBenefactorApplication();
+    
   }
 
   getBenefactorApplication() {
     this.charityActionService.getBenefactorApplication(this.app.headers).subscribe(
-      (response: benefApplicationToCharityActionRead[]) => {
+      (response: number) => {
+        this.aplicationId = response;
+        console.log(this.aplicationId);
+        this.getBenefactoAplicationToVerify();
+
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  getBenefactoAplicationToVerify(){
+
+    this.charityActionService.getBenefactorApplicationById(this.aplicationId).subscribe(
+      (response: benefApplicationToCharityActionRead) => {
         this.benefApplication = response;
+        this.userLogin=this.benefApplication.benefactor.login;
         console.log(this.benefApplication);
 
       },
@@ -31,6 +51,14 @@ export class BenefactorsApplicationsComponent implements OnInit{
         alert(error.message);
       }
     );
+  }
+
+  akcept(){
+
+  }
+
+  decline(){
+    
   }
 
   public logout(): void {

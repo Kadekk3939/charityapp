@@ -46,8 +46,12 @@ export class CharityActionService {
     return this.http.get<aplicationToCharityActionRead[]>(`${this.apiServerUrl}/application2charity/all`, { headers: headers });
   }
 
-  public getBenefactorApplication(headers: HttpHeaders): Observable<benefApplicationToCharityActionRead[]> {
-    return this.http.get<benefApplicationToCharityActionRead[]>(`${this.apiServerUrl}/application2charity/random`, { headers: headers });
+  public getBenefactorApplication(headers: HttpHeaders): Observable<number> {
+    return this.http.get<number>(`${this.apiServerUrl}/application2charity/random`, { headers: headers });
+  }
+
+  public getBenefactorApplicationById(aplicationId:number): Observable<benefApplicationToCharityActionRead> {
+    return this.http.get<benefApplicationToCharityActionRead>(`${this.apiServerUrl}/application2charity/find/${aplicationId}`);
   }
 
   public getUserApplicationStatus(action:string,benefactor:string): Observable<string> {
@@ -67,5 +71,9 @@ export class CharityActionService {
       observe: 'events',
       responseType: 'blob'
     });
+  }
+
+  akceptAplicationToAction(aplicationId:number):Observable<string>{
+    return this.http.get<string>(`${this.apiServerUrl}/application2charity/process/${aplicationId}/AKCEPT`)
   }
 }
