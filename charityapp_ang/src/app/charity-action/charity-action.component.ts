@@ -15,7 +15,7 @@ import { AppService } from '../app.service';
 })
 export class CharityActionComponent implements OnInit {
   public charityActions: CharityAction[];
-  private user: User;
+  private user: User|undefined;
 
   constructor(private charityActionService: CharityActionService, private router: Router, private app: AppService) { }
 
@@ -88,7 +88,7 @@ export class CharityActionComponent implements OnInit {
   }
 
   public userIsWorker(): boolean {
-    if (this.user.role == "Worker") {
+    if (this.user?.role == "Worker") {
       return true;
     }
     return false;

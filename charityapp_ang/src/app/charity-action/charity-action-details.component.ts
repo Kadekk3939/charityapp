@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { UserServiceService } from "../user-service.service";
 import { AppService } from "../app.service";
 import { aplicationToCharityActionRead } from "../charity-action-aplication-list/aplication-to-charity-action-read";
+import { Donation } from "../donors-donation-history/donation";
 
 
 @Component({
@@ -21,6 +22,7 @@ export class CharityActionDetailsComponent implements OnInit {
   public login: string;
   public status:boolean|null;
   public reason: string;
+  public donations:Donation[];
   private sub: any;
   constructor(private charityActionService: CharityActionService, private router: Router, private routeP: ActivatedRoute, private app: AppService) { }
 

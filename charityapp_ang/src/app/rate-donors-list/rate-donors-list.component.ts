@@ -12,7 +12,6 @@ export class RateDonorsListComponent implements OnInit{
   constructor(private router: Router, private charityActionService: CharityActionService, private app: AppService) { }
   ngOnInit(): void {
     this.app.refresh();
-    
   }
   public logout(): void {
     localStorage.clear();

@@ -21,22 +21,20 @@ export class AppService {
   }
 
   public refresh(): void {
-
-
     if (localStorage.length == 2) {
       if (this.headers == undefined) {
         this.credentials.login = localStorage.getItem('login')!;
         this.credentials.password = localStorage.getItem('password')!;
         this.login = localStorage.getItem('login')!
         this.authenticate(this.credentials, () => {
-          console.log('Refresh');
+          console.log('Refresh '+localStorage.getItem('login')+' '+localStorage.getItem('password'));
 
         });
 
         this.userService.getUserByLogin(this.login).subscribe(
           (response: User) => {
             this.user = response;
-            console.log(this.user);
+            console.log(this.user.login);
           },
           (error: HttpErrorResponse) => {
             alert(error.message);
