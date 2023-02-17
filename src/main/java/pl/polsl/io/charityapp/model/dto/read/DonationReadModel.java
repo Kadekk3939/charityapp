@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 public class DonationReadModel {
     private String fullName;
 
+    private String donorLogin;
+
     private String charityActionName;
 
     private Float amount;

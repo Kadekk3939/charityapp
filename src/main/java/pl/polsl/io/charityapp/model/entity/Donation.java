@@ -34,12 +34,21 @@ public class Donation {
     @Column(name = "anonymous")
     private Boolean anonymous;
 
-    // constructor for DonationRepository
+    // constructors for DonationRepository
     public Donation(User donorId, double amount) {
         this.donorId = donorId;
         this.amount = (float) amount;
         this.anonymous = false;
         this.paymentConfirmed = true;
     }
+
+    public Donation(User donorId, CharityAction charityActionId, double amount) {
+        this.donorId = donorId;
+        this.charityActionId = charityActionId;
+        this.amount = (float) amount;
+        this.anonymous = false;
+        this.paymentConfirmed = true;
+    }
+
 
 }

@@ -48,7 +48,7 @@ public class DonationService {
 
     public List<DonationReadModel> getTopPublicDonors(String actionName) {
         CharityAction action = charityActionService.getCharityActionEntityByName(actionName);
-        List<Donation> donations = donationRepository.getGroupedDonations(action);
+        List<Donation> donations = donationRepository.getGroupedDonationsByAction(action);
         if (donations == null) {
             return Collections.emptyList();
         }

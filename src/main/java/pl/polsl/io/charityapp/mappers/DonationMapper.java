@@ -26,6 +26,7 @@ public interface DonationMapper {
 
     @Mapping(target = "fullName", expression = "java(donation.getAnonymous() ? null : donation.getDonorId().getFirstName() + \" \" + donation.getDonorId().getLastName())")
     @Mapping(target = "charityActionName", expression = "java(donation.getCharityActionId().getName())")
+    @Mapping(target = "donorLogin", expression = "java(donation.getDonorId().getLogin())")
     DonationReadModel toReadModel(Donation donation);
 
     List<DonationReadModel> map(List<Donation> donations);
