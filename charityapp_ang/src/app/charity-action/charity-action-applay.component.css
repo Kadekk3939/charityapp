@@ -137,3 +137,7 @@ textarea {
     font-size: 16px;
     resize: none;
 }
+
+.nav-item {
+    float: left;
+}

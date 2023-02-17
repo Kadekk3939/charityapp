@@ -8,3 +8,7 @@ body {
     background-size: cover;
     -o-background-size: cover;
 }
+
+.nav-item {
+    float: left;
+}

@@ -2,19 +2,22 @@
     padding: 0px;
     margin: 0px;
 }
+
 body {
     background-color: lightgreen;
 }
+
 .example-radio-group {
     display: flex;
     flex-direction: column;
     margin: 15px 0;
     align-items: flex-start;
-  }
+}
 
-  .example-radio-button {
+.example-radio-button {
     margin: 5px;
-  }
+}
+
 header {
     background-color: black;
     color: white;
@@ -22,14 +25,16 @@ header {
     align-items: center;
     justify-content: center;
     height: 15vh;
-    box-shadow: 5px 5px 10px rgb(0,0,0,0.3);
+    box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.3);
 }
+
 h1 {
     letter-spacing: 1.5vw;
     /*font-family: 'system-ui';*/
     text-transform: uppercase;
     text-align: center;
 }
+
 main {
     display: flex;
     align-items: center;
@@ -40,28 +45,34 @@ main {
     margin-bottom: 50px;
     margin-top: 90px;
 }
+
 .form_class {
     width: 500px;
     padding: 40px;
     border-radius: 8px;
     background-color: white;
     /*font-family: 'system-ui';*/
-    box-shadow: 5px 5px 10px rgb(0,0,0,0.3);
+    box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.3);
 }
+
 .form_div {
     text-transform: uppercase;
 }
-.form_div > label {
+
+.form_div>label {
     letter-spacing: 3px;
     font-size: 1rem;
 }
+
 .info_div {
     text-align: center;
     margin-top: 20px;
 }
+
 .info_div {
     letter-spacing: 1px;
 }
+
 .field_class {
     width: 100%;
     border-radius: 6px;
@@ -87,10 +98,9 @@ main {
     display: block;
     margin: auto;
     margin-top: 10px;
-    box-shadow: 2px 2px 5px rgb(0,0,0,0.2);
+    box-shadow: 2px 2px 5px rgb(0, 0, 0, 0.2);
     cursor: pointer;
 }
-
 
 footer {
     height: 10vh;
@@ -99,15 +109,21 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: -5px -5px 10px rgb(0,0,0,0.3);
+    box-shadow: -5px -5px 10px rgb(0, 0, 0, 0.3);
 }
-footer > p {
+
+footer>p {
     text-align: center;
     font-family: 'system-ui';
     letter-spacing: 3px;
 }
-footer > p > a {
+
+footer>p>a {
     text-decoration: none;
     color: white;
     font-weight: bold;
+}
+
+.nav-item {
+    float: left;
 }

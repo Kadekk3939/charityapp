@@ -1,47 +1,47 @@
 @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
-
 * {
-  padding: 0px;
-  margin: 0px;
+    padding: 0px;
+    margin: 0px;
 }
-
 
 body {
-  background-color: lightgreen;
+    background-color: lightgreen;
 }
+
 header {
-  background-color: black;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 15vh;
-  box-shadow: 5px 5px 10px rgb(0,0,0,0.3);
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15vh;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.3);
 }
 
 a {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .navbar {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .card {
-  border: none;
-  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
-  margin-bottom: 30px;
-  margin-left: 30px;
-  margin-right: 30px;
+    border: none;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
 }
+
 .container {
-  margin: auto;
+    margin: auto;
 }
 
 .w-60 {
-  width: 60px;
+    width: 60px;
 }
 
 h1,
@@ -50,40 +50,43 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 10px;
-  font-weight: 600;
+    margin: 0 0 10px;
+    font-weight: 600;
 }
 
 .social-links li a {
-  -webkit-border-radius: 50%;
-  background-color: rgba(89, 206, 181, .85);
-  border-radius: 50%;
-  color: #fff;
-  display: inline-block;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  width: 30px;
-  font-size: 12px;
+    -webkit-border-radius: 50%;
+    background-color: rgba(89, 206, 181, .85);
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 30px;
+    font-size: 12px;
 }
 
 a {
-  color: #707070;
+    color: #707070;
 }
+
 i {
-  color: coral;
-  margin-right: 5px;
-
+    color: coral;
+    margin-right: 5px;
 }
 
 a {
-  color: white;
+    color: white;
 }
 
 p {
-  height: 30px;
-  overflow:hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+    height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
+.nav-item {
+    float: left;
+}

@@ -28,6 +28,7 @@ import { BenefactorsApplicationsComponent } from './benefactors-applications/ben
 import { RateDonorsListComponent } from './rate-donors-list/rate-donors-list.component';
 import { DonorsDonationHistoryComponent } from './donors-donation-history/donors-donation-history.component';
 import { DonationService } from './donors-donation-history/donation.service';
+import { CharityActionRatingComponent } from './charity-action-rating/charity-action-rating.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { DonationService } from './donors-donation-history/donation.service';
     BenefactorsApplicationsComponent,
     RateDonorsListComponent,
     DonorsDonationHistoryComponent,
+    CharityActionRatingComponent,
 
   ],
   imports: [
