@@ -36,7 +36,7 @@ constructor(private app:AppService,private ratingService:CharityActionRatingServ
   }
 
   rate(actionName:string){
-    this.router.navigate(['/actionRating', actionName, 'applay']);
+    this.router.navigate(['/actionRating', actionName]);
   }
 
   public logout(): void {
