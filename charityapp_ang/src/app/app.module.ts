@@ -29,6 +29,7 @@ import { RateDonorsListComponent } from './rate-donors-list/rate-donors-list.com
 import { DonorsDonationHistoryComponent } from './donors-donation-history/donors-donation-history.component';
 import { DonationService } from './donors-donation-history/donation.service';
 import { CharityActionRatingComponent } from './charity-action-rating/charity-action-rating.component';
+import { CharityActionRateComponent } from './charity-action-rating/rate-charity-action.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { CharityActionRatingComponent } from './charity-action-rating/charity-ac
     RateDonorsListComponent,
     DonorsDonationHistoryComponent,
     CharityActionRatingComponent,
+    CharityActionRateComponent
 
   ],
   imports: [
