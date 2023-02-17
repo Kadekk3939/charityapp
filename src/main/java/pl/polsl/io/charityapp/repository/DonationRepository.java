@@ -20,7 +20,8 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
 
     @Query("SELECT new pl.polsl.io.charityapp.model.entity.Donation(" +
             "d.donorId, :charityActionId, SUM(d.amount)) " +
-            "FROM Donation as d WHERE d.paymentConfirmed is true and d.anonymous is false GROUP BY d.donorId ORDER BY SUM(d.amount)")
+            "FROM Donation as d WHERE d.paymentConfirmed is true and d.anonymous is false and d.charityActionId = :charityActionId " +
+            "GROUP BY d.donorId ORDER BY SUM(d.amount)")
     List<Donation> getGroupedDonations(CharityAction charityActionId);
 
 }
