@@ -17,6 +17,7 @@ import { RateDonorsListComponent } from './rate-donors-list/rate-donors-list.com
 import { DonorsDonationHistoryComponent } from './donors-donation-history/donors-donation-history.component';
 import { CharityActionRatingComponent } from './charity-action-rating/charity-action-rating.component';
 import { CharityActionRateComponent } from './charity-action-rating/rate-charity-action.component';
+import { DonorRateComponent } from './rate-donors-list/rate-donor.component';
 
 const routes: Routes = [
   { path: 'welcome', component: StartingPageComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'donorsDonationHistory', component: DonorsDonationHistoryComponent },
   {path:'actionRating',component:CharityActionRatingComponent},
   { path: 'actionRating/:name', component: CharityActionRateComponent },
+  { path: 'rateDonorsList/:login/:action', component: DonorRateComponent },
 
 ];
 

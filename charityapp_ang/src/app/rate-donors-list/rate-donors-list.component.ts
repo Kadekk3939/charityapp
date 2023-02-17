@@ -34,8 +34,8 @@ export class RateDonorsListComponent implements OnInit{
     this.router.navigateByUrl('/');
   }
 
-  rate(donation:Donation){
-
+  rate(donation:RatingDonation){
+    this.router.navigate(['/rateDonorsList', donation.donorLogin,donation.charityActionName]);
   }
 
   noDonationCheck():boolean{

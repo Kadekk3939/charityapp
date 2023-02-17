@@ -30,6 +30,7 @@ import { DonorsDonationHistoryComponent } from './donors-donation-history/donors
 import { DonationService } from './donors-donation-history/donation.service';
 import { CharityActionRatingComponent } from './charity-action-rating/charity-action-rating.component';
 import { CharityActionRateComponent } from './charity-action-rating/rate-charity-action.component';
+import { DonorRateComponent } from './rate-donors-list/rate-donor.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { CharityActionRateComponent } from './charity-action-rating/rate-charity
     RateDonorsListComponent,
     DonorsDonationHistoryComponent,
     CharityActionRatingComponent,
-    CharityActionRateComponent
+    CharityActionRateComponent,
+    DonorRateComponent
 
   ],
   imports: [

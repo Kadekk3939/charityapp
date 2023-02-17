@@ -1,0 +1,63 @@
+<div>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0" height="36" /> Charity organisation
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="return back()"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/user" routerLinkActive="active" ariaCurrentWhenActive="page">User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/charityAction" routerLinkActive="active" ariaCurrentWhenActive="page">Open charity actions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" (click)="logout()" routerLinkActive="active" ariaCurrentWhenActive="page">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header>
+            <h1>Rating donor {{name}}</h1>
+        </header>
+        <main>
+            <div class="container" id="main-container">
+                <form #rateForm="ngForm" (ngSubmit)="onRate(rateForm)" class="form_class">
+                    <div class="form_div">
+                        <input ngModel name="actionName" class="cdk-visually-hidden">
+                        <div>
+                            <input ngModel name="charityActionName" class="cdk-visually-hidden">
+                            <input ngModel name="login" class="cdk-visually-hidden">
+                            <label></label>
+                            <label></label>
+                            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" ngModel name="rating">
+                                <span class="group1">
+                            <label><mat-radio-button class="example-radio-button" [value]=1>1</mat-radio-button></label>
+                            <mat-radio-button class="example-radio-button" [value]=2>2</mat-radio-button>
+                        
+                        </span>
+
+                            </mat-radio-group>
+                            <div *ngIf="err">
+                                <p style="color:red">*You need to rate</p>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="button" type="submit">Rate</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
+</div>
