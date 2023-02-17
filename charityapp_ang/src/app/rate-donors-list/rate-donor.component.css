@@ -141,14 +141,3 @@ textarea {
 .nav-item {
     float: left;
 }
-
-.mat-radio-group {
-    display: flex;
-    width: 100%;
-    font-size: 0.5em;
-    justify-content: space-between;
-}
-
-.example-radio-button {
-    display: inline-block;
-}
