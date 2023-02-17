@@ -34,7 +34,8 @@ const routes: Routes = [
   { path: 'benefactorsApplications', component: BenefactorsApplicationsComponent },
   { path: 'rateDonorsList', component: RateDonorsListComponent },
   { path: 'donorsDonationHistory', component: DonorsDonationHistoryComponent },
-  {path:'actionRating',component:CharityActionRatingComponent}
+  {path:'actionRating',component:CharityActionRatingComponent},
+  { path: 'actionRating/:name', component: CharityActionSupportComponent },
 
 ];
 
