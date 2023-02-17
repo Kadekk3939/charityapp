@@ -40,11 +40,19 @@ public class InitializationController {
 
         // users
         userService.addBasicUsers(roles);
-        UserWriteModel userWriteModel = new UserWriteModel("w2", "w2", "w2", "123", "mail", "Worker");
+        UserWriteModel userWriteModel = new UserWriteModel("Jan", "Kowalski", "admin", "admin", "jk@polsl.pl", "Worker");
+        userService.addUser(userWriteModel);
+        userWriteModel = new UserWriteModel("Maja", "Nowak", "Majka", "123", "majka@gmail.com", "Benefactor");
+        userService.addUser(userWriteModel);
+        userWriteModel = new UserWriteModel("Adam", "Kowalczyk", "Kowal", "123", "adamczyk@wp.pl", "Donor");
         userService.addUser(userWriteModel);
 
         // charity actions
-        CharityActionWriteModel charityActionWriteModel = new CharityActionWriteModel("Action", "Some description", 300.12F, Date.valueOf("2024-12-31"));
+        CharityActionWriteModel charityActionWriteModel = new CharityActionWriteModel("Schronisko", "Zbiórka pieniędzy na karmę do schroniska", 1000.0F, Date.valueOf("2024-04-01"));
+        charityActionService.addCharityAction(charityActionWriteModel);
+        charityActionWriteModel = new CharityActionWriteModel("Dom dziecka", "Na książki do domu dziecka", 1234.56F, Date.valueOf("2024-06-30"));
+        charityActionService.addCharityAction(charityActionWriteModel);
+        charityActionWriteModel = new CharityActionWriteModel("Szpital", "Na kupno aparatury medycznej", 15267.55F, Date.valueOf("2024-12-06"));
         charityActionService.addCharityAction(charityActionWriteModel);
 
         return new ResponseEntity<>("OK", HttpStatus.OK);
