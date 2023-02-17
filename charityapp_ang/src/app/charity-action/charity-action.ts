@@ -8,4 +8,5 @@ export interface CharityAction {
   endDate: string;
   raised: number;
   topDonors:Donation[];
+  images:string[];
 }

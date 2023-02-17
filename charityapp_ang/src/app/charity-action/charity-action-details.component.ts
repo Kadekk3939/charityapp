@@ -23,7 +23,9 @@ export class CharityActionDetailsComponent implements OnInit {
   public status:boolean|null;
   public reason: string;
   public donations:Donation[];
+  public photos:string[];
   private sub: any;
+  public path:string;
   filenames: string[] = [];
   constructor(private charityActionService: CharityActionService, private router: Router, private routeP: ActivatedRoute, private app: AppService) { }
 
@@ -31,6 +33,7 @@ export class CharityActionDetailsComponent implements OnInit {
     this.status = null;
     this.app.refresh();
     this.login = this.app.login;
+    this.path='/img/';
     this.sub = this.routeP.params.subscribe(params =>
       this.name = params["name"])
       console.log(this.name);
@@ -39,6 +42,7 @@ export class CharityActionDetailsComponent implements OnInit {
         this.charityAction = response;
         this.donations=this.charityAction.topDonors;
         console.log(this.charityAction);
+        this.photos = this.charityAction.images;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
