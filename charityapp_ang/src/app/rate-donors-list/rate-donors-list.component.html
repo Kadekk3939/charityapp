@@ -5,8 +5,8 @@
                 <img src="https://i.ibb.co/dkGDRcN/charity-modern-logo.jpg" alt="charity-modern-logo" border="0" height="36" /> Charity organisation
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+            <span class="navbar-toggler-icon"></span>
+          </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -25,6 +25,40 @@
             </div>
         </div>
     </nav>
-    <!-- Page Content -->
+    <div *ngIf="noDonationCheck() else avaible_action">
+        <div class="container">
+            <div class="card border-0 shadow my-5">
+                <div class="card-body p-5">
+                    <h3>There is no avaible actions to rate</h3>
+                    <div style="height: 100px"></div>
+                </div>
+            </div>
 
+        </div>
+    </div>
+    <ng-template #avaible_action>
+        <!-- Page Content -->
+        <div class="container" id="main-container">
+            <div class="row">
+                <div *ngFor="let donation of donations" class="col-md-6 col-xl-3 p-1">
+                    <div class="card m-b-30">
+                        <div class="card-body row" style="margin-left: 5px">
+                        </div>
+                        <ul class="list-group list-group-flush" style="margin-left: 5px">
+                            <li class="list-group-item"><i class="fa float-right"></i>Donor: {{donation?.donorLogin}}</li>
+                            <li class="list-group-item"><i class="fa float-right"></i>Action: {{donation?.charityActionName}}</li>
+                            <li class="list-group-item"><i class="fa float-right"></i>Donation: {{donation?.amount}}</li>
+
+                            <li class="list-group-item"><i class="fa float-right"></i>Confirmed: {{donation?.paymentConfirmed}}</li>
+                        </ul>
+                        <div class="card-body">
+                            <div class="float-right btn-group btn-group-sm">
+                                <a (click)="rate(donation)" class="btn btn-primary tooltips" data-placement="top" data-original-title="Show">Rate </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
 </body>
