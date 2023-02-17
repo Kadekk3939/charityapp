@@ -24,6 +24,7 @@ export class CharityActionDetailsComponent implements OnInit {
   public reason: string;
   public donations:Donation[];
   private sub: any;
+  filenames: string[] = [];
   constructor(private charityActionService: CharityActionService, private router: Router, private routeP: ActivatedRoute, private app: AppService) { }
 
   ngOnInit(): void {
@@ -122,5 +123,41 @@ export class CharityActionDetailsComponent implements OnInit {
     else {
       return false;
     }
+  }
+
+  public addImage():void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#addImageModal');
+    // @ts-ignore
+    container.appendChild(button);
+    button.click();
+  }
+
+  public onUpload(files: File[]): void {
+    const formData = new FormData();
+    for (const file of files) {
+      if(file && file['type'].split('/')[0] === 'image')
+        formData.append('files', file, file.name);
+      else
+        alert("Please provide an image file");
+    }
+    this.charityActionService.uploadImage(this.name,formData).subscribe(
+      event => {
+        console.log(event);
+        //this.raport(event);
+
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    );
+  }
+  public finish(){
+    this.router.navigateByUrl('/charityAction/'+this.name);
+
   }
 }

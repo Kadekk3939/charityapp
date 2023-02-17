@@ -66,6 +66,13 @@ export class CharityActionService {
     });
   }
 
+  uploadImage(actionName: string, formData: FormData): Observable<HttpEvent<string[]>> {
+    return this.http.post<string[]>(`${this.apiServerUrl}/files/action/add/${actionName}`, formData, {
+      reportProgress: true,
+      observe: 'events'
+    });
+  }
+
   download(file:BenefactorDocument): Observable<HttpEvent<Blob>> {
     return this.http.get(`${this.apiServerUrl}/files/documents/download/${file.directory}/${file.fileName}`, {
       reportProgress: true,
