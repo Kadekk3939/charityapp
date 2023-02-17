@@ -23,6 +23,12 @@ export class RateDonorsListComponent implements OnInit{
       (response:RatingDonation[])=>{
       this.donations = response;
       console.log(response);
+        if(this.donations.length==0){
+          this.noDonation=true;
+        }
+        else{
+          this.noDonation=false;
+        }
       },
       (error:HttpErrorResponse)=>{
         console.log(error);

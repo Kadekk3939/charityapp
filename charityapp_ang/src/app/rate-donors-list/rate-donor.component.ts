@@ -29,7 +29,16 @@ export class DonorRateComponent implements OnInit{
 
     onRate(rateForm:NgForm){
         rateForm.controls['charityActionName'].setValue(this.action);
-        rateForm.controls['login'].setValue(this.name);
+        rateForm.controls['donorLogin'].setValue(this.name);
+        this.ratingService.postDonorRating(rateForm.value,this.app.headers).subscribe(
+            (response:string)=>{
+                console.log(response);
+                this.router.navigateByUrl('/rateDonorsList');
+            },
+            (error:HttpErrorResponse)=>{
+                console.log(error)
+            }
+        )
         console.log(rateForm);
     }
 

@@ -34,10 +34,9 @@
             <div class="container" id="main-container">
                 <form #rateForm="ngForm" (ngSubmit)="onRate(rateForm)" class="form_class">
                     <div class="form_div">
-                        <input ngModel name="actionName" class="cdk-visually-hidden">
                         <div>
                             <input ngModel name="charityActionName" class="cdk-visually-hidden">
-                            <input ngModel name="login" class="cdk-visually-hidden">
+                            <input ngModel name="donorLogin" class="cdk-visually-hidden">
                             <label></label>
                             <label></label>
                             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" ngModel name="rating">
