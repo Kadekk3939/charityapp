@@ -20,3 +20,4 @@ public class UserRole {
     @Column(name = "role", unique = true)
     private String roleName;
 }
+//test
